@@ -9,7 +9,8 @@ import java.util.*;
 public class CollectionsPlayground {
 
     public static void main(String[] args) {
-        System.out.println("Start list collection");
+        //b1
+        System.out.println("Start list collection !!!");
         ArrayList<String> stringList = new ArrayList<String>();
         stringList.add("hello");
         stringList.add("world");
@@ -21,6 +22,8 @@ public class CollectionsPlayground {
         // this is how we iterate over the whole list
         for(String s: stringList){
             System.out.println(s);
+
+
         }
 
 
@@ -29,9 +32,15 @@ public class CollectionsPlayground {
         HashSet<String> stringSet = new HashSet<String>();
         stringSet.add("electric");
         stringSet.add("college");
+
+        stringSet.add("daniel");
+        stringSet.add("commit in master");
+
+=======
         stringSet.add("collegess");
         stringSet.add("college");
         stringSet.add("college");
+
 
         // set members are not accessible individually, only by iterating through the set
         for(String s: stringSet){
