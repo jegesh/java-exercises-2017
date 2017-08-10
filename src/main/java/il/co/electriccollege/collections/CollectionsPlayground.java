@@ -1,9 +1,6 @@
 package il.co.electriccollege.collections;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by yaakov on 8/1/17.
