@@ -22,7 +22,6 @@ public class CollectionsPlayground {
             System.out.println(s);
         }
 
-
         System.out.println("");
         System.out.println("Start set collection");
         HashSet<String> stringSet = new HashSet<String>();
