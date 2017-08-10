@@ -29,6 +29,8 @@ public class CollectionsPlayground {
         HashSet<String> stringSet = new HashSet<String>();
         stringSet.add("electric");
         stringSet.add("college");
+        stringSet.add("college");
+        stringSet.add("college");
 
         // set members are not accessible individually, only by iterating through the set
         for(String s: stringSet){
