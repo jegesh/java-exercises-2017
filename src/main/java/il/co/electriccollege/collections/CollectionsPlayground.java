@@ -1,9 +1,6 @@
 package il.co.electriccollege.collections;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 public class CollectionsPlayground {
 
@@ -21,6 +18,7 @@ public class CollectionsPlayground {
         for(String s: stringList){
             System.out.println(s);
         }
+
 
         System.out.println("");
         System.out.println("Start set collection");
