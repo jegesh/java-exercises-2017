@@ -29,6 +29,7 @@ public class CollectionsPlayground {
         stringSet.add("electric");
         stringSet.add("college");
         stringSet.add("not maof");
+        stringSet.add("it's another place");
 
         // set members are not accessible individually, only by iterating through the set
         for(String s: stringSet){
