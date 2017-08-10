@@ -31,6 +31,8 @@ public class CollectionsPlayground {
         stringSet.add("electric");
         stringSet.add("college");
         stringSet.add("daniel");
+        stringSet.add("commit in master");
+
 
         // set members are not accessible individually, only by iterating through the set
         for(String s: stringSet){
