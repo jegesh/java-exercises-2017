@@ -1,16 +1,18 @@
 package il.co.electriccollege.collections;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 /**
  * Created by yaakov on 8/1/17.
  */
-
-public class CollectionsPlayground {
+public class CollectionsPlayground_Tzur {
 
     public static void main(String[] args) {
-        //b1
-        System.out.println("Start list collection !!!");
+        //CHANGE 11:23
+        System.out.println("Start list collection !!!!");
         ArrayList<String> stringList = new ArrayList<String>();
         stringList.add("hello");
         stringList.add("world");
@@ -22,8 +24,6 @@ public class CollectionsPlayground {
         // this is how we iterate over the whole list
         for(String s: stringList){
             System.out.println(s);
-
-
         }
 
 
@@ -32,12 +32,6 @@ public class CollectionsPlayground {
         HashSet<String> stringSet = new HashSet<String>();
         stringSet.add("electric");
         stringSet.add("college");
-        stringSet.add("collegess");
-        stringSet.add("college");
-        stringSet.add("college");
-        stringSet.add("daniel");
-        stringSet.add("commit in master");
-
 
         // set members are not accessible individually, only by iterating through the set
         for(String s: stringSet){
@@ -49,9 +43,8 @@ public class CollectionsPlayground {
         HashMap<String, String> stringMap = new HashMap<String, String>();
         stringMap.put("city", "Hadera");
         stringMap.put("street", "HaShalom");
-        stringMap.put("street2", "HaShalom");
+
         // map members are accessible by key
-        String news = "";
         System.out.println("key: city; value: " + stringMap.get("city"));
         System.out.println("key: street; value: " + stringMap.get("street"));
 
