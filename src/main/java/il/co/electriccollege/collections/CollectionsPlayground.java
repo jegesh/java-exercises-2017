@@ -30,6 +30,8 @@ public class CollectionsPlayground {
         stringSet.add("electric");
         stringSet.add("college");
         stringSet.add("collegess");
+        stringSet.add("college");
+        stringSet.add("college");
 
         // set members are not accessible individually, only by iterating through the set
         for(String s: stringSet){
