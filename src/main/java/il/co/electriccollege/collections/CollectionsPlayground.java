@@ -24,7 +24,6 @@ public class CollectionsPlayground {
 
 
         System.out.println("");
-        System.out.println("");
         System.out.println("Start set collection");
         HashSet<String> stringSet = new HashSet<String>();
         stringSet.add("electric");
