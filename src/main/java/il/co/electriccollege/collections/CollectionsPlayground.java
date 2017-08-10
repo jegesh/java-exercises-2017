@@ -8,7 +8,7 @@ import java.util.*;
 public class CollectionsPlayground {
 
     public static void main(String[] args) {
-        //new branch2
+        //new change 2
         System.out.println("Start list collection !!!");
         ArrayList<String> stringList = new ArrayList<String>();
         stringList.add("hello");
