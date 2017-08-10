@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-/**
- * Created by yaakov on 8/1/17.
- */
 public class CollectionsPlayground {
 
     public static void main(String[] args) {
@@ -41,7 +38,7 @@ public class CollectionsPlayground {
         HashMap<String, String> stringMap = new HashMap<String, String>();
         stringMap.put("city", "Hadera");
         stringMap.put("street", "HaShalom");
-
+        stringMap.put("street2", "HaShalom");
         // map members are accessible by key
         System.out.println("key: city; value: " + stringMap.get("city"));
         System.out.println("key: street; value: " + stringMap.get("street"));
