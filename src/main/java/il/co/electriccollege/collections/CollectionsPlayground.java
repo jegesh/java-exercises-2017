@@ -45,6 +45,7 @@ public class CollectionsPlayground {
         stringMap.put("street", "HaShalom");
         stringMap.put("street2", "HaShalom");
         // map members are accessible by key
+        String news = "";
         System.out.println("key: city; value: " + stringMap.get("city"));
         System.out.println("key: street; value: " + stringMap.get("street"));
 
