@@ -1,57 +1,77 @@
 package il.co.electriccollege.collections;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+        import java.util.ArrayList;
+        import java.util.HashMap;
+        import java.util.HashSet;
+
 
 /**
- * Created by yaakov on 8/1/17.
+ * Created by 'Tzur' on 8/1/17.
  */
-public class CollectionsPlayground_Tzur {
+public class exercise_IntroductiontoCollections {
+    public static int letter = 65;
 
     public static void main(String[] args) {
-        //CHANGE 11:23
-        System.out.println("Start list collection !!!!");
-        ArrayList<String> stringList = new ArrayList<String>();
-        stringList.add("hello");
-        stringList.add("world");
+//ArrayList that contains 3 letter
+        ArrayList<String> al1 = new ArrayList<String>();
+        ArrayList<String> al2 = new ArrayList<String>();
+        ArrayList<String> al3 = new ArrayList<String>();
 
-        // the values of the list are accessible by index
-        System.out.println("List member 0: " + stringList.get(0));
-        System.out.println("List member 1: " + stringList.get(1));
+        al1.addAll(insert3letter());
+        al2.addAll(insert3letter());
+        al3.addAll(insert3letter());
 
-        // this is how we iterate over the whole list
-        for(String s: stringList){
-            System.out.println(s);
+        System.out.println(al1.toString() + al2.toString() + al3.toString());
+
+
+//ArrayList that contains ArrayLists
+        ArrayList<ArrayList> alAll = new ArrayList();
+        alAll.add(al1);
+        alAll.add(al2);
+        alAll.add(al3);
+        System.out.println(alAll.toString());
+
+//a HashSet that contains ArrayLists
+        HashSet<ArrayList<ArrayList>> hsWithAl = new HashSet<ArrayList<ArrayList>>();
+        hsWithAl.add(alAll);
+        System.out.println(hsWithAl);
+
+//HashMap that contains HashMaps
+        HashMap<String, String> hmFirst = new HashMap();
+
+        hmFirst.put(al1.get(0), al1.get(0));
+        hmFirst.put(al1.get(1), al1.get(1));
+        hmFirst.put(al1.get(2), al1.get(2));
+        System.out.println(hmFirst);
+
+        HashMap<String,HashMap> hmSecend= new HashMap();
+
+        hmSecend.put("result",hmFirst);
+        System.out.println(hmSecend);
+
+        for(HashMap.Entry<String, HashMap> curr : hmSecend.entrySet()) {
+
+            System.out.println(curr.getValue().containsKey("D"));
+//            HashMap<String, String> temp = new HashMap<>();
+//            temp.put(curr.getKey("result"));
         }
+    }
 
 
-        System.out.println("");
-        System.out.println("Start set collection");
-        HashSet<String> stringSet = new HashSet<String>();
-        stringSet.add("electric");
-        stringSet.add("college");
+    //FUNCTIONS
+// insert 3 letter by the ABC
 
-        // set members are not accessible individually, only by iterating through the set
-        for(String s: stringSet){
-            System.out.println("Set member: " + s);
-        }
 
-        System.out.println("");
-        System.out.println("Start map collection");
-        HashMap<String, String> stringMap = new HashMap<String, String>();
-        stringMap.put("city", "Hadera");
-        stringMap.put("street", "HaShalom");
+    public static ArrayList<String> insert3letter() {
 
-        // map members are accessible by key
-        System.out.println("key: city; value: " + stringMap.get("city"));
-        System.out.println("key: street; value: " + stringMap.get("street"));
+        ArrayList<String> al = new ArrayList<String>();
 
-        // iteration over a map is possible by getting the entry set
-        for(Map.Entry<String, String> entry: stringMap.entrySet()){
-            System.out.println(entry);
-        }
-
+        al.add("" + (char) letter);
+        letter++;
+        al.add("" + (char) letter);
+        letter++;
+        al.add("" + (char) letter);
+        letter++;
+        return al;
     }
 }
