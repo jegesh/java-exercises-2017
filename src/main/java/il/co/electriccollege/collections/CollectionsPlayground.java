@@ -44,6 +44,8 @@ public class CollectionsPlayground {
         System.out.println("key: city; value: " + stringMap.get("city"));
         System.out.println("key: street; value: " + stringMap.get("street"));
 
+        System.out.println("Amit");
+
         // iteration over a map is possible by getting the entry set
         for(Map.Entry<String, String> entry: stringMap.entrySet()){
             System.out.println(entry);
