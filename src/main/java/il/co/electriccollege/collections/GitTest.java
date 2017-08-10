@@ -6,5 +6,11 @@ package il.co.electriccollege.collections;
 public class GitTest
 
 {
-       
+    public void main()
+    {
+        System.out.println("amit");
+        System.out.println("hi");
+        
+    }
+
 }
