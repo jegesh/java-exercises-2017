@@ -11,7 +11,7 @@ public class CollectionsPlayground {
         System.out.println("Start list collection");
         ArrayList<String> stringList = new ArrayList<String>();
         stringList.add("hello");
-        stringList.add("Vera");
+        stringList.add("Vera !!!");
 
         // the values of the list are accessible by index
         System.out.println("List member 0: " + stringList.get(0));
