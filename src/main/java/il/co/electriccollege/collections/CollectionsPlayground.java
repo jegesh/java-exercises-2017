@@ -3,7 +3,7 @@ package il.co.electriccollege.collections;
 import java.util.*;
 
 /**
- * Created by yaakov on 8/1/17.
+ * Changed by Bors
  */
 
 public class CollectionsPlayground {
@@ -35,7 +35,7 @@ public class CollectionsPlayground {
         stringSet.add("daniel");
         stringSet.add("commit in master");
 
-=======
+
         stringSet.add("collegess");
         stringSet.add("college");
         stringSet.add("college");
