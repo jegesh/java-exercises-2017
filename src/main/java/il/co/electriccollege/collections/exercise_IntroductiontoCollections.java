@@ -1,14 +1,14 @@
 package il.co.electriccollege.collections;
 
-        import java.util.ArrayList;
-        import java.util.HashMap;
-        import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 
 /**
  * Created by 'Tzur' on 8/1/17.
  */
-class exercise_IntroductiontoCollections {
+public class exercise_IntroductiontoCollections {
     public static int letter = 65;
 
     public static void main(String[] args) {
