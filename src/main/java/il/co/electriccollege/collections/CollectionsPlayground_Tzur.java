@@ -8,7 +8,7 @@ package il.co.electriccollege.collections;
 /**
  * Created by 'Tzur' on 8/1/17.
  */
-public class exercise_IntroductiontoCollections {
+class exercise_IntroductiontoCollections {
     public static int letter = 65;
 
     public static void main(String[] args) {
