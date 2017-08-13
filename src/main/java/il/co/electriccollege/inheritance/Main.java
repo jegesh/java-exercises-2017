@@ -2,8 +2,11 @@ package il.co.electriccollege.inheritance;
 
 import il.co.electriccollege.inheritance.animals.Animal;
 import il.co.electriccollege.inheritance.animals.Dog;
+import il.co.electriccollege.inheritance.animals.Fish;
 import il.co.electriccollege.inheritance.faces.Noisable;
+import il.co.electriccollege.inheritance.faces.Submergeable;
 import il.co.electriccollege.inheritance.vehicles.Car;
+import il.co.electriccollege.inheritance.vehicles.Submarine;
 
 import java.util.ArrayList;
 
@@ -67,5 +70,15 @@ public class Main {
                 // check weather
             }
         };
+
+        System.out.println("---------Underwater things------------");
+        ArrayList<Submergeable> subs = new ArrayList<Submergeable>();
+        subs.add(new Fish("Nemo"));
+        subs.add(new Submarine("Yellow submarine"));
+
+        for(Submergeable s: subs){
+            System.out.print(s+" - ");
+            s.goUnderWater();
+        }
     }
 }
