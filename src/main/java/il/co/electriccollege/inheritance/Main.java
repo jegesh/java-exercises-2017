@@ -2,11 +2,8 @@ package il.co.electriccollege.inheritance;
 
 import il.co.electriccollege.inheritance.animals.Animal;
 import il.co.electriccollege.inheritance.animals.Dog;
-import il.co.electriccollege.inheritance.animals.Fish;
 import il.co.electriccollege.inheritance.faces.Noisable;
-import il.co.electriccollege.inheritance.faces.Submergeable;
 import il.co.electriccollege.inheritance.vehicles.Car;
-import il.co.electriccollege.inheritance.vehicles.Submarine;
 
 import java.util.ArrayList;
 
@@ -18,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Noisable> noisyThings = new ArrayList<Noisable>();
         noisyThings.add(new Dog());
-        noisyThings.add(new Car(50));
+        noisyThings.add(new Car());
 
         for(Noisable n: noisyThings){
             n.makeNoise();
@@ -63,20 +60,12 @@ public class Main {
             }
         };
 
-        System.out.println(" ---------------------- ");
-        ArrayList<Submergeable> underWater =new ArrayList<>();
-           underWater.add(new Submarine(20));
-           underWater.add(new Fish("GoldFish"));
 
-        for (Submergeable curr: underWater
-             ) {
-            curr.dying();
-        }
         // well known use case
-//        Runnable myRunnable = new Runnable() {
-//            public void run() {
-//                // check weather
-//            }
-//        };
+        Runnable myRunnable = new Runnable() {
+            public void run() {
+                // check weather
+            }
+        };
     }
 }
