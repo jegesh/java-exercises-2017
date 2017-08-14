@@ -1,7 +1,10 @@
 package il.co.electriccollege.inheritance;
 
+import il.co.electriccollege.inheritance.Submergeables.Submarine;
+import il.co.electriccollege.inheritance.Submergeables.Submergeable;
 import il.co.electriccollege.inheritance.animals.Animal;
 import il.co.electriccollege.inheritance.animals.Dog;
+import il.co.electriccollege.inheritance.animals.Fish;
 import il.co.electriccollege.inheritance.faces.Noisable;
 import il.co.electriccollege.inheritance.vehicles.Car;
 
@@ -15,10 +18,24 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Noisable> noisyThings = new ArrayList<Noisable>();
         noisyThings.add(new Dog());
-        noisyThings.add(new Car());
+
 
         for(Noisable n: noisyThings){
             n.makeNoise();
+
+
+
+            ArrayList<Submergeable> sub = new ArrayList<Submergeable>();
+
+            Fish sardine = new Fish(0.3);
+            sub.add(sardine);
+            Submarine s123 = new Submarine("blue");
+            sub.add(s123);
+
+            for ( int i=0; i< sub.size() ; i++)
+            {
+                System.out.println(""+(sub.get(i).timeUnderWater()));
+            }
         }
 
         // anonymous class

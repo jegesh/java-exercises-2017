@@ -1,37 +1,27 @@
 package il.co.electriccollege.inheritance.animals;
 
-/**
- * Created by yaakov on 8/10/17.
- */
-public class Fish extends Animal {
-    String name;
+import il.co.electriccollege.inheritance.Submergeables.Submergeable;
 
-    public Fish(String name){
-        this.name = name;
+public class Fish implements Submergeable {
+
+    double weight;
+
+    public Fish(double weight) {
+        this.weight = weight;
     }
 
-    public void motion() {
-
+    public Fish() {
     }
 
-    public void flavor() {
-
+    public double getWeight() {
+        return weight;
     }
 
-    public void makeNoise() {
-
+    public void setWeight(double weight) {
+        weight = weight;
     }
 
-    public int getVolume() {
-        return 0;
-    }
-
-    @Override
-    public boolean breathesAir() {
-        if(this.name.equals("lungfish")){
-            // a lungfish is treated as a regular animal
-            return super.breathesAir();
-        }
-        return false;
+    public int timeUnderWater() {
+        return 100;
     }
 }

@@ -1,17 +1,21 @@
 package il.co.electriccollege.inheritance.vehicles;
 
-import il.co.electriccollege.inheritance.faces.Noisable;
+public class Car extends Vehicle {
 
-/**
- * Created by yaakov on 8/10/17.
- */
-public class Car implements Noisable {
 
-    public void makeNoise() {
-        System.out.println("beep beep");
-    }
+private int numberOfRoll;
 
-    public int getVolume() {
-        return 0;
+
+public void setNumberOfRoll ( int numberOfRoll)
+{
+    this.numberOfRoll = numberOfRoll;
+}
+public int getNumberOfRoll ()
+{
+    return this.numberOfRoll;
+}
+    @Override
+    public void WhereVehiclesWork() {
+        System.out.printf("land");
     }
 }
