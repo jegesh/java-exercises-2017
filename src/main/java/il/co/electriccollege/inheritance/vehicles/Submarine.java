@@ -2,35 +2,24 @@ package il.co.electriccollege.inheritance.vehicles;
 
 import il.co.electriccollege.inheritance.faces.Submergeable;
 
-/**
- * Created by Comp8 on 13/08/17.
- */
-public class Submarine extends Vehicle implements Submergeable{
+public class Submarine extends Vehicle implements Submergeable {
 
-    private String name;
-
-    public Submarine(String name){
-        this.name = name;
-    }
-
-    public void move() {
-        System.out.println("i can move too");
+    public Submarine(int speed) {
+        super(speed);
     }
 
     @Override
-    public boolean groundMoving(){
-        System.out.println("i can't move on the ground");
-        return false;
-    }
-
-    public void goUnderWater() {
-        System.out.println("i cam go underwater");
+    public boolean isUnderwater() {
+        return this.speed > 20;
     }
 
     @Override
-    public String toString() {
-        return "Submarine{" +
-                "name='" + name + '\'' +
-                '}';
+    public int getMaxTimeUnderwater() {
+        return 24 * 60;
+    }
+
+    @Override
+    public String getMedium() {
+        return "water";
     }
 }

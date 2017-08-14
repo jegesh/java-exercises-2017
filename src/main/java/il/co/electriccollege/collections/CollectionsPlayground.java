@@ -26,17 +26,12 @@ public class CollectionsPlayground {
 
         }
 
-
         System.out.println("");
         System.out.println("Start set collection");
         HashSet<String> stringSet = new HashSet<String>();
         stringSet.add("electric");
         stringSet.add("college");
-        stringSet.add("collegess");
-        stringSet.add("college");
-        stringSet.add("college");
-        stringSet.add("daniel");
-        stringSet.add("commit in master");
+
 
 
         // set members are not accessible individually, only by iterating through the set
