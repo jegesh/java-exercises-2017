@@ -46,4 +46,11 @@ public class Fish extends Animal implements Submergeable{
     public int getMaxTimeUnderwater() {
         return Integer.MAX_VALUE;
     }
+
+    @Override
+    public String toString() {
+        return "Fish{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
