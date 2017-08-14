@@ -29,12 +29,12 @@ public class Submarine extends Vehicle implements Submergeable{
                 '}';
     }
 
-    @Override
+
     public boolean isUnderwater() {
         return false;
     }
 
-    @Override
+  
     public int getMaxTimeUnderwater() {
         return 0;
     }
