@@ -2,8 +2,11 @@ package il.co.electriccollege.inheritance;
 
 import il.co.electriccollege.inheritance.animals.Animal;
 import il.co.electriccollege.inheritance.animals.Dog;
+import il.co.electriccollege.inheritance.animals.Fish;
 import il.co.electriccollege.inheritance.faces.Noisable;
+import il.co.electriccollege.inheritance.faces.Submergeable;
 import il.co.electriccollege.inheritance.vehicles.Car;
+import il.co.electriccollege.inheritance.vehicles.Submarine;
 
 import java.util.ArrayList;
 
@@ -67,5 +70,17 @@ public class Main {
                 // check weather
             }
         };
+
+        //3.  Make an ArrayList of Submergeables that contains instances of both Fish and Submarine.
+        // Iterate over the list and print a value from a method of Submergeable
+        ArrayList<Submergeable> alSubmergeable=new ArrayList<Submergeable>();
+        Fish fish=new Fish("test");
+        alSubmergeable.add(new Fish("fishi"));
+        alSubmergeable.add(new Submarine());
+
+        for (Submergeable i:alSubmergeable){
+            System.out.println(i);
+        }
+
     }
 }
