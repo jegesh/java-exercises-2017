@@ -6,7 +6,9 @@ import il.co.electriccollege.inheritance.animals.Animal;
 import il.co.electriccollege.inheritance.animals.Dog;
 import il.co.electriccollege.inheritance.animals.Fish;
 import il.co.electriccollege.inheritance.faces.Noisable;
+import il.co.electriccollege.inheritance.faces.Submergeable;
 import il.co.electriccollege.inheritance.vehicles.Car;
+import il.co.electriccollege.inheritance.vehicles.Submarine;
 
 import java.util.ArrayList;
 
@@ -78,11 +80,16 @@ public class Main {
         };
 
 
-        // well known use case
-        Runnable myRunnable = new Runnable() {
-            public void run() {
-                // check weather
-            }
-        };
+        ArrayList<Submergeable> submergeables = new ArrayList<>();
+        Submarine sub = new Submarine(10);
+        boolean isUnderwater = sub.isUnderwater();
+        sub.speedUp();
+        boolean isUnderwaterNow = sub.isUnderwater();
+        submergeables.add(sub);
+        submergeables.add(new Fish("Amnon"));
+
+        for(Submergeable s: submergeables){
+            System.out.println(s.getMaxTimeUnderwater());
+        }
     }
 }

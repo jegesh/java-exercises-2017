@@ -1,27 +1,49 @@
 package il.co.electriccollege.inheritance.animals;
 
-import il.co.electriccollege.inheritance.Submergeables.Submergeable;
+import il.co.electriccollege.inheritance.faces.Submergeable;
 
-public class Fish implements Submergeable {
+/**
+ * Created by yaakov on 8/10/17.
+ */
+public class Fish extends Animal implements Submergeable{
+    String name;
 
-    double weight;
-
-    public Fish(double weight) {
-        this.weight = weight;
+    public Fish(String name){
+        this.name = name;
     }
 
-    public Fish() {
+    public void motion() {
+
     }
 
-    public double getWeight() {
-        return weight;
+    public void flavor() {
+
     }
 
-    public void setWeight(double weight) {
-        weight = weight;
+    public void makeNoise() {
+
     }
 
-    public int timeUnderWater() {
-        return 100;
+    public int getVolume() {
+        return 0;
+    }
+
+    @Override
+    public boolean breathesAir() {
+        if(this.name.equals("lungfish")){
+            // a lungfish is treated as a regular animal
+            return super.breathesAir();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean isUnderwater() {
+        return true;
+    }
+
+    @Override
+    public int getMaxTimeUnderwater() {
+        return Integer.MAX_VALUE;
     }
 }

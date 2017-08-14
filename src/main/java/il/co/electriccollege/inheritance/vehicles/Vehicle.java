@@ -1,32 +1,26 @@
 package il.co.electriccollege.inheritance.vehicles;
 
-public  abstract class Vehicle
-{
-    private int fuelTank;
-    private float FuelConsumption;
+/**
+ * Created by yaakov on 8/14/17.
+ */
+public abstract class Vehicle {
+    protected int speed;
 
-
-    public int getFuelTank() {
-        return fuelTank;
+    public Vehicle(int speed){
+        this.speed = speed;
     }
 
-    public float getFuelConsumption() {
-        return FuelConsumption;
+    public int getSpeed() {
+        return speed;
     }
 
-    public void setFuelTank(int fuelTank) {
-        this.fuelTank = fuelTank;
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
-    public void setFuelConsumption(float fuelConsumption) {
-        FuelConsumption = fuelConsumption;
+    public void speedUp(){
+        speed += 10;
     }
 
-    public float MaximumDrivingDistance (int fuelTank, float FuelConsumption)
-    {
-        return fuelTank*FuelConsumption;
-    }
-
-    public  abstract void WhereVehiclesWork();
-
+    public abstract String getMedium();
 }
