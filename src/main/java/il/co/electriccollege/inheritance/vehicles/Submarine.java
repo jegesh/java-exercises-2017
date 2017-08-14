@@ -13,7 +13,7 @@ public class Submarine extends Vehicle implements Submergeable {
 
     @Override
     public boolean isUnderwater() {
-        return this.speed > 20;
+        return speed > 20;
     }
 
     @Override
@@ -24,5 +24,10 @@ public class Submarine extends Vehicle implements Submergeable {
     @Override
     public String getMedium() {
         return "water";
+    }
+
+    @Override
+    public Vehicle crash(Vehicle v) {
+        return v;
     }
 }

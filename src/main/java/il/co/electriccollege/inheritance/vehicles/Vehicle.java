@@ -23,4 +23,6 @@ public abstract class Vehicle {
     }
 
     public abstract String getMedium();
+
+    public abstract Vehicle crash(Vehicle v);
 }
