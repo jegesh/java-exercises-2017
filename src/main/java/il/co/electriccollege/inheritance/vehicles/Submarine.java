@@ -34,7 +34,7 @@ public class Submarine extends Vehicle implements Submergeable{
         return false;
     }
 
-  
+
     public int getMaxTimeUnderwater() {
         return 0;
     }
