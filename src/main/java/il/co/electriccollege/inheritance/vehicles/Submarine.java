@@ -13,7 +13,7 @@ public class Submarine extends Vehicle implements Submergeable {
         return this.speed > 20;
     }
 
-  
+
     public int getMaxTimeUnderwater() {
         return 24 * 60;
     }
