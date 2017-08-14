@@ -2,12 +2,10 @@ package il.co.electriccollege.inheritance.vehicles;
 
 import il.co.electriccollege.inheritance.faces.Noisable;
 
-public class Car extends Vehicle implements Noisable {
-
-
-    public Car(int speed) {
-        super(speed);
-    }
+/**
+ * Created by yaakov on 8/10/17.
+ */
+public class Car implements Noisable {
 
     public void makeNoise() {
         System.out.println("beep beep");
@@ -15,10 +13,5 @@ public class Car extends Vehicle implements Noisable {
 
     public int getVolume() {
         return 0;
-    }
-
-    @Override
-    public void move() {
-        System.out.println("driving");
     }
 }
