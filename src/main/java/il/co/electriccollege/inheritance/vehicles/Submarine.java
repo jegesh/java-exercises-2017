@@ -1,5 +1,4 @@
 package il.co.electriccollege.inheritance.vehicles;
-
 import il.co.electriccollege.inheritance.faces.Submergeable;
 
 /**
