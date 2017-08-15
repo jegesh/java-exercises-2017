@@ -1,4 +1,4 @@
-package il.co.electriccollege.inheritance;
+package il.co.electriccollege.triathlon;
 
 /**
  * Created by yaakov on 8/14/17.

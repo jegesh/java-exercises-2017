@@ -1,5 +1,6 @@
 package il.co.electriccollege.inheritance;
 
+import com.sun.corba.se.impl.io.TypeMismatchException;
 import il.co.electriccollege.inheritance.animals.Animal;
 import il.co.electriccollege.inheritance.animals.Dog;
 import il.co.electriccollege.inheritance.animals.Fish;
@@ -7,6 +8,7 @@ import il.co.electriccollege.inheritance.faces.Noisable;
 import il.co.electriccollege.inheritance.faces.Submergeable;
 import il.co.electriccollege.inheritance.vehicles.Car;
 import il.co.electriccollege.inheritance.vehicles.Submarine;
+import il.co.electriccollege.inheritance.vehicles.Vehicle;
 
 import java.util.ArrayList;
 
@@ -18,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Noisable> noisyThings = new ArrayList<Noisable>();
         noisyThings.add(new Dog());
-        noisyThings.add(new Car());
+        noisyThings.add(new Car(10));
 
         for(Noisable n: noisyThings){
             n.makeNoise();
@@ -75,5 +77,19 @@ public class Main {
         for(Submergeable s: submergeables){
             System.out.println(s.getMaxTimeUnderwater());
         }
+
+        // polymorphism
+        Car c = new Car(10);
+        Submarine sb = new Submarine(20);
+        Vehicle v = c.crash(sb);
+        System.out.println(v instanceof Submarine);
+
+        try {
+            Submergeable submergeable = sb;
+        }catch (TypeMismatchException ex){
+            // do something
+        }
+
+
     }
 }
