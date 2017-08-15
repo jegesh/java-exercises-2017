@@ -5,4 +5,5 @@ package il.co.electriccollege.triathlon;
  */
 public class Triathlon {
     String name;
+    /// Natalya
 }
