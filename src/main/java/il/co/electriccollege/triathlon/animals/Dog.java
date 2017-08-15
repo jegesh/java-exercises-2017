@@ -24,6 +24,7 @@ public class Dog extends Animal implements CanRunnable {
     }
     @Override
     public int move(int raceTime) {
+        this.initialEnergy -= (this.energyBurnRate*raceTime);
         return currentSpeed*raceTime;
     }
 
@@ -34,7 +35,9 @@ public class Dog extends Animal implements CanRunnable {
 
     @Override
     public void accelerate() {
-
+        if(currentSpeed <= topSpeed-10) currentSpeed+=10;
+        else currentSpeed = topSpeed;
+        this.energyBurnRate-=5;
     }
 
     @Override
@@ -46,8 +49,9 @@ public class Dog extends Animal implements CanRunnable {
     }
     @Override
     public void decelerate() {
-        if(currentSpeed <= topSpeed-10) currentSpeed+=10;
-        else currentSpeed = topSpeed;
+        if(currentSpeed >= 10) currentSpeed-=10;
+        else currentSpeed = 0;
+        this.energyBurnRate+=5;
     }
 
     @Override
