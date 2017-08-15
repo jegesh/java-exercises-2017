@@ -4,7 +4,7 @@ import il.co.electriccollege.triathlon.faces.*;
 /**
  * Created by IrKha on 14.08.2017.
  */
-public abstract class Animal implements Movable, Flyable, Submergeable, CanRunnable {
+public abstract class Animal implements Movable {
     protected int initialEnergy;
     protected int energyBurnRate;
 

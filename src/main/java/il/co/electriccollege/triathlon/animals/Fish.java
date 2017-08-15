@@ -1,9 +1,11 @@
 package il.co.electriccollege.triathlon.animals;
 
+import il.co.electriccollege.triathlon.faces.Submergeable;
+
 /**
  * Created by IrKha on 14.08.2017.
  */
-public class Fish extends Animal {
+public class Fish extends Animal implements Submergeable {
     private int baseSpeed;
     private int topSpeed;
     private int currentSpeed;
@@ -11,7 +13,13 @@ public class Fish extends Animal {
 
     @Override
     public int move(int raceTime) {
-        return currentSpeed*raceTime;
+        if(this.initialEnergy > this.energyBurnRate*currentSpeed*raceTime){
+            return currentSpeed*raceTime;
+        }
+        else{
+            this.rest();
+            return 0;
+        }
     }
 
     @Override
@@ -41,21 +49,11 @@ public class Fish extends Animal {
 
     @Override
     public int getTopSpeed() {
-        return 0;
+        return this.topSpeed;
     }
 
     public void rest() {
-
-    }
-
-    @Override
-    public boolean canFly() {
-        return false;
-    }
-
-    @Override
-    public boolean canRun() {
-        return false;
+        this.currentSpeed = 0;
     }
 
     @Override

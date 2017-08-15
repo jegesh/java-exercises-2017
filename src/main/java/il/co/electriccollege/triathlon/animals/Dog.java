@@ -1,9 +1,11 @@
 package il.co.electriccollege.triathlon.animals;
 
+import il.co.electriccollege.triathlon.faces.CanRunnable;
+
 /**
  * Created by IrKha on 14.08.2017.
  */
-public class Dog extends Animal {
+public class Dog extends Animal implements CanRunnable {
     private int baseSpeed;
     private int topSpeed;
     private int currentSpeed;
@@ -58,26 +60,10 @@ public class Dog extends Animal {
 
     }
 
-    @Override
-    public boolean canFly() {
-        return false;
-    }
 
     @Override
     public boolean canRun() {
         return true;
     }
 
-    @Override
-    public boolean canSwim() {
-        return false;
-    }
-
-    @Override
-    public int getMaxTimeUnderwater() {
-        return maxTimeUnderwater;
-    }
-    public void setMaxTimeUnderwater(int maxTimeUnderwater){
-        this.maxTimeUnderwater = maxTimeUnderwater;
-    }
 }

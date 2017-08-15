@@ -5,7 +5,7 @@ import il.co.electriccollege.triathlon.faces.Flyable;
 /**
  * Created by IrKha on 14.08.2017.
  */
-public class Bird extends Animal {
+public class Bird extends Animal implements Flyable{
     private int baseSpeed;
     private int topSpeed;
     private int currentSpeed;
@@ -62,20 +62,5 @@ public class Bird extends Animal {
     @Override
     public boolean canFly() {
         return true;
-    }
-
-    @Override
-    public boolean canRun() {
-        return false;
-    }
-
-    @Override
-    public boolean canSwim() {
-        return false;
-    }
-
-    @Override
-    public int getMaxTimeUnderwater() {
-        return 0;
     }
 }
