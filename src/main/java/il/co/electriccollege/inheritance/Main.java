@@ -10,6 +10,7 @@ import il.co.electriccollege.inheritance.vehicles.Car;
 import il.co.electriccollege.inheritance.vehicles.Submarine;
 import il.co.electriccollege.inheritance.vehicles.Vehicle;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 /**
@@ -66,6 +67,7 @@ public class Main {
         };
 
 
+<<<<<<< HEAD
         ArrayList<Submergeable> submergeables = new ArrayList<>();
         Submarine sub = new Submarine(10);
         boolean isUnderwater = sub.isUnderwater();
@@ -76,6 +78,40 @@ public class Main {
 
         for(Submergeable s: submergeables){
             System.out.println(s.getMaxTimeUnderwater());
+=======
+        // well known use case
+        Runnable myRunnable = new Runnable() {
+            public void run() {
+                // check weather
+            }
+        };
+
+        System.out.println("---------Underwater things------------");
+        ArrayList<Submergeable> subs = new ArrayList<Submergeable>();
+        subs.add(new Fish("Nemo"));
+        subs.add(new Submarine("Yellow submarine"));
+
+        for(Submergeable s: subs){
+            System.out.print(s+" - ");
+            s.goUnderWater();
+        }
+
+
+        Vehicle c = new Car();
+        System.out.println(c);
+       // Car c2 = (Car) c;
+        //System.out.println(c2);
+        Class cl = c.getClass();
+        System.out.println(cl);
+        System.out.println(cl.getTypeParameters());
+
+        System.out.println(c instanceof Object);
+
+        System.out.println(cl.getSuperclass());
+        Method[] m = cl.getSuperclass().getDeclaredMethods();
+        for(int i = 0; i < 10; i++){
+            System.out.println(m[i]);
+>>>>>>> b3004a70821b5c89e596dd59bdf37882b168f325
         }
 
         // polymorphism

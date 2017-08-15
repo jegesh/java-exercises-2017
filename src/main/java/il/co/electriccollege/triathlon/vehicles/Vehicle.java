@@ -7,4 +7,5 @@ import il.co.electriccollege.triathlon.faces.Movable;
  */
 public abstract class Vehicle implements Movable {
     protected int gasTankVolume;
+    protected int gasBurnRate;
 }
