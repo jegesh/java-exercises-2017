@@ -7,7 +7,9 @@ import il.co.electriccollege.inheritance.faces.Noisable;
 import il.co.electriccollege.inheritance.faces.Submergeable;
 import il.co.electriccollege.inheritance.vehicles.Car;
 import il.co.electriccollege.inheritance.vehicles.Submarine;
+import il.co.electriccollege.inheritance.vehicles.Vehicle;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 /**
@@ -79,6 +81,23 @@ public class Main {
         for(Submergeable s: subs){
             System.out.print(s+" - ");
             s.goUnderWater();
+        }
+
+
+        Vehicle c = new Car();
+        System.out.println(c);
+       // Car c2 = (Car) c;
+        //System.out.println(c2);
+        Class cl = c.getClass();
+        System.out.println(cl);
+        System.out.println(cl.getTypeParameters());
+
+        System.out.println(c instanceof Object);
+
+        System.out.println(cl.getSuperclass());
+        Method[] m = cl.getSuperclass().getDeclaredMethods();
+        for(int i = 0; i < 10; i++){
+            System.out.println(m[i]);
         }
     }
 }

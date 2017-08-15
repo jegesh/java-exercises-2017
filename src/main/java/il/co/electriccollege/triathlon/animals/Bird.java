@@ -1,0 +1,80 @@
+package il.co.electriccollege.triathlon.animals;
+
+import il.co.electriccollege.triathlon.faces.Flyable;
+
+/**
+ * Created by IrKha on 14.08.2017.
+ */
+public class Bird extends Animal {
+    private int baseSpeed;
+    private int topSpeed;
+    private static int currentSpeed;
+
+    public Bird(int baseSpeed, int topSpeed) throws SpeedException {
+        super();
+        this.baseSpeed = baseSpeed;
+        if(baseSpeed > topSpeed){
+            int cProposal =  baseSpeed;
+            throw new SpeedException("Base speed have to be higher than topSpeed", cProposal);
+        }else{
+            this.topSpeed = topSpeed;
+        }
+
+    }
+    @Override
+    public int move(int raceTime) {
+        return currentSpeed*raceTime;
+    }
+    public void setBaseSpeed(int baseSpeed){
+        this.baseSpeed = baseSpeed;
+    }
+    @Override
+    public int getBaseSpeed() {
+        return baseSpeed;
+    }
+
+    @Override
+    public void accelerate() {
+        if(currentSpeed < topSpeed) currentSpeed+=10;
+    }
+
+    @Override
+    public int getCurrentSpeed() {
+        return currentSpeed;
+    }
+
+    @Override
+    public void decelerate() {
+        if(currentSpeed >= 10) currentSpeed-=10;
+        else currentSpeed = 0;
+    }
+
+    @Override
+    public int getTopSpeed() {
+        return topSpeed;
+    }
+    @Override
+    public void rest() {
+
+    }
+
+    @Override
+    public boolean canFly() {
+        return true;
+    }
+
+    @Override
+    public boolean canRun() {
+        return false;
+    }
+
+    @Override
+    public boolean canSwim() {
+        return false;
+    }
+
+    @Override
+    public int getMaxTimeUnderwater() {
+        return 0;
+    }
+}
