@@ -6,30 +6,37 @@ package il.co.electriccollege.triathlon.animals;
 public class Fish extends Animal {
     private int baseSpeed;
     private int topSpeed;
-    private static int currentSpeed;
+    private int currentSpeed;
+    private int maxTimeUnderwater;
+
     @Override
-    public int move() {
-        return 0;
+    public int move(int raceTime) {
+        return currentSpeed*raceTime;
     }
 
     @Override
     public int getBaseSpeed() {
-        return 0;
+        return baseSpeed;
     }
 
+    public void setBaseSpeed(int baseSpeed){
+        this.baseSpeed = baseSpeed;
+    }
     @Override
     public void accelerate() {
-
+        if(currentSpeed <= topSpeed-10) currentSpeed+=10;
+        else currentSpeed = topSpeed;
     }
 
     @Override
     public int getCurrentSpeed() {
-        return 0;
+        return this.currentSpeed;
     }
 
     @Override
     public void decelerate() {
-
+        if(currentSpeed >= 10) currentSpeed-=10;
+        else currentSpeed = 0;
     }
 
     @Override
@@ -58,6 +65,9 @@ public class Fish extends Animal {
 
     @Override
     public int getMaxTimeUnderwater() {
-        return 20;
+        return maxTimeUnderwater;
+    }
+    public void setMaxTimeUnderwater(int maxTimeUnderwater){
+        this.maxTimeUnderwater = maxTimeUnderwater;
     }
 }

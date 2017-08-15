@@ -11,7 +11,7 @@ public abstract class Animal implements Movable, Flyable, Submergeable, CanRunna
    /* public void rest(int raceTime){
         if(energyBurnRate*raceTime < initialEnergy)return;
     }*/
-   public abstract void rest();
+    public abstract void rest();
     public void setInitialEnergy(int initialEnergy){
         this.initialEnergy = initialEnergy;
     }

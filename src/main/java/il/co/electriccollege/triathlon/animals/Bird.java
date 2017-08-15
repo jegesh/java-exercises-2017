@@ -8,7 +8,7 @@ import il.co.electriccollege.triathlon.faces.Flyable;
 public class Bird extends Animal {
     private int baseSpeed;
     private int topSpeed;
-    private static int currentSpeed;
+    private int currentSpeed;
 
     public Bird(int baseSpeed, int topSpeed) throws SpeedException {
         super();
@@ -35,7 +35,8 @@ public class Bird extends Animal {
 
     @Override
     public void accelerate() {
-        if(currentSpeed < topSpeed) currentSpeed+=10;
+        if(currentSpeed <= topSpeed-10) currentSpeed+=10;
+        else currentSpeed = topSpeed;
     }
 
     @Override
@@ -55,7 +56,7 @@ public class Bird extends Animal {
     }
     @Override
     public void rest() {
-
+        currentSpeed = 0;
     }
 
     @Override
