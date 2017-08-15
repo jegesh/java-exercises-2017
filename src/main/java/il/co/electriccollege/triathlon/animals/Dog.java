@@ -6,14 +6,12 @@ import il.co.electriccollege.triathlon.faces.CanRunnable;
  * Created by IrKha on 14.08.2017.
  */
 public class Dog extends Animal implements CanRunnable {
-    private int baseSpeed;
-    private int topSpeed;
-    private int currentSpeed;
     private int maxTimeUnderwater;
 
-
-    public Dog(int baseSpeed, int topSpeed) throws SpeedException {
+    public Dog(int baseSpeed, int topSpeed, int initialEnergy, int energyBurnRate) throws SpeedException {
         super();
+        this.initialEnergy = initialEnergy;
+        this.energyBurnRate = energyBurnRate;
         this.baseSpeed = baseSpeed;
         if (baseSpeed > topSpeed) {
             int cProposal = baseSpeed;
@@ -23,51 +21,18 @@ public class Dog extends Animal implements CanRunnable {
         }
     }
     @Override
-    public int move(int raceTime) {
-        this.initialEnergy -= (this.energyBurnRate*raceTime);
-        return currentSpeed*raceTime;
-    }
-
-    @Override
-    public int getBaseSpeed() {
-        return baseSpeed;
-    }
-
-    @Override
-    public void accelerate() {
-        if(currentSpeed <= topSpeed-10) currentSpeed+=10;
-        else currentSpeed = topSpeed;
-        this.energyBurnRate-=5;
-    }
-
-    @Override
-    public int getCurrentSpeed() {
-        return currentSpeed;
-    }
-    public void setBaseSpeed(int baseSpeed){
-        this.baseSpeed = baseSpeed;
-    }
-    @Override
-    public void decelerate() {
-        if(currentSpeed >= 10) currentSpeed-=10;
-        else currentSpeed = 0;
-        this.energyBurnRate+=5;
-    }
-
-    @Override
-    public int getTopSpeed() {
-        return topSpeed;
-    }
-
-
-    public void rest() {
-        this.currentSpeed = 0;
-    }
-
-
-    @Override
     public boolean canRun() {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Dog{" +
+                "initialEnergy=" + initialEnergy +
+                ", energyBurnRate=" + energyBurnRate +
+                ", baseSpeed=" + baseSpeed +
+                ", currentSpeed=" + currentSpeed +
+                ", topSpeed=" + topSpeed +
+                '}';
+    }
 }

@@ -67,18 +67,6 @@ public class Main {
         };
 
 
-<<<<<<< HEAD
-        ArrayList<Submergeable> submergeables = new ArrayList<>();
-        Submarine sub = new Submarine(10);
-        boolean isUnderwater = sub.isUnderwater();
-        sub.speedUp();
-        boolean isUnderwaterNow = sub.isUnderwater();
-        submergeables.add(sub);
-        submergeables.add(new Fish("Amnon"));
-
-        for(Submergeable s: submergeables){
-            System.out.println(s.getMaxTimeUnderwater());
-=======
         // well known use case
         Runnable myRunnable = new Runnable() {
             public void run() {
@@ -93,11 +81,10 @@ public class Main {
 
         for(Submergeable s: subs){
             System.out.print(s+" - ");
-            s.goUnderWater();
         }
 
 
-        Vehicle c = new Car();
+        Vehicle c = new Car(5);
         System.out.println(c);
        // Car c2 = (Car) c;
         //System.out.println(c2);
@@ -111,12 +98,11 @@ public class Main {
         Method[] m = cl.getSuperclass().getDeclaredMethods();
         for(int i = 0; i < 10; i++){
             System.out.println(m[i]);
->>>>>>> b3004a70821b5c89e596dd59bdf37882b168f325
         }
 
         // polymorphism
-        Car c = new Car(10);
-        Submarine sb = new Submarine(20);
+        Vehicle c2 = new Car(10);
+        Submarine sb = new Submarine("k");
         Vehicle v = c.crash(sb);
         System.out.println(v instanceof Submarine);
 
