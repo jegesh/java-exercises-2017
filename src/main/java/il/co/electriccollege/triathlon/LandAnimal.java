@@ -1,7 +1,7 @@
 package il.co.electriccollege.triathlon;
 
-public class AirAnimal extends Animal {
-    public AirAnimal(int age, int timeWithoutAir, int numOfLegs) {
+public class LandAnimal extends Animal {
+    public LandAnimal(int age, int timeWithoutAir, int numOfLegs) {
         super(age, timeWithoutAir, numOfLegs);
     }
 

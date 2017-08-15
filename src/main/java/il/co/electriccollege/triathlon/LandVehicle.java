@@ -1,7 +1,7 @@
 package il.co.electriccollege.triathlon;
 
-public class AirVehicle extends Vehicle {
-    public AirVehicle(int speed, String powerEngine, int bornYear) {
+public class LandVehicle extends Vehicle {
+    public LandVehicle(int speed, String powerEngine, int bornYear) {
         super(speed, powerEngine, bornYear);
     }
 

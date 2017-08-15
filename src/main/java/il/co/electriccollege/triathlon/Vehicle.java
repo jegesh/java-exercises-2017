@@ -4,15 +4,18 @@ package il.co.electriccollege.triathlon;
 public abstract class Vehicle {
     protected int speed;
     protected String powerEngine;
+    int bornYear;
 
-    //CONSTRACTORS
+//CONSTRACTORS
 
-    public Vehicle(int speed, String powerEngine) {
+    public Vehicle(int speed, String powerEngine, int bornYear) {
         this.speed = speed;
         this.powerEngine = powerEngine;
+        this.bornYear = bornYear;
     }
 
-    //GET&SET
+
+//GET&SET
 
     public int getSpeed() {
         return speed;
@@ -22,7 +25,7 @@ public abstract class Vehicle {
      * @param speed Betweeb 0-250
      */
     public void setSpeed(int speed) {
-        if (speed < 251)
+        if (speed < 251 && speed>-1)
             this.speed = speed;
         else System.out.println("Speed does not make sense");
     }
@@ -41,6 +44,20 @@ public abstract class Vehicle {
             System.out.println("Wrong input, plaese enter valid power level: low/medium/big");
     }
 
+    public int getBornYear() {
+        return bornYear;
+    }
+
+    /**
+     * @param bornYear Up then 2000
+     */
+    public void setBornYear(int bornYear) {
+        if (bornYear > 1999)
+            this.bornYear = bornYear;
+        else
+            System.out.println("Wrong input, plaese enter valid born year: up then 2,000");
+    }
+
     //METHODS
 
     public void speedUp() {
@@ -51,5 +68,9 @@ public abstract class Vehicle {
         speed -= 10;
     }
 
+    //ABSTRACTS METHODS
+
     public abstract Vehicle crash(Vehicle v);
+
+    public abstract boolean isRevarseable();
 }
