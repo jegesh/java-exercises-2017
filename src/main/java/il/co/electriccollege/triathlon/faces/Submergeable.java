@@ -1,9 +1,9 @@
-package il.co.electriccollege.inheritance.faces;
+package il.co.electriccollege.triathlon.faces;
 
 /**
  * Created by yaakov on 8/14/17.
  */
-public interface Submergeable {
+public interface Submergeable extends Movable {
 
     /**
      *
