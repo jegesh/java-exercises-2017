@@ -37,8 +37,20 @@ public class Fish extends Animal implements Submergeable{
         return false;
     }
 
-    @Override
+    protected int energy() {
+        return 0;
+    }
+
+    protected int energyBurnRate() {
+        return 0;
+    }
+
+    protected int restTime() {
+        return 0;
+    }
+
+
     public void dying() {
-        System.out.println(" I'm fish and dying under water");
+
     }
 }

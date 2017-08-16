@@ -1,30 +1,29 @@
 package il.co.electriccollege.inheritance.vehicles;
 
+import il.co.electriccollege.inheritance.faces.Movable;
+
 /**
  * Created by borka on 8/12/2017.
  */
- public abstract class Vehicle {
-    private int speed;
+ public abstract class Vehicle implements Movable {
 
-    public Vehicle(int speed) {
-        this.speed = speed;
+    // Movable Methods
+
+    public int getBaseSpeed() {
+        return 0;
     }
 
-    public int getSpeed() {
-        return speed;
-    }
+    public abstract int getCurrentSpeed();
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
+    public abstract int getTopSpeed();
 
+    public abstract void acceleration() ;
 
-    public abstract void move();
+    public abstract void deceleration() ;
 
-    public int increaseSpeed (int currSpeed)
-    {
-        speed = speed+10;
-        return speed;
-    }
+    // New Methods
+
+    protected abstract int getTankVolume ();
+    protected abstract int gasBurnRate ();
 
 }

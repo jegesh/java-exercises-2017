@@ -9,14 +9,22 @@ public class Dog extends Animal {
         System.out.println("run");
     }
 
+    protected int energy() {
+        return 0;
+    }
+
+    protected int energyBurnRate() {
+        return 0;
+    }
+
+    protected int restTime() {
+        return 0;
+    }
+
     public void flavor() {
         System.out.println("gross");
     }
 
-    @Override
-    public void makeNoise() {
-        System.out.println("woof");
-    }
 
     public int getVolume() {
         return 40;
