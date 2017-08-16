@@ -5,8 +5,6 @@ package il.co.electriccollege.inheritance.faces;
  */
 public interface Submergeable {
 
-    boolean isUnderwater();
-
     /**
      *
      * @return time in minutes
