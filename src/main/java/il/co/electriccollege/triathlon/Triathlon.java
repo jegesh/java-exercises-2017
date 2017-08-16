@@ -14,5 +14,6 @@ public class Triathlon {
         System.out.println(d);
         d.setInitialEnergy(100);
         System.out.println(b);
+        System.out.println(b.getBaseSpeed());
     }
 }
