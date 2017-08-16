@@ -11,7 +11,6 @@ public class Submarine extends Vehicle implements Submergeable {
         super(speed);
     }
 
-    @Override
     public boolean isUnderwater() {
         return speed > 20;
     }
