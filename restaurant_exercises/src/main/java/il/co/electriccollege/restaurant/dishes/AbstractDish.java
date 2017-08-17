@@ -1,7 +1,7 @@
 package il.co.electriccollege.restaurant.dishes;
 
 /**
- * Created by yaakov on 8/16/17.
+ * Created by yaakov on 8/16/17.. yossi
  */
 public abstract class AbstractDish {
     private String name;
