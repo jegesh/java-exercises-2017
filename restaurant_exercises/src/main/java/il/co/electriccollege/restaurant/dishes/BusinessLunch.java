@@ -4,7 +4,7 @@ package il.co.electriccollege.restaurant.dishes;
  * Created by yaakov on 8/16/17.
  */
 public class BusinessLunch extends AbstractDish {
-
+    private SideDish sideDish;
     public BusinessLunch(String name, float price) {
         super(name, price);
     }
@@ -14,6 +14,6 @@ public class BusinessLunch extends AbstractDish {
      * @param sideDish
      */
     public void setSideDish(SideDish sideDish){
-        // TODO
+        this.sideDish = sideDish;
     }
 }
