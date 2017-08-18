@@ -55,4 +55,15 @@ public abstract class AbstractDish {
     }
 
     private int preparationTime;
+
+    @Override
+    public String toString() {
+        return "AbstractDish{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", preparationTime=" + preparationTime +
+                '}';
+    }
 }
