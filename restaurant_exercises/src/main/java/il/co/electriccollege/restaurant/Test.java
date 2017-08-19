@@ -19,34 +19,41 @@ public class Test {
     public static void main(String[] args) {
         CashRegistry cashRegistry = new CashRegistry();
         WaitStaffMember oleg = new WaitStaffMember("Oleg");
-
+        Iterator<Order> queue = new OrderRegistry();
+        //
         ArrayList<AbstractDish> list = new ArrayList<>();
         BusinessLunch bus = new BusinessLunch("B", 20);
         bus.setSideDish(new SideDish("eggroll",225));
         list.add(bus);
-        StandardDish st = new StandardDish("steak",180);
+
+        StandardDish st = new StandardDish("steak1",180);
         st.setSideDish(new SideDish("salad", 21));
         list.add(st);
+
         Order order = new Order(list);
         oleg.receiveOrder(order);
-        oleg.registerOrder(Priority.HIGH);
+        oleg.registerOrder(Priority.MIDDLE);
         //System.out.println(order);
         //list.clear();
+        ArrayList<AbstractDish> list2 = new ArrayList<>();
         StandardDish st1 = new StandardDish("steak 120",1000);
-        list.add(st1);
-        Order order1 = new Order(list);
+        list2.add(st1);
+        Order order1 = new Order(list2);
         oleg.receiveOrder(order1);
         oleg.registerOrder(Priority.MIDDLE);
 
-        st1 = new StandardDish("steak 220",100);
-        list.add(st1);
-        order1 = new Order(list);
+        ArrayList<AbstractDish> list3 = new ArrayList<>();
+        st1 = new StandardDish("steak 320",100);
+        list3.add(st1);
+        order1 = new Order(list3);
         oleg.receiveOrder(order1);
         oleg.registerOrder(Priority.MIDDLE);
 
         oleg.takePayment(20);
        // System.out.println(order1);
-        Iterator<Order> queue = new OrderRegistry();
+
+
+
         while (queue.hasNext()) {
             System.out.println(queue.next());
         }

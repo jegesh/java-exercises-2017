@@ -18,6 +18,7 @@ public class OrderRegistry implements Iterator<Order> {
     private int index = 0;
      public OrderRegistry(){
          super();
+         this.start = highPriorityQueue.size()>0?highPriorityQueue.get(0):midPriorityQueue.size()>0?midPriorityQueue.get(0):lowPriorityQueue.size()>0?lowPriorityQueue.get(0):null;
     }
     public void add(Order order, Priority priority){
         switch (priority){
@@ -39,18 +40,15 @@ public class OrderRegistry implements Iterator<Order> {
     }
     @Override
     public Order next() {
-        Order curr = start;
-        while(index < highPriorityQueue.size()) {
-            curr = highPriorityQueue.get(index);
-            index++;
+        Order curr = this.start;
+        while (index < lowPriorityQueue.size()){
+            curr = lowPriorityQueue.get(index++);
         }
-        while (index >= highPriorityQueue.size() && index < (midPriorityQueue.size() + highPriorityQueue.size())-1) {
-            curr = midPriorityQueue.get(index);
-            index++;
+        while (index >= lowPriorityQueue.size() && index < midPriorityQueue.size()+lowPriorityQueue.size()){
+            curr = midPriorityQueue.get(index++-lowPriorityQueue.size());
         }
-        while (index >= (highPriorityQueue.size() + midPriorityQueue.size()) && hasNext()) {
-            curr = lowPriorityQueue.get(index);
-            index++;
+        while (index >= midPriorityQueue.size() + lowPriorityQueue.size() && index < midPriorityQueue.size()+highPriorityQueue.size()+lowPriorityQueue.size()){
+            curr = highPriorityQueue.get(index++-(midPriorityQueue.size()+lowPriorityQueue.size()));
         }
         return curr;
      }
