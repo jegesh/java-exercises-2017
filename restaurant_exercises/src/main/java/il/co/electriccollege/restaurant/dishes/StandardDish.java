@@ -14,7 +14,7 @@ public class StandardDish extends AbstractDish {
      * adds dish to order and price of side dish to this dish's price
      * @param sideDish
      */
-    public void setSideDish(SideDish sideDish){
+    public void StandardDish(StandardDish standardDish){
         // TODO
     }
 }

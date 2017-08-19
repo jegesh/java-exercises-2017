@@ -8,6 +8,7 @@ public abstract class AbstractDish {
     private int id;
     private String description;
     private float price;
+    private int preparationTime;
 
     public AbstractDish(String name, float price){
         this.name = name;
@@ -54,5 +55,4 @@ public abstract class AbstractDish {
         this.preparationTime = preparationTime;
     }
 
-    private int preparationTime;
 }
