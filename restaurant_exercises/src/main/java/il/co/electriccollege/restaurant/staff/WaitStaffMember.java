@@ -12,6 +12,17 @@ public class WaitStaffMember {
     private int id;
     private Order currentOrder;
     private float tips;
+    private float salary;
+
+    public WaitStaffMember() {
+    }
+
+    public WaitStaffMember(String name, Order currentOrder, float tips, float salary) {
+        this.name = name;
+        this.currentOrder = currentOrder;
+        this.tips = tips;
+        this.salary = salary;
+    }
 
     public void receiveOrder(Order order){
         // TODO
@@ -24,4 +35,5 @@ public class WaitStaffMember {
     public void registerOrder(Priority priority){
         // TODO
     }
+
 }
