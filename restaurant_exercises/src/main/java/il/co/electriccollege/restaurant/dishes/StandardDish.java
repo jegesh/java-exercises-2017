@@ -22,4 +22,11 @@ public class StandardDish extends AbstractDish {
     public SideDish getSideDish(){
         return sideDish;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "sideDish=" + sideDish +
+                '}';
+    }
 }

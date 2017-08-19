@@ -15,7 +15,7 @@ public class WaitStaffMember {
     private Order currentOrder;
     private float tips;
     private CashRegistry cashRegistry = new CashRegistry();
-    private OrderRegistry orderRegistry = new OrderRegistry();
+    private OrderRegistry orderRegistry = new OrderRegistry(currentOrder);
 
     public WaitStaffMember(String name){
         this.name = name;

@@ -19,7 +19,7 @@ public class Test {
     public static void main(String[] args) {
         CashRegistry cashRegistry = new CashRegistry();
         WaitStaffMember oleg = new WaitStaffMember("Oleg");
-        Iterator<Order> queue = new OrderRegistry();
+
         //
         ArrayList<AbstractDish> list = new ArrayList<>();
         BusinessLunch bus = new BusinessLunch("B", 20);
@@ -40,20 +40,29 @@ public class Test {
         list2.add(st1);
         Order order1 = new Order(list2);
         oleg.receiveOrder(order1);
-        oleg.registerOrder(Priority.MIDDLE);
+        oleg.registerOrder(Priority.LOW);
 
         ArrayList<AbstractDish> list3 = new ArrayList<>();
         st1 = new StandardDish("steak 320",100);
         list3.add(st1);
         order1 = new Order(list3);
         oleg.receiveOrder(order1);
-        oleg.registerOrder(Priority.MIDDLE);
+        oleg.registerOrder(Priority.HIGH);
+
+
+        ArrayList<AbstractDish> list4 = new ArrayList<>();
+        st1 = new StandardDish("steak 420",100);
+        st1.setSideDish(new SideDish("haka",1));
+        list4.add(st1);
+        order1 = new Order(list4);
+        oleg.receiveOrder(order1);
+        oleg.registerOrder(Priority.HIGH);
 
         oleg.takePayment(20);
        // System.out.println(order1);
 
 
-
+        Iterator<Order> queue = new OrderRegistry(order);
         while (queue.hasNext()) {
             System.out.println(queue.next());
         }
