@@ -11,14 +11,14 @@ import java.util.Date;
 public class Order {
 
     private Date orderTime;
-    private ArrayList<AbstractDish> orderDishes;
+    private ArrayList<AbstractDish> dishes;
 
     public Order() {
     }
 
-    public Order(Date orderTime, ArrayList<AbstractDish> orderDishes) {
+    public Order(Date orderTime, ArrayList<AbstractDish> dishes) {
         this.orderTime = orderTime;
-        this.orderDishes = orderDishes;
+        this.dishes = dishes;
     }
 
     public Date getOrderTime() {
@@ -32,8 +32,8 @@ public class Order {
     public void getTotal() {
 
             float total = 0;
-            for(int i: orderDishes){
-                total += orderDishes.g;
+            for(AbstractDish i: dishes){
+                total += dishes;
             }
 
     }
