@@ -12,15 +12,35 @@ public class Order {
     private ArrayList<AbstractDish> dishes;
     private Date orderTime;
     private float orderPrice = 0;
+    private int id;
+
+
     public Order(ArrayList<AbstractDish> dishes){
         this.dishes = dishes;
         this.orderTime = new Date();
+        this.orderPrice = getTotal();
     }
-    public float getOrderPrice(){
+    public float getTotal(){
+        float summ = 0;
         for(AbstractDish d : dishes){
-            orderPrice += d.getPrice();
+            summ += d.getPrice();
         }
-        return orderPrice;
+        return summ;
     }
-
+    public void setId(int id){
+        this.id = id;
+    }
+    @Override
+    public String toString() {
+        String s = "";
+        for(AbstractDish a: dishes){
+            s+=a.toString()+" ";
+        }
+        return "Order{" +
+                "id " + id+
+                s+
+                ", orderTime=" + orderTime +
+                ", orderPrice=" + orderPrice +
+                '}';
+    }
 }

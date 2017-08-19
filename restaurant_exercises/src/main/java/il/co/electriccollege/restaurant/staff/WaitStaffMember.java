@@ -14,37 +14,34 @@ public class WaitStaffMember {
     private static int id = 0;
     private Order currentOrder;
     private float tips;
-    private CashRegistry c = new CashRegistry();
+    private CashRegistry cashRegistry = new CashRegistry();
+    private OrderRegistry orderRegistry = new OrderRegistry();
 
-    public WaitStaffMember(String name, Order currentOrder, float tips){
+    public WaitStaffMember(String name){
         this.name = name;
-        this.currentOrder = currentOrder;
-        receiveOrder(currentOrder);
-        this.tips = tips;
+    }
+    public void receiveOrder(Order order){
+        this.currentOrder = order;
+        this.id++;
+        currentOrder.setId(this.id);
+      // registerOrder(Priority.HIGH);
     }
 
+    public void takePayment(float tips){
+        float payment = currentOrder.getTotal() + tips;
+        cashRegistry.registrySale(currentOrder);
+    }
+
+    public void registerOrder(Priority priority){
+        cashRegistry.registryOrder(this.currentOrder);
+        orderRegistry.add(currentOrder, priority);
+    }
     @Override
     public String toString() {
         return "WaitStaffMember{" +
                 "name='" + name + '\'' +
-                ", currentOrder=" + currentOrder +
+                ", currentOrder=" + currentOrder.toString() +
                 ", tips=" + tips +
-                ", c=" + c +
                 '}';
     }
-
-    public void receiveOrder(Order order){
-        this.id++;
-        registerOrder(Priority.HIGH);
-    }
-
-    public void takePayment(float tips){
-        c.registrySale(currentOrder);
-    }
-
-    public void registerOrder(Priority priority){
-        c.registrySale(this.currentOrder);
-        OrderRegistry reg = new OrderRegistry(currentOrder, priority);
-    }
-
 }

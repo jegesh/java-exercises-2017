@@ -10,41 +10,60 @@ import java.util.Iterator;
  * Created by IrKha on 18.08.2017.
  */
 public class OrderRegistry implements Iterator<Order> {
-    private ArrayList<Order> highPriorityQueue;
-    private ArrayList<Order> midPriorityQueue;
-    private ArrayList<Order> lowPriorityQueue;
+    private static ArrayList<Order> highPriorityQueue = new ArrayList<>();
+    private static ArrayList<Order> midPriorityQueue = new ArrayList<>();
+    private static ArrayList<Order> lowPriorityQueue = new ArrayList<>();
 
-    public OrderRegistry(Order order, Priority priority){
+    private Order start = null;
+    private int index = 0;
+     public OrderRegistry(){
+         super();
+    }
+    public void add(Order order, Priority priority){
         switch (priority){
             case LOW:
-                lowPriorityQueue.add(order);
-             break;
+                this.lowPriorityQueue.add(order);
+                return;
             case MIDDLE:
-                midPriorityQueue.add(order);
-             break;
+                this.midPriorityQueue.add(order);
+                return;
             case HIGH:
-                highPriorityQueue.add(order);
-             break;
+                this.highPriorityQueue.add(order);
+                return;
         }
     }
+
     @Override
     public boolean hasNext() {
-        if(highPriorityQueue.iterator().hasNext() || midPriorityQueue.iterator().hasNext() || lowPriorityQueue.iterator().hasNext())
-            return true;
-        return false;
+       return index < highPriorityQueue.size()+midPriorityQueue.size()+lowPriorityQueue.size();
     }
     @Override
     public Order next() {
-        if(highPriorityQueue.iterator().hasNext())
-            return highPriorityQueue.iterator().next();
-        if(midPriorityQueue.iterator().hasNext())
-            return midPriorityQueue.iterator().next();
-        if(lowPriorityQueue.iterator().hasNext())
-            return lowPriorityQueue.iterator().next();
-        return null;
-    }
+        Order curr = start;
+        while(index < highPriorityQueue.size()) {
+            curr = highPriorityQueue.get(index);
+            index++;
+        }
+        while (index >= highPriorityQueue.size() && index < (midPriorityQueue.size() + highPriorityQueue.size())-1) {
+            curr = midPriorityQueue.get(index);
+            index++;
+        }
+        while (index >= (highPriorityQueue.size() + midPriorityQueue.size()) && hasNext()) {
+            curr = lowPriorityQueue.get(index);
+            index++;
+        }
+        return curr;
+     }
     @Override
-    public void remove() {
-
+    public void remove(){
+        while(index < highPriorityQueue.size()) {
+            highPriorityQueue.remove(index);
+        }
+        while (index - highPriorityQueue.size() < midPriorityQueue.size()) {
+            midPriorityQueue.remove(index);
+        }
+        while (index - highPriorityQueue.size() - midPriorityQueue.size() < lowPriorityQueue.size()) {
+           lowPriorityQueue.remove(index);
+        }
     }
 }
