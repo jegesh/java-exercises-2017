@@ -14,5 +14,5 @@ public class Team {
     public Team(ArrayList<Movable> team) throws SpeedException {
             this.team = team;
     }
-    
+
 }
