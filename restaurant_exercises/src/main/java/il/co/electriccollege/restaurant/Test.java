@@ -22,15 +22,25 @@ public class Test {
 
         //
         ArrayList<AbstractDish> list = new ArrayList<>();
-        BusinessLunch bus = new BusinessLunch("B", 20);
+        BusinessLunch bus = new BusinessLunch("B", 20, null);
         bus.setSideDish(new SideDish("eggroll",225));
         list.add(bus);
 
-        StandardDish st = new StandardDish("steak1",180);
+        StandardDish st = new StandardDish("steak",180);
         st.setSideDish(new SideDish("salad", 21));
         list.add(st);
 
+        list.add(new StandardDish("steak", 180));
+        list.add(new StandardDish("steak", 180));
+        list.add(new StandardDish("steak", 220));
+
+
+
+        SideDish chips = new SideDish("chips", 20);
+        list.add(chips);
+
         Order order = new Order(list);
+        order.removeDish(4);
         oleg.receiveOrder(order);
         oleg.registerOrder(Priority.MIDDLE);
         //System.out.println(order);
@@ -62,9 +72,10 @@ public class Test {
        // System.out.println(order1);
 
 
-        Iterator<Order> queue = new OrderRegistry(order);
-        while (queue.hasNext()) {
-            System.out.println(queue.next());
+        OrderRegistry orderRegistry = new OrderRegistry(order);
+        while (orderRegistry.hasNext()) {
+            System.out.println(orderRegistry.next());
+
         }
 
         System.out.println(cashRegistry.getBalance());
