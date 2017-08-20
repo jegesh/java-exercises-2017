@@ -13,7 +13,7 @@ public class Order {
     private Date orderTime;
     private float orderPrice = 0;
     private int id;
-    private int idCounter = 0;
+    private static int idCounter = 0;
 
     public Order(){
         this(new ArrayList<AbstractDish>());
