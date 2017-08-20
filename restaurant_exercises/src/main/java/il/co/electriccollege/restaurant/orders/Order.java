@@ -11,7 +11,7 @@ import java.util.Date;
 public class Order {
 
     private Date orderTime;
-    private ArrayList<AbstractDish> dishes;
+    private ArrayList<AbstractDish> dishes = new ArrayList<>();
 
     public Order() {
     }
@@ -33,7 +33,7 @@ public class Order {
 
             float total = 0;
             for(AbstractDish i: dishes){
-                total += dishes;
+             total += i.getPrice();
             }
 
     }
