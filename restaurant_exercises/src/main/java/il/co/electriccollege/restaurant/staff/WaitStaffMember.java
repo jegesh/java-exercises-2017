@@ -13,24 +13,14 @@ public class WaitStaffMember {
     private String name;
     private Order currentOrder;
     private float tips;
-<<<<<<< HEAD
     private float salary;
 
-    public WaitStaffMember() {
-    }
 
-    public WaitStaffMember(String name, Order currentOrder, float tips, float salary) {
-        this.name = name;
-        this.currentOrder = currentOrder;
-        this.tips = tips;
-        this.salary = salary;
-=======
     private CashRegistry cashRegistry = new CashRegistry();
     private OrderRegistry orderRegistry = new OrderRegistry(currentOrder);
 
     public WaitStaffMember(String name){
         this.name = name;
->>>>>>> master
     }
 
     public void receiveOrder(Order order){

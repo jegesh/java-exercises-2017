@@ -8,11 +8,8 @@ public abstract class AbstractDish {
     private int id;
     private String description;
     private float price;
-<<<<<<< HEAD
     private int preparationTime;
-=======
     private static int idCounter = 0;
->>>>>>> master
 
     public AbstractDish(String name, float price){
         this.name = name;
@@ -65,10 +62,6 @@ public abstract class AbstractDish {
         this.preparationTime = preparationTime;
     }
 
-<<<<<<< HEAD
-=======
-    private int preparationTime;
-
     @Override
     public String toString() {
         return "AbstractDish{" +
@@ -79,5 +72,4 @@ public abstract class AbstractDish {
                 ", preparationTime=" + preparationTime +
                 '}';
     }
->>>>>>> master
 }

@@ -14,10 +14,6 @@ public class StandardDish extends AbstractDish {
      * adds dish to order and price of side dish to this dish's price
      * @param sideDish
      */
-<<<<<<< HEAD
-    public void StandardDish(StandardDish standardDish){
-        // TODO
-=======
     public void setSideDish(SideDish sideDish){
         this.sideDish = sideDish;
         this.setPrice(getPrice() + this.sideDish.getPrice());
@@ -31,6 +27,5 @@ public class StandardDish extends AbstractDish {
         return super.toString() +
                 "sideDish=" + sideDish +
                 '}';
->>>>>>> master
     }
 }

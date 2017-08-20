@@ -37,7 +37,6 @@ public class Fish extends Animal implements Submergeable{
         return false;
     }
 
-    @Override
     public boolean isUnderwater() {
         return true;
     }
