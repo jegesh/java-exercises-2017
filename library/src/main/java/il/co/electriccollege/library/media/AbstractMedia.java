@@ -15,7 +15,7 @@ public class AbstractMedia {
     private static int idCounter = 0;
 
 
-    public AbstractMedia(String name, int id, MediaStatus status, String publisher, Date publicationDate) {
+    public AbstractMedia(int id, String name, MediaStatus status, String publisher, Date publicationDate) {
         this.name = name;
         this.id = id;
         this.status = AVAILABLE;

@@ -8,9 +8,11 @@ public class magazine extends AbstractMedia{
 
     private String issueNo;
 
-    public magazine(String name, int id, MediaStatus status, String publisher, Date publicationDate, String issueNo) {
-        super(name, id, AVAILABLE, publisher, publicationDate);
+    public magazine(int id, String name, MediaStatus status, String publisher, Date publicationDate, String issueNo) {
+        super(id, name, AVAILABLE, publisher, publicationDate);
         this.issueNo = issueNo;
         //MediaStatus = AVAILABLE;
     }
+
+
 }
