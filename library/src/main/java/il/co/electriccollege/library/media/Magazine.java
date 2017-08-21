@@ -1,4 +1,4 @@
-package media;
+package il.co.electriccollege.library.media;
 
 import java.util.Date;
 
@@ -11,16 +11,15 @@ public class Magazine extends AbstractMedia {
         this.issueNo = issueNo;
     }
 
-    public Magazine(){
-
-    }
 
     //implement methods
     public int getFine() {
+        // TODO: 21/08/2017
         return 0;
     }
 
     public int getMaxLoan() {
+        // TODO: 21/08/2017
         return 0;
     }
 }

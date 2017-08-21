@@ -1,4 +1,4 @@
-package media;
+package il.co.electriccollege.library.media;
 
 import java.util.Date;
 
@@ -17,10 +17,11 @@ public abstract class AbstractMedia {
 
 
     //constractors
-    public AbstractMedia(Date checkOutDate, String name, int id, MediaSrtatus status, String publisher, Date publicationDate) {
+    public AbstractMedia(Date checkOutDate, String name,  MediaSrtatus status, String publisher, Date publicationDate) {
         this.checkOutDate = checkOutDate;
         this.name = name;
         this.id = id;
+        id++;
         this.status = status;
         this.publisher = publisher;
         this.publicationDate = publicationDate;
@@ -48,10 +49,6 @@ public abstract class AbstractMedia {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public MediaSrtatus getStatus() {

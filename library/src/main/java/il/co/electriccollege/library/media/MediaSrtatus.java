@@ -1,4 +1,4 @@
-package media;
+package il.co.electriccollege.library.media;
 
 public enum MediaSrtatus {
     LOANED,
