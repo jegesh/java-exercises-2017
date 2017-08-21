@@ -32,5 +32,5 @@ public class Main {
             System.out.println(s);
         }
 
-        Lender lll = Lender ("lll1", new AbstractMedia());
+        Lender lll = new Lender("lll1", new AbstractMedia());
 }

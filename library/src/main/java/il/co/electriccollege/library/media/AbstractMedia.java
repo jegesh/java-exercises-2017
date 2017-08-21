@@ -16,6 +16,10 @@ public class AbstractMedia {
     private Date publicationDate;
     private static int idCounter = 0;
 
+    public AbstractMedia() {
+
+    }
+
     public void AbstractMedia (){
 
     }
