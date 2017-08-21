@@ -14,5 +14,18 @@ public class magazine extends AbstractMedia{
         //MediaStatus = AVAILABLE;
     }
 
+    public String getIssueNo() {
+        return issueNo;
+    }
 
+    public void setIssueNo(String issueNo) {
+        this.issueNo = issueNo;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "magazine{" +
+                "issueNo='" + issueNo + '\'' +
+                '}';
+    }
 }
