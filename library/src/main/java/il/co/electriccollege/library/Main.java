@@ -1,5 +1,6 @@
 package il.co.electriccollege.library;
 
+import il.co.electriccollege.library.lender.Lender;
 import il.co.electriccollege.library.media.AbstractMedia;
 import il.co.electriccollege.library.media.audiobook;
 import il.co.electriccollege.library.media.book;
@@ -29,7 +30,7 @@ public class Main {
 
         for(AbstractMedia s: list){
             System.out.println(s);
-
-
         }
+
+        Lender lll = Lender ("lll1", new AbstractMedia());
 }

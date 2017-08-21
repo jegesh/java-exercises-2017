@@ -8,8 +8,21 @@ public class Lender {
     public String name;
     public AbstractMedia currentMedia;
 
+    public Lender(String name, AbstractMedia currentMedia) {
+        this.name = name;
+        this.currentMedia = currentMedia;
+    }
 
-    public AbstractMedia checkOutMedia(int , Library ) {
+    public AbstractMedia checkOutMedia(int , Library) {
+
+
+
         return currentMedia;
     }
+
+    public void returnMedia(int , Library) {
+
+
+    }
+
 }
