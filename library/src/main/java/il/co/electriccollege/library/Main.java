@@ -21,7 +21,7 @@ public class Main {
         list.add(mmm);
         audiobook aaa = new audiobook(8001, "aaa1", "pub2", 22.2.1922, "nnn1", 4);
         list.add(aaa);
-        book bbb = new book(8001, "aaa1", "pub2", 22.2.1922);
+        book bbb = new book(1001, "aaa1", "pub2", 22.2.1922);
         list.add(bbb);
 
         System.out.println("List member 0: " + mmm.toString()+"\n");
