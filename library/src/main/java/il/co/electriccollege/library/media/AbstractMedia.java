@@ -16,6 +16,10 @@ public class AbstractMedia {
     private Date publicationDate;
     private static int idCounter = 0;
 
+    public void AbstractMedia (){
+
+    }
+
 
     public AbstractMedia(int id, String name, String publisher, Date publicationDate) {
         this.name = name;
