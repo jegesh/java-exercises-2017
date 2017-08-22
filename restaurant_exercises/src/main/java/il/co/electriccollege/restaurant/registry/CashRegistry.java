@@ -10,8 +10,8 @@ public class CashRegistry {
     public CashRegistry(){
     }
     public void registrySale(Order order){
-        this.balance += order.getTotal();
+        this.balance += order.getOrderPrice();
     }
-    public void registryOrder(Order order){this.balance -= order.getTotal();}
+    public void registryOrder(Order order){this.balance -= order.getOrderPrice();}
     public float getBalance(){return balance;}
 }

@@ -8,9 +8,7 @@ public class StandardDish extends AbstractDish {
 
     public StandardDish(String name, float price) {
         super(name, price);
-        if(this.sideDish != null){
-            this.setPrice(price + this.sideDish.getPrice());
-        }
+
     }
     /**
      * adds dish to order and price of side dish to this dish's price
@@ -18,6 +16,7 @@ public class StandardDish extends AbstractDish {
      */
     public void setSideDish(SideDish sideDish){
         this.sideDish = sideDish;
+        this.setPrice(getPrice() + this.sideDish.getPrice());
     }
     public SideDish getSideDish(){
         return sideDish;

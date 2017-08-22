@@ -11,7 +11,6 @@ import il.co.electriccollege.restaurant.registry.OrderRegistry;
 public class WaitStaffMember {
 
     private String name;
-    private static int id = 0;
     private Order currentOrder;
     private float tips;
     private CashRegistry cashRegistry = new CashRegistry();
@@ -20,15 +19,14 @@ public class WaitStaffMember {
     public WaitStaffMember(String name){
         this.name = name;
     }
+
     public void receiveOrder(Order order){
         this.currentOrder = order;
-        this.id++;
-        currentOrder.setId(this.id);
       // registerOrder(Priority.HIGH);
     }
 
     public void takePayment(float tips){
-        float payment = currentOrder.getTotal() + tips;
+        float payment = currentOrder.getOrderPrice() + tips;
         cashRegistry.registrySale(currentOrder);
     }
 
@@ -36,6 +34,7 @@ public class WaitStaffMember {
         cashRegistry.registryOrder(this.currentOrder);
         orderRegistry.add(currentOrder, priority);
     }
+
     @Override
     public String toString() {
         return "WaitStaffMember{" +

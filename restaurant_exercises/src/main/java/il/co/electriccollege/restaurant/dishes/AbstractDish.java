@@ -8,10 +8,17 @@ public abstract class AbstractDish {
     private int id;
     private String description;
     private float price;
+    private static int idCounter = 0;
 
     public AbstractDish(String name, float price){
         this.name = name;
         this.price = price;
+        this.id = idCounter;
+        idCounter++;
+    }
+
+    public static void resetIdCounter(){
+        idCounter = 0;
     }
 
     public String getName() {

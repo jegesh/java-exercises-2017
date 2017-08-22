@@ -5,8 +5,9 @@ package il.co.electriccollege.restaurant.dishes;
  */
 public class BusinessLunch extends AbstractDish {
     private SideDish sideDish;
-    public BusinessLunch(String name, float price) {
+    public BusinessLunch(String name, float price, SideDish sideDish) {
         super(name, price);
+        this.setSideDish(sideDish);
     }
     /**
      * adds dish to order at no additional price
