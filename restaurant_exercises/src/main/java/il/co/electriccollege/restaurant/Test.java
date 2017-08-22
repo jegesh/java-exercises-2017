@@ -26,6 +26,9 @@ public class Test {
         bus.setSideDish(new SideDish("eggroll",225));
         list.add(bus);
 
+        //AbstractDish b = new BusinessLunch("f",1);
+
+
         StandardDish st = new StandardDish("steak1",180);
         st.setSideDish(new SideDish("salad", 21));
         list.add(st);
@@ -58,17 +61,33 @@ public class Test {
         oleg.receiveOrder(order1);
         oleg.registerOrder(Priority.HIGH);
 
-        oleg.takePayment(20);
+        Order or = new Order();
+        System.out.println(or);
        // System.out.println(order1);
 
 
         Iterator<Order> queue = new OrderRegistry(order);
+        Order o = null;
+        while (queue.hasNext()) {
+            System.out.println(queue.next());
+            o = queue.next();
+        }
+        oleg.takePayment(20);
+        queue.remove();
+        System.out.println(cashRegistry.getBalance());
+        queue = new OrderRegistry(order);
+        while (queue.hasNext()) {
+            System.out.println(queue.next());
+            o = queue.next();
+        }
+        System.out.println();
+        System.out.println(o);
+        System.out.println();
+        queue.remove();
+        queue = new OrderRegistry(order);
         while (queue.hasNext()) {
             System.out.println(queue.next());
         }
-
-        System.out.println(cashRegistry.getBalance());
-
     }
     private static Order setRandomOrder(){
         ArrayList<AbstractDish> orderlist = new ArrayList<>();

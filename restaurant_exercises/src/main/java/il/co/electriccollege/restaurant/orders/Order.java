@@ -1,5 +1,6 @@
 package il.co.electriccollege.restaurant.orders;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import il.co.electriccollege.restaurant.dishes.AbstractDish;
 
 import java.util.ArrayList;
@@ -14,7 +15,9 @@ public class Order {
     private float orderPrice = 0;
     private int id;
 
-
+    public Order(){
+        this(new ArrayList<AbstractDish>());
+    }
     public Order(ArrayList<AbstractDish> dishes){
         this.dishes = dishes;
         this.orderTime = new Date();

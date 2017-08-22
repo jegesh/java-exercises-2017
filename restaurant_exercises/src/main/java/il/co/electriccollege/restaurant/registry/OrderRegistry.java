@@ -10,8 +10,10 @@ import java.util.Iterator;
  * Created by IrKha on 18.08.2017.
  */
 public class OrderRegistry implements Iterator<Order> {
-    private static ArrayList<Order> highPriorityQueue = new ArrayList<>();
+   private static ArrayList<Order> highPriorityQueue = new ArrayList<>();
+   //private ArrayList<Order> highPriorityQueue = new ArrayList<>();
     private static ArrayList<Order> midPriorityQueue = new ArrayList<>();
+   //private static ArrayList<Order> midPriorityQueue = new ArrayList<>();
     private static ArrayList<Order> lowPriorityQueue = new ArrayList<>();
 
     private Order start = null;
@@ -53,16 +55,16 @@ public class OrderRegistry implements Iterator<Order> {
         }
         return curr;
      }
-    @Override
+  @Override
     public void remove(){
-        while(index < highPriorityQueue.size()) {
+        if(index < highPriorityQueue.size()) {
             highPriorityQueue.remove(index);
         }
-        while (index - highPriorityQueue.size() < midPriorityQueue.size()) {
-            midPriorityQueue.remove(index);
+        if (index >= highPriorityQueue.size() && index < midPriorityQueue.size()+highPriorityQueue.size()) {
+            midPriorityQueue.remove(index-highPriorityQueue.size());
         }
-        while (index - highPriorityQueue.size() - midPriorityQueue.size() < lowPriorityQueue.size()) {
-           lowPriorityQueue.remove(index);
+        if (index >= midPriorityQueue.size() + highPriorityQueue.size() && index < midPriorityQueue.size()+highPriorityQueue.size()+lowPriorityQueue.size()) {
+           lowPriorityQueue.remove(index-(midPriorityQueue.size()+highPriorityQueue.size()));
         }
     }
 }
