@@ -13,14 +13,14 @@ public class Lender {
         this.currentMedia = currentMedia;
     }
 
-    public AbstractMedia checkOutMedia(int , Library) {
+    public AbstractMedia checkOutMedia(int a , Library library) {
 
 
 
         return currentMedia;
     }
 
-    public void returnMedia(int , Library) {
+    public void returnMedia(int a , Library library) {
 
 
     }

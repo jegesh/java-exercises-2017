@@ -30,9 +30,9 @@ public class Main {
         Book bbb = new Book(1001, "aaa1", "pub2", D);
         list.add(bbb);
 ///kghdfjfg
-        System.out.println("List member 0: " + mmm.toString() + "\n");
-        System.out.println("List member 0: " + aaa.toString() + "\n");
-        System.out.println("List member 0: " + bbb.toString() + "\n");
+        System.out.println("List member 0: " + mmm.toString());
+        System.out.println("List member 1: " + aaa.toString());
+        System.out.println("List member 2: " + bbb.toString() + "\n");
 
         for (AbstractMedia s : list) {
             System.out.println(s);
