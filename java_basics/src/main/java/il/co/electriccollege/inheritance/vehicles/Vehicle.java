@@ -6,7 +6,7 @@ package il.co.electriccollege.inheritance.vehicles;
 public abstract class Vehicle {
     protected int speed;
 
-    public Vehicle(int speed){
+    public Vehicle(int speed) {
         this.speed = speed;
     }
 
@@ -18,7 +18,7 @@ public abstract class Vehicle {
         this.speed = speed;
     }
 
-    public void speedUp(){
+    public void speedUp() {
         speed += 10;
     }
 
