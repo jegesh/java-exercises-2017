@@ -1,4 +1,4 @@
-package il.co.electriccollege.library.media;
+package il.co.electriccollege.library.tzur.media;
 
 import java.util.Date;
 
@@ -6,8 +6,8 @@ public class Magazine extends AbstractMedia {
     private String issueNo;
 
     //constractors
-    public Magazine(Date checkOutDate, String name, int id, MediaSrtatus status, String publisher, Date publicationDate, String issueNo) {
-        super(checkOutDate, name, id, status, publisher, publicationDate);
+    public Magazine(String name, String publisher, Date publicationDate, String issueNo) {
+        super(name, publisher, publicationDate);
         this.issueNo = issueNo;
     }
 
@@ -20,6 +20,6 @@ public class Magazine extends AbstractMedia {
 
     public int getMaxLoan() {
         // TODO: 21/08/2017
-        return 0;
+        return 14;
     }
 }

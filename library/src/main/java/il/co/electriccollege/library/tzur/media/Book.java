@@ -1,14 +1,13 @@
-package il.co.electriccollege.library.media;
+package il.co.electriccollege.library.tzur.media;
 
 import java.util.Date;
 
 public class Book extends AbstractMedia {
 
     //constractors
-    public Book(Date checkOutDate, String name,  MediaSrtatus status, String publisher, Date publicationDate, String issueNo) {
-        super(checkOutDate, name, status, publisher, publicationDate);
+    public Book(String name, String publisher, Date publicationDate) {
+        super(name, publisher, publicationDate);
     }
-
 
     //implement methods
     public int getFine() {
@@ -18,6 +17,6 @@ public class Book extends AbstractMedia {
 
     public int getMaxLoan() {
         // TODO: 21/08/2017
-        return 0;
+        return 21;
     }
 }

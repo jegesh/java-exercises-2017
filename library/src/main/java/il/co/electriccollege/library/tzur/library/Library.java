@@ -1,6 +1,6 @@
-package il.co.electriccollege.library.library;
+package il.co.electriccollege.library.tzur.library;
 
-import il.co.electriccollege.library.media.AbstractMedia;
+import il.co.electriccollege.library.tzur.media.AbstractMedia;
 
 import java.util.HashMap;
 

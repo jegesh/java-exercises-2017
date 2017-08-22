@@ -1,4 +1,4 @@
-package il.co.electriccollege.library.media;
+package il.co.electriccollege.library.tzur.media;
 
 import java.util.Date;
 
@@ -8,8 +8,8 @@ public class AudioBook extends Book {
 
     //constractors
 
-    public AudioBook(Date checkOutDate, String name, int id, MediaSrtatus status, String publisher, Date publicationDate, String issueNo, String narrator, int duration) {
-        super(checkOutDate, name, id, status, publisher, publicationDate, issueNo);
+    public AudioBook(String name, String publisher, Date publicationDate, String narrator, int duration) {
+        super(name, publisher, publicationDate);
         this.narrator = narrator;
         this.duration = duration;
     }

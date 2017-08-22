@@ -1,28 +1,31 @@
-package il.co.electriccollege.library.media;
+package il.co.electriccollege.library.tzur.media;
 
 import java.util.Date;
 
 public abstract class AbstractMedia {
     private Date checkOutDate;
     private String name;
-    private int id;
-    private MediaSrtatus status;
+    private static int id;
+    private int mediaId;
+    private MediaStatus status;
     private String publisher;
     private Date publicationDate;
 
     //abstract methods
     public abstract int getFine();
 
+    /**
+     *
+     * @return number of days allowed to be lent out
+     */
     public abstract int getMaxLoan();
 
 
-    //constractors
-    public AbstractMedia(Date checkOutDate, String name,  MediaSrtatus status, String publisher, Date publicationDate) {
-        this.checkOutDate = checkOutDate;
+    //constructors
+    public AbstractMedia(String name, String publisher, Date publicationDate) {
         this.name = name;
-        this.id = id;
+        this.mediaId = id;
         id++;
-        this.status = status;
         this.publisher = publisher;
         this.publicationDate = publicationDate;
     }
@@ -51,11 +54,11 @@ public abstract class AbstractMedia {
         return id;
     }
 
-    public MediaSrtatus getStatus() {
+    public MediaStatus getStatus() {
         return status;
     }
 
-    public void setStatus(MediaSrtatus status) {
+    public void setStatus(MediaStatus status) {
         this.status = status;
     }
 
