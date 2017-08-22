@@ -51,7 +51,7 @@ public abstract class AbstractMedia {
     }
 
     public int getId() {
-        return id;
+        return mediaId;
     }
 
     public MediaStatus getStatus() {
@@ -76,5 +76,11 @@ public abstract class AbstractMedia {
 
     public void setPublicationDate(Date publicationDate) {
         this.publicationDate = publicationDate;
+    }
+
+    @Override
+    public String toString() {
+        String print = "Name: %s, id: %s, status: %s";
+        return String.format(print, name, mediaId, status);
     }
 }
