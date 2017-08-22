@@ -2,9 +2,13 @@ package il.co.electriccollege.library;
 
 import il.co.electriccollege.library.lender.Lender;
 import il.co.electriccollege.library.media.AbstractMedia;
-import il.co.electriccollege.library.media.audiobook;
-import il.co.electriccollege.library.media.book;
-import il.co.electriccollege.library.media.magazine;
+import il.co.electriccollege.library.media.Audiobook;
+import il.co.electriccollege.library.media.Book;
+import il.co.electriccollege.library.media.Magazine;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import java.util.ArrayList;
@@ -14,23 +18,26 @@ import java.util.ArrayList;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
         ArrayList<AbstractMedia> list = new ArrayList<>();
-        magazine mmm = new magazine (9001,"mmm1","pub1",11.1.1911, "8/106");
+        DateFormat dataFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date D = dataFormat.parse("21/08/2017");
+        Magazine mmm = new Magazine(9001, "mmm1", "pub1", new Date(1911, 1, 11), "8/106");
         list.add(mmm);
-        audiobook aaa = new audiobook(8001, "aaa1", "pub2", 22.2.1922, "nnn1", 4);
+        Audiobook aaa = new Audiobook(8001, "aaa1", "pub2", D, "nnn1", 4);
         list.add(aaa);
-        book bbb = new book(1001, "aaa1", "pub2", 22.2.1922);
+        Book bbb = new Book(1001, "aaa1", "pub2", D);
         list.add(bbb);
 
-        System.out.println("List member 0: " + mmm.toString()+"\n");
-        System.out.println("List member 0: " + aaa.toString()+"\n");
-        System.out.println("List member 0: " + bbb.toString()+"\n");
+        System.out.println("List member 0: " + mmm.toString() + "\n");
+        System.out.println("List member 0: " + aaa.toString() + "\n");
+        System.out.println("List member 0: " + bbb.toString() + "\n");
 
-        for(AbstractMedia s: list){
+        for (AbstractMedia s : list) {
             System.out.println(s);
         }
 
         Lender lll = new Lender("lll1", new AbstractMedia());
+    }
 }
