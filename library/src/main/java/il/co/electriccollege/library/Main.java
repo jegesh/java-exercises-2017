@@ -29,7 +29,7 @@ public class Main {
         list.add(aaa);
         Book bbb = new Book(1001, "aaa1", "pub2", D);
         list.add(bbb);
-
+///kghdfjfg
         System.out.println("List member 0: " + mmm.toString() + "\n");
         System.out.println("List member 0: " + aaa.toString() + "\n");
         System.out.println("List member 0: " + bbb.toString() + "\n");
