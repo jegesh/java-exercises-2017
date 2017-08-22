@@ -1,9 +1,9 @@
-package il.co.electriccollege.library.tzur.library;
+package il.co.electriccollege.library.library;
 
-import il.co.electriccollege.library.tzur.media.AbstractMedia;
-import il.co.electriccollege.library.tzur.media.Book;
-import il.co.electriccollege.library.tzur.media.Magazine;
-import il.co.electriccollege.library.tzur.media.MediaStatus;
+import il.co.electriccollege.library.media.AbstractMedia;
+import il.co.electriccollege.library.media.Book;
+import il.co.electriccollege.library.media.Magazine;
+import il.co.electriccollege.library.media.MediaStatus;
 
 import java.util.HashMap;
 
@@ -25,12 +25,21 @@ public class Library {
 
 
     //methods
-    public void checkoutMedia(int id) {
-        // TODO: 21/08/2017
+    public AbstractMedia checkoutMedia(int mediaId) {
+
+        AbstractMedia media = bookSet.get(mediaId);
+        if(media != null && media.getStatus().equals(MediaStatus.AVAILABLE)){
+            media.setStatus(MediaStatus.LOANED);
+            return media;
+        }
+        System.out.println("Warning: unknown media id");
+        return null;
     }
 
     public void returnMedia(int id) {
-        // TODO: 21/08/2017
+        AbstractMedia media = bookSet.get(id);
+        if(media != null)
+            media.setStatus(MediaStatus.AVAILABLE);
     }
 
     public void addToLibrary(AbstractMedia media) {

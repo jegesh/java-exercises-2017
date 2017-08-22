@@ -1,4 +1,4 @@
-package il.co.electriccollege.library.tzur.media;
+package il.co.electriccollege.library.media;
 
 public enum MediaStatus {
     LOANED,

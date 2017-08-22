@@ -1,4 +1,4 @@
-package il.co.electriccollege.library.tzur.media;
+package il.co.electriccollege.library.media;
 
 import java.util.Date;
 
