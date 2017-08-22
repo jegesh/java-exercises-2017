@@ -1,4 +1,4 @@
-package il.co.electriccollege.library.media;
+package il.co.electriccollege.library.yossi.media;
 
 public enum MediaStatus {
 

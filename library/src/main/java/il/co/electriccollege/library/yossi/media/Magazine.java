@@ -1,8 +1,6 @@
-package il.co.electriccollege.library.media;
+package il.co.electriccollege.library.yossi.media;
 
 import java.util.Date;
-
-import static il.co.electriccollege.library.media.MediaStatus.AVAILABLE;
 
 public class Magazine extends AbstractMedia{
 

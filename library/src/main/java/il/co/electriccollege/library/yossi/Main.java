@@ -1,10 +1,10 @@
-package il.co.electriccollege.library;
+package il.co.electriccollege.library.yossi;
 
-import il.co.electriccollege.library.lender.Lender;
-import il.co.electriccollege.library.media.AbstractMedia;
-import il.co.electriccollege.library.media.Audiobook;
-import il.co.electriccollege.library.media.Book;
-import il.co.electriccollege.library.media.Magazine;
+import il.co.electriccollege.library.yossi.lender.Lender;
+import il.co.electriccollege.library.yossi.media.AbstractMedia;
+import il.co.electriccollege.library.yossi.media.Audiobook;
+import il.co.electriccollege.library.yossi.media.Book;
+import il.co.electriccollege.library.yossi.media.Magazine;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -29,7 +29,7 @@ public class Main {
         list.add(aaa);
         Book bbb = new Book(1001, "aaa1", "pub2", D);
         list.add(bbb);
-///kghdfjfg
+
         System.out.println("List member 0: " + mmm.toString());
         System.out.println("List member 1: " + aaa.toString());
         System.out.println("List member 2: " + bbb.toString() + "\n");

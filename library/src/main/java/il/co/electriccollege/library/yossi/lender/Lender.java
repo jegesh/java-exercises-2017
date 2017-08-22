@@ -1,7 +1,7 @@
-package il.co.electriccollege.library.lender;
+package il.co.electriccollege.library.yossi.lender;
 
-import il.co.electriccollege.library.library.Library;
-import il.co.electriccollege.library.media.AbstractMedia;
+import il.co.electriccollege.library.yossi.library.Library;
+import il.co.electriccollege.library.yossi.media.AbstractMedia;
 
 public class Lender {
 
