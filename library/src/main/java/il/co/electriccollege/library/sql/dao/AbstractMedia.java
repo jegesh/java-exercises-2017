@@ -30,6 +30,13 @@ public abstract class AbstractMedia {
         this.publicationDate = publicationDate;
     }
 
+<<<<<<< HEAD
+=======
+    public void setId(int id){
+        this.mediaId = id;
+    }
+
+>>>>>>> master
     public AbstractMedia() {
     }
 
@@ -54,10 +61,13 @@ public abstract class AbstractMedia {
         return mediaId;
     }
 
+<<<<<<< HEAD
     public void setId ( int id)
     {
         this.mediaId=id;
     }
+=======
+>>>>>>> master
     public MediaStatus getStatus() {
         return status;
     }

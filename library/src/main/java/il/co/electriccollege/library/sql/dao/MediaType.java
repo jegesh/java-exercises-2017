@@ -1,7 +1,9 @@
 package il.co.electriccollege.library.sql.dao;
 
-public enum  MediaType
-{
+/**
+ * Created by yaakov on 8/23/17.
+ */
+public enum MediaType {
     BOOK,
     MAGAZINE,
     AUDIOBOOK

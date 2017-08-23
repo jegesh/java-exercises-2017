@@ -22,7 +22,7 @@ public class DatabaseConnector {
         try {
             // Open a connection
             System.out.println("Connecting to database");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS); // add password if necessary
+            conn = DriverManager.getConnection(DB_URL, USER, null); // add password if necessary
             return conn;
 
         } catch (SQLException e) {

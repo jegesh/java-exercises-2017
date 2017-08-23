@@ -1,5 +1,6 @@
 package il.co.electriccollege.library.library;
 
+import il.co.electriccollege.library.exceptions.LibraryException;
 import il.co.electriccollege.library.media.AbstractMedia;
 
 public class Lender {
@@ -7,7 +8,7 @@ public class Lender {
     private AbstractMedia currentMedia;
 
     //constructors
-   //// rgrttrytr
+
     public Lender(String name) {
         this.name = name;
     }
@@ -30,7 +31,7 @@ public class Lender {
     }
 
     //methods
-    public void checkoutMedia(int mediaId, Library library) {
+    public void checkoutMedia(int mediaId, Library library) throws LibraryException {
         if(currentMedia == null)
             currentMedia = library.checkoutMedia(mediaId);
         else System.out.println("Warning: you already have something checked out");
