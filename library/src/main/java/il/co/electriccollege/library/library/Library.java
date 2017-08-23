@@ -1,5 +1,6 @@
 package il.co.electriccollege.library.library;
 
+import il.co.electriccollege.library.exceptions.LibraryException;
 import il.co.electriccollege.library.media.AbstractMedia;
 import il.co.electriccollege.library.media.Book;
 import il.co.electriccollege.library.media.Magazine;
@@ -25,21 +26,20 @@ public class Library {
 
 
     //methods
-    public AbstractMedia checkoutMedia(int mediaId) {
+    public AbstractMedia checkoutMedia(int mediaId) throws LibraryException {
 
         AbstractMedia media = bookSet.get(mediaId);
-        if(media != null && media.getStatus().equals(MediaStatus.AVAILABLE)){
+        if(media.getStatus().equals(MediaStatus.AVAILABLE)){
             media.setStatus(MediaStatus.LOANED);
             return media;
+        }else{
+            throw new LibraryException();
         }
-        System.out.println("Warning: unknown media id");
-        return null;
     }
 
     public void returnMedia(int id) {
         AbstractMedia media = bookSet.get(id);
-        if(media != null)
-            media.setStatus(MediaStatus.AVAILABLE);
+        media.setStatus(MediaStatus.AVAILABLE);
     }
 
     public void addToLibrary(AbstractMedia media) {
