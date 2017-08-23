@@ -2,6 +2,7 @@ package il.co.electriccollege.library.sql.dal;
 
 import il.co.electriccollege.library.sql.DatabaseConnector;
 import il.co.electriccollege.library.sql.dao.AbstractMedia;
+import il.co.electriccollege.library.sql.dao.Book;
 import il.co.electriccollege.library.sql.dao.MediaType;
 
 import java.sql.Connection;
@@ -31,8 +32,45 @@ public class MediaDAL {
     }
 
     public AbstractMedia getById(int id){
-        return null;
+        String query = "SELECT FROM media WHERE id= %s";
+        ResultSet rs = executeQuery(String.format(query,id));
+        if (rs != null) {
+            return null; //TODO
+        }
+
     }
+
+    public ArrayList<AbstractMedia> buildMediaObkect(ResultSet rs){
+        ArrayList<AbstractMedia> mediaList= new ArrayList<AbstractMedia>();
+        boolean hasNextRow =true;
+        while (hasNextRow)
+        {
+            try{
+
+                hasNextRow = rs.next();
+
+                if (hasNextRow)
+                {
+                    if (rs.getString("media_type").equals(MediaType.BOOK.name()))
+                    {       Book book = new Book (
+                                rs.getString("name"),
+                                rs.getString("publisher"),
+                                rs.getDate("publication_date"));
+                    book.setId (rs.getInt());
+                    mediaList.add(book);
+                    }
+
+                }
+
+            } catch (SQLException e){
+                e.printStackTrace();
+                return null;
+                        }
+        }
+        return mediaList;
+    }
+
+
 
     public ArrayList<AbstractMedia> getByMediaType(MediaType type){
         return null;
@@ -63,7 +101,7 @@ public class MediaDAL {
                 stmt = conn.createStatement();
               ResultSet rs = stmt.executeQuery(queryStr);
                 // Clean-up environment
-            
+
                 return rs;
 
             } catch (SQLException se) {
