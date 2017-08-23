@@ -29,7 +29,7 @@ public class Library {
     }
     public Media checkoutMedia(int id){
         Media res = library.get(id);
-        if(res != null){
+        if(res != null && res.getStatus() != MediaStatus.LOANED){
             if(res.getStatus() != MediaStatus.LOANED){
                 res.setStatus(MediaStatus.LOANED);
                 res.setCheckedOutDate(new Date());
