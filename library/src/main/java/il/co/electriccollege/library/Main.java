@@ -39,7 +39,7 @@ public class Main {
 
         };
         video.setName("The Princess Bride");
-        Library library = new Library(new HashMap<>());
+        Library library = new Library(new HashMap<Integer, AbstractMedia>());
         library.addToLibrary(book1);
         library.addToLibrary(audioBook);
         library.addToLibrary(magazine);
