@@ -9,7 +9,7 @@ import il.co.electriccollege.library.media.MediaStatus;
 import java.util.HashMap;
 
 public class Library {
-    private HashMap<Integer,AbstractMedia> bookSet = new HashMap<>();
+    private HashMap<Integer,AbstractMedia> bookSet = new HashMap<Integer,AbstractMedia>();
 
     //constructors
 
@@ -18,7 +18,7 @@ public class Library {
     }
 
     public Library(){
-        bookSet = new HashMap<>();
+        bookSet = new HashMap<Integer,AbstractMedia>();
     }
 
 
