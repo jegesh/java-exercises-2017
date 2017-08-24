@@ -42,6 +42,13 @@ public abstract class AbstractMedia {
         this.checkOutDate = checkOutDate;
     }
 
+
+
+    public void setId(int id) {
+        this.mediaId = id;
+    }
+
+
     public String getName() {
         return name;
     }
