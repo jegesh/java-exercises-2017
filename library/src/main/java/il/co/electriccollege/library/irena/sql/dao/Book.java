@@ -1,4 +1,4 @@
-package il.co.electriccollege.library.irena.media;
+package il.co.electriccollege.library.irena.sql.dao;
 
 import java.util.Date;
 
@@ -12,9 +12,6 @@ public class Book extends AbstractMedia {
     }
     public Book(String name, String publisher, Date publicationDate){
         super(name, publisher, publicationDate);
-    }
-    public Book(Book originalBook){
-        super(originalBook.getName(), originalBook.getPublisher(), originalBook.getPublicationDate());
     }
     @Override
     public int getFine() {

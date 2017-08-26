@@ -1,11 +1,13 @@
-package il.co.electriccollege.library.irena.media;
+package il.co.electriccollege.library.library;
 
-import il.co.electriccollege.library.irena.exceptions.LibraryException;
+import il.co.electriccollege.library.exceptions.LibraryException;
+import il.co.electriccollege.library.media.AbstractMedia;
+import il.co.electriccollege.library.media.Book;
+import il.co.electriccollege.library.media.Magazine;
+import il.co.electriccollege.library.media.MediaStatus;
 
 import java.util.HashMap;
-/**
- * Created by IrKha on 21.08.2017.
- */
+
 public class Library {
     private HashMap<Integer,AbstractMedia> bookSet = new HashMap<>();
 
@@ -42,7 +44,7 @@ public class Library {
 
     public void addToLibrary(AbstractMedia media) {
         if(media instanceof Book || media instanceof Magazine){
-            bookSet.put(media.getBookId(), media);
+            bookSet.put(media.getId(), media);
             media.setStatus(MediaStatus.AVAILABLE);
             return;
         }
