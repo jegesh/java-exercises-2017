@@ -35,9 +35,10 @@ public class Library {
         }
     }
 
-    public void returnMedia(int id) {
+    public boolean returnMedia(int id) {
         AbstractMedia media = bookSet.get(id);
         media.setStatus(MediaStatus.AVAILABLE);
+        return false;
     }
 
     public void addToLibrary(AbstractMedia media) {

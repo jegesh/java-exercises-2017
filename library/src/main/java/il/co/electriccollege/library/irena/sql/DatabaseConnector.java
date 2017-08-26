@@ -9,11 +9,11 @@ public class DatabaseConnector {
     private Connection conn = null;
 
     // JDBC driver name and database URL
-    static final String DB_URL = "jdbc:mysql://localhost:3306/library";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
     //  Database credentials
     static final String USER = "root";
-    static final String PASS = "root";
+    static final String PASS = "";
 
     public Connection getDbConnection() {
 
