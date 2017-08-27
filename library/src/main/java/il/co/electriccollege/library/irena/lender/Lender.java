@@ -1,5 +1,6 @@
 package il.co.electriccollege.library.irena.lender;
 
+import il.co.electriccollege.library.irena.exceptions.LibraryException;
 import il.co.electriccollege.library.irena.media.*;
 
 /**
@@ -29,7 +30,11 @@ public class Lender {
         this.currentAbstractMedia = currentAbstractMedia;
     }
 
+<<<<<<< HEAD
     public void checkoutMedia(int id, Library lib) {
+=======
+    public void checkoutMedia(int id, Library lib) throws LibraryException {
+>>>>>>> 7d917b4864590cbf0adbf7cf235f59eda29839bb
         if(getCurrentAbstractMedia() == null) {
             AbstractMedia toCheck = lib.checkoutMedia(id);
             if (toCheck != null) {
