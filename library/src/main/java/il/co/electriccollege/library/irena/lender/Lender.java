@@ -7,7 +7,7 @@ import il.co.electriccollege.library.irena.media.*;
  */
 public class Lender {
     private String name;
-    private Media currentMedia;
+    private AbstractMedia currentAbstractMedia;
 
     public Lender(String name) {
         this.name = name;
@@ -21,26 +21,26 @@ public class Lender {
         this.name = name;
     }
 
-    public Media getCurrentMedia() {
-        return currentMedia;
+    public AbstractMedia getCurrentAbstractMedia() {
+        return currentAbstractMedia;
     }
 
-    public void setCurrentMedia(Media currentMedia) {
-        this.currentMedia = currentMedia;
+    public void setCurrentAbstractMedia(AbstractMedia currentAbstractMedia) {
+        this.currentAbstractMedia = currentAbstractMedia;
     }
 
     public void checkoutMedia(int id, Library lib) {
-        if(getCurrentMedia() == null) {
-            Media toCheck = lib.checkoutMedia(id);
+        if(getCurrentAbstractMedia() == null) {
+            AbstractMedia toCheck = lib.checkoutMedia(id);
             if (toCheck != null) {
-                setCurrentMedia(toCheck);
+                setCurrentAbstractMedia(toCheck);
             }
         }
     }
     public void returnMedia(int id, Library library){
-        if(getCurrentMedia() != null){
+        if(getCurrentAbstractMedia() != null){
             if(library.returnMedia(id)) {
-              setCurrentMedia(null);
+              setCurrentAbstractMedia(null);
             }
         }
     }
@@ -49,7 +49,7 @@ public class Lender {
     public String toString() {
         return "Lender{" +
                 "name='" + name + '\'' +
-                ", currentMedia=" + currentMedia +
+                ", currentAbstractMedia=" + currentAbstractMedia +
                 '}';
     }
 }

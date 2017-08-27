@@ -1,4 +1,4 @@
-package il.co.electriccollege.library.irena.media;
+package il.co.electriccollege.library.irena.sql.dao;
 
 import java.util.Date;
 

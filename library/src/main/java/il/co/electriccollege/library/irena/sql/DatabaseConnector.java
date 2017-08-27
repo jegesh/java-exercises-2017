@@ -9,7 +9,7 @@ public class DatabaseConnector {
     private Connection conn = null;
 
     // JDBC driver name and database URL
-    static final String DB_URL = "jdbc:mysql://localhost/test";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/library";
 
     //  Database credentials
     static final String USER = "root";
@@ -20,7 +20,7 @@ public class DatabaseConnector {
         try {
             // Open a connection
             System.out.println("Connecting to database");
-            conn = DriverManager.getConnection(DB_URL, USER, null); // add password if necessary
+            conn = DriverManager.getConnection(DB_URL, USER, PASS); // add password if necessary
             return conn;
 
         } catch (SQLException e) {

@@ -10,13 +10,13 @@ public class SQLibrary {
     public SQLibrary(){
         db = new DBClass();
     }
-    public boolean addMedia(Media media){
-        String sql = "INSERT into MEDIA ("+media.getName()+", "+media.getPublisher()+", "+media.getPublicationDate()+", "+MediaStatus.AVAILABLE+", "+null;
-        if(media instanceof AudioBook){
-            sql += ", "+((AudioBook) media).getNarrator()+", "+((AudioBook) media).getDuration();
+    public boolean addMedia(AbstractMedia abstractMedia){
+        String sql = "INSERT into MEDIA ("+ abstractMedia.getName()+", "+ abstractMedia.getPublisher()+", "+ abstractMedia.getPublicationDate()+", "+MediaStatus.AVAILABLE+", "+null;
+        if(abstractMedia instanceof AudioBook){
+            sql += ", "+((AudioBook) abstractMedia).getNarrator()+", "+((AudioBook) abstractMedia).getDuration();
         }
-        if(media instanceof Magazine){
-            sql += ", "+((Magazine) media).getIssueNum();
+        if(abstractMedia instanceof Magazine){
+            sql += ", "+((Magazine) abstractMedia).getIssueNum();
         }
         sql += ")";
         db.getQuery(sql);

@@ -7,19 +7,19 @@ import java.util.HashMap;
  */
 public class Library {
 
-    private static HashMap<Integer, Media> library = new HashMap<>();
+    private static HashMap<Integer, AbstractMedia> library = new HashMap<Integer, AbstractMedia>();
 
-    public HashMap<Integer, Media> getLibrary() {
+    public HashMap<Integer, AbstractMedia> getLibrary() {
         return library;
     }
 
-    public void addToLibrary(Media media){
-        media.setStatus(MediaStatus.AVAILABLE);
-        library.put(media.getBookId(), media);
+    public void addToLibrary(AbstractMedia abstractMedia){
+        abstractMedia.setStatus(MediaStatus.AVAILABLE);
+        library.put(abstractMedia.getBookId(), abstractMedia);
     }
 
     public boolean returnMedia(int id){
-        Media m = library.get(id);
+        AbstractMedia m = library.get(id);
         if(m != null){
            m.setStatus(MediaStatus.AVAILABLE);
            m.setCheckedOutDate(null);
@@ -27,8 +27,8 @@ public class Library {
         }
         return false;
     }
-    public Media checkoutMedia(int id){
-        Media res = library.get(id);
+    public AbstractMedia checkoutMedia(int id){
+        AbstractMedia res = library.get(id);
         if(res != null && res.getStatus() != MediaStatus.LOANED){
             if(res.getStatus() != MediaStatus.LOANED){
                 res.setStatus(MediaStatus.LOANED);
