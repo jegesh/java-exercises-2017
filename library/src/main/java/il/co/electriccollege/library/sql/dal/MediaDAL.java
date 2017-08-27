@@ -37,7 +37,7 @@ public class MediaDAL {
         if (rs != null) {
             return null; //TODO
         }
-
+        return null;
     }
 
     public ArrayList<AbstractMedia> buildMediaObkect(ResultSet rs){
@@ -56,7 +56,7 @@ public class MediaDAL {
                                 rs.getString("name"),
                                 rs.getString("publisher"),
                                 rs.getDate("publication_date"));
-                    book.setId (rs.getInt());
+                   // book.setId (rs.getInt());
                     mediaList.add(book);
                     }
 

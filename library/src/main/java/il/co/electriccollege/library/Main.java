@@ -26,7 +26,7 @@ public class Main {
 
         Book book1 = null;
         try {
-            book1 = new Book("book1", "publisher1", getDateWithSimpleFormat("21880/2017"));
+            book1 = new Book("book1", "publisher1", getDateWithSimpleFormat("21/08/2017"));
         } catch (ParseException e) {
            e.printStackTrace();
 //           throw new LibraryException();
