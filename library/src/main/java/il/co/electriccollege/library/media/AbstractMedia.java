@@ -3,13 +3,14 @@ package il.co.electriccollege.library.media;
 import java.util.Date;
 
 public abstract class AbstractMedia {
-    private Date checkOutDate;
+
     private String name;
     private static int id;
     private int mediaId;
     private MediaStatus status;
     private String publisher;
     private Date publicationDate;
+    private Date checkOutDate;
 
     //abstract methods
     public abstract int getFine();

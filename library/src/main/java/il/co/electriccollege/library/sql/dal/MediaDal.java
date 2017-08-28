@@ -44,7 +44,7 @@ public class MediaDal {
     }
 
     private ArrayList<AbstractMedia> buildMediaObject(ResultSet rs){
-        ArrayList<AbstractMedia> mediaList = new ArrayList<>();
+        ArrayList<AbstractMedia> mediaList = new ArrayList<AbstractMedia>();
         boolean hasNextRow = true;
         while(hasNextRow){
             // read all the rows
