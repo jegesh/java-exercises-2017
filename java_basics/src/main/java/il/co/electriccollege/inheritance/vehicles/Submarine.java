@@ -29,7 +29,10 @@ public class Submarine extends Vehicle implements Submergeable{
                 '}';
     }
 
+<<<<<<< HEAD:src/main/java/il/co/electriccollege/inheritance/vehicles/Submarine.java
 
+=======
+>>>>>>> 359795762fce42113a73c8e06a3e2d1498802759:java_basics/src/main/java/il/co/electriccollege/inheritance/vehicles/Submarine.java
     public boolean isUnderwater() {
         return false;
     }
