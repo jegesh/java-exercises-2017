@@ -20,7 +20,6 @@ public abstract class AbstractMedia {
     il.co.electriccollege.library.irena.media.MediaStatus status;
 
     public AbstractMedia(){
-        //this.id++;
     }
     public AbstractMedia(String name, String publisher, LocalDate publicationDate){
       //  this.bookId = id;

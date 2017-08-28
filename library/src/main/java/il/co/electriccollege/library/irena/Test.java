@@ -5,16 +5,12 @@ import il.co.electriccollege.library.irena.sql.dal.MediaDal;
 import il.co.electriccollege.library.irena.sql.dal.MediaType;
 import il.co.electriccollege.library.irena.sql.dao.AbstractMedia;
 import il.co.electriccollege.library.irena.sql.dao.AudioBook;
+import il.co.electriccollege.library.irena.sql.dao.Book;
 import il.co.electriccollege.library.irena.sql.dao.Magazine;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by Comp8 on 23/08/17.
@@ -40,5 +36,12 @@ public class Test {
         Magazine magazine = new Magazine("Cool","coolpub", LocalDate.of(1970,12,12), "new");
         AudioBook audioBook = new AudioBook("Gosti","Tolstoi", LocalDate.of(2017,02,02), "Tis", 120);
         System.out.println(md.addMediaToLib(audioBook));
+        System.out.println(md.addMediaToLib(audioBook));
+        System.out.println(md.addMediaToLib(audioBook));
+        System.out.println(md.addMediaToLib(audioBook));
+
+        AbstractMedia toRemove = new Book();
+        toRemove.setName("ost");
+      //  md.removeMedia(toRemove);
     }
 }

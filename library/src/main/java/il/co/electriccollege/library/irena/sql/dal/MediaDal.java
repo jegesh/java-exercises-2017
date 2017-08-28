@@ -65,8 +65,8 @@ public class MediaDal {
     }
 
     public boolean removeMedia(AbstractMedia media) {
-        String query = "DELETE FROM media WHERE id = %s";
-        int rs = exequteUpdate(String.format(query, media.getBookId()));
+        String query = "DELETE FROM media WHERE id = %s OR name LIKE '%s'";
+        int rs = exequteUpdate(String.format(query, media.getBookId(), "%"+media.getName()+"%"));
         if(rs > 0) return true;
         return false;
     }

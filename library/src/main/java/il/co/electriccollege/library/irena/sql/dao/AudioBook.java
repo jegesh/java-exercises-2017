@@ -1,7 +1,6 @@
 package il.co.electriccollege.library.irena.sql.dao;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * Created by IrKha on 21.08.2017.
