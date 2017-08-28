@@ -1,7 +1,7 @@
 package il.co.electriccollege.library.yossi.sql.dal;
 
-import il.co.electriccollege.library.sql.DatabaseConnector;
-import il.co.electriccollege.library.sql.dao.*;
+import il.co.electriccollege.library.yossi.sql.DatabaseConnector;
+import il.co.electriccollege.library.yossi.sql.dao.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

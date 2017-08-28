@@ -1,8 +1,5 @@
 package il.co.electriccollege.library.yossi.sql.dao;
 
-import il.co.electriccollege.library.sql.dao.MediaStatus;
-import il.co.electriccollege.library.sql.dao.MediaType;
-
 import java.util.Date;
 
 public abstract class AbstractMedia {
