@@ -1,8 +1,12 @@
 package il.co.electriccollege.library.yossi.sql.dao;
 
+import il.co.electriccollege.library.sql.dao.MediaStatus;
+import il.co.electriccollege.library.sql.dao.MediaType;
+
 import java.util.Date;
 
 public abstract class AbstractMedia {
+    private MediaType type;
     private Date checkOutDate;
     private String name;
     private static int id;
@@ -30,6 +34,18 @@ public abstract class AbstractMedia {
         this.publicationDate = publicationDate;
     }
 
+    public MediaType getType() {
+        return type;
+    }
+
+    public void setType(MediaType type) {
+        this.type = type;
+    }
+
+    public void setId(int id){
+        this.mediaId = id;
+    }
+
     public AbstractMedia() {
     }
 
@@ -41,13 +57,6 @@ public abstract class AbstractMedia {
     public void setCheckOutDate(Date checkOutDate) {
         this.checkOutDate = checkOutDate;
     }
-
-
-
-    public void setId(int id) {
-        this.mediaId = id;
-    }
-
 
     public String getName() {
         return name;

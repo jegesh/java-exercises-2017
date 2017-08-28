@@ -1,17 +1,22 @@
 package il.co.electriccollege.library.yossi.media;
 
+import il.co.electriccollege.library.media.Book;
+
 import java.util.Date;
 
-public class Audiobook extends AbstractMedia{
+public class AudioBook extends Book {
+    String narrator;
+    int duration;
 
-    private String narrator;
-    private int duration;
+    //constractors
 
-    public Audiobook(int id, String name, String publisher, Date publicationDate, String narrator, int duration) {
-        super(id, name, publisher, publicationDate);
+    public AudioBook(String name, String publisher, Date publicationDate, String narrator, int duration) {
+        super(name, publisher, publicationDate);
         this.narrator = narrator;
         this.duration = duration;
     }
+
+    //get&set
 
     public String getNarrator() {
         return narrator;

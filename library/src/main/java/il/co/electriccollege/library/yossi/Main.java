@@ -38,6 +38,6 @@ public class Main {
             System.out.println(s);
         }
 
-        Lender lll = new Lender("lll1", new AbstractMedia());
+
     }
 }
