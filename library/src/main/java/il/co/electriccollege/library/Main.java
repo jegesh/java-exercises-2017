@@ -1,10 +1,5 @@
 package il.co.electriccollege.library;
 
-<<<<<<< HEAD
-import il.co.electriccollege.library.library.Lender;
-import il.co.electriccollege.library.library.Library;
-import il.co.electriccollege.library.media.AbstractMedia;
-=======
 import il.co.electriccollege.library.irena.exceptions.LibraryException;
 import il.co.electriccollege.library.irena.lender.Lender;
 import il.co.electriccollege.library.irena.media.*;
@@ -56,11 +51,7 @@ public class Main {
 
         };
         video.setName("The Princess Bride");
-<<<<<<< HEAD
-        Library library = new Library(new HashMap<Integer,AbstractMedia>());
-=======
         library = new Library(new HashMap<Integer, AbstractMedia>());
->>>>>>> 7d917b4864590cbf0adbf7cf235f59eda29839bb
         library.addToLibrary(book1);
         library.addToLibrary(audioBook);
         library.addToLibrary(magazine);
@@ -152,18 +143,10 @@ public class Main {
         return calendar.getTime();
     }
 
-<<<<<<< HEAD
-
-    public static Date getDateWithSimpleFormat(String dateStr) throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        return dateFormat.parse("21/08/2017");
-
-=======
     public static Date getDateWithSimpleFormat(String dateStr) throws ParseException {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         if(dateStr.length() != 10)
             throw new IllegalArgumentException("Date string must be exactly 10 characters");
         return dateFormat.parse(dateStr);
->>>>>>> 7d917b4864590cbf0adbf7cf235f59eda29839bb
     }
 }

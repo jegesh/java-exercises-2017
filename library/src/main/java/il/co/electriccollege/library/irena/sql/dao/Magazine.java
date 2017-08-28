@@ -1,5 +1,6 @@
 package il.co.electriccollege.library.irena.sql.dao;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ public class Magazine extends AbstractMedia {
     public Magazine(){
         super();
     }
-    public Magazine(String name, String publisher, Date publicationDate, String issueNum){
+    public Magazine(String name, String publisher, LocalDate publicationDate, String issueNum){
         super(name, publisher, publicationDate);
         this.issueNum = issueNum;
     }

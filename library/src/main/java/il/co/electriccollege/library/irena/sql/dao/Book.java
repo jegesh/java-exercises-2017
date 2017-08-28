@@ -1,5 +1,6 @@
 package il.co.electriccollege.library.irena.sql.dao;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ public class Book extends AbstractMedia {
     public Book(){
         super();
     }
-    public Book(String name, String publisher, Date publicationDate){
+    public Book(String name, String publisher, LocalDate publicationDate){
         super(name, publisher, publicationDate);
     }
     @Override

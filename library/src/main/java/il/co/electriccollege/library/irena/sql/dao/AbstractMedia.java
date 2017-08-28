@@ -2,6 +2,7 @@ package il.co.electriccollege.library.irena.sql.dao;
 
 import il.co.electriccollege.library.irena.media.MediaStatus;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -10,7 +11,8 @@ import java.util.Date;
 public abstract class AbstractMedia {
     String name;
     String publisher;
-    Date publicationDate;
+   // Date publicationDate;
+    LocalDate publicationDate;
    // private static int id = 0;
     private int bookId;
     Date checkedOutDate;
@@ -20,14 +22,14 @@ public abstract class AbstractMedia {
     public AbstractMedia(){
         //this.id++;
     }
-    public AbstractMedia(String name, String publisher, Date publicationDate){
+    public AbstractMedia(String name, String publisher, LocalDate publicationDate){
       //  this.bookId = id;
        // this.id++;
         this.name = name;
         this.publisher = publisher;
         this.publicationDate = publicationDate;
     }
-    public AbstractMedia(int bookId, String name, String publisher, Date publicationDate){
+    public AbstractMedia(int bookId, String name, String publisher, LocalDate publicationDate){
           this.bookId = bookId;
         // this.id++;
         this.name = name;
@@ -54,7 +56,7 @@ public abstract class AbstractMedia {
         return publisher;
     }
 
-    public Date getPublicationDate() {
+    public LocalDate getPublicationDate() {
         return publicationDate;
     }
 
@@ -70,7 +72,7 @@ public abstract class AbstractMedia {
         this.publisher = publisher;
     }
 
-    public void setPublicationDate(Date publicationDate) {
+    public void setPublicationDate(LocalDate publicationDate) {
         this.publicationDate = publicationDate;
     }
 

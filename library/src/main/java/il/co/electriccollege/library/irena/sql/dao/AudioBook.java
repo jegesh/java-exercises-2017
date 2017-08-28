@@ -1,5 +1,6 @@
 package il.co.electriccollege.library.irena.sql.dao;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ public class AudioBook extends Book {
     public AudioBook(){
         super();
     }
-    public AudioBook(String name, String publisher, Date publicationDate, String narrator, int duration){
+    public AudioBook(String name, String publisher, LocalDate publicationDate, String narrator, int duration){
         super(name, publisher, publicationDate);
         this.duration = duration;
         this.narrator = narrator;
