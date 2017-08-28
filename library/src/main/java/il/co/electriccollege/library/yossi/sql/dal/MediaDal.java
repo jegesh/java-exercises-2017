@@ -85,8 +85,13 @@ public class MediaDal {
     }
 
     public boolean removeMedia(AbstractMedia media) {
+        int id = media.getId();
+        String query = "DELETE FROM media WHERE id = %s";
+        int rs = executeUpdate(String.format(query, id));
+        if (rs > 0){
+            return true;
+        }
         return false;
-
     }
 
     public AbstractMedia getById(int id) {

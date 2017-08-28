@@ -18,9 +18,12 @@ public class DbMain {
 //        System.out.println(returnedMedia);
 
         // Add to library
-        Book b = new Book("The Dibbuk", "Random House", Main.getDateWithCalendar("09/09/1980"));
+        Book b = new Book("The Dibbuk1", "Random House", Main.getDateWithCalendar("09/09/1980"));
         b.setType(MediaType.BOOK);
         boolean added = mediaDal.addMediaToLibrary(b);
-        System.out.println("Was book added to library? " + added);
+        System.out.println("Was book added to library? " + added + " ");
+
+        boolean removed = mediaDal.removeMedia(b);
+        System.out.println("Was book removed from library? " + removed);
     }
 }
