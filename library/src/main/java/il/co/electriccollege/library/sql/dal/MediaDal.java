@@ -86,8 +86,15 @@ public class MediaDal {
         return isoFormat.format(d);
     }
 
-    public boolean removeMedia(AbstractMedia media) {
-        return false;
+    public boolean removeMedia(AbstractMedia media)
+    {
+          String query = "DELETE FROM media WHERE id = %s";
+          int rs = executeUpdate(String.format(query, media.getId()));
+          if (rs > 0)
+              return true;
+          else
+            return false;
+
 
     }
 
@@ -103,7 +110,7 @@ public class MediaDal {
     }
 
     private ArrayList<AbstractMedia> buildMediaObject(ResultSet rs) {
-        ArrayList<AbstractMedia> mediaList = new ArrayList<>();
+        ArrayList<AbstractMedia> mediaList = new ArrayList<AbstractMedia>();
         boolean hasNextRow = true;
         while (hasNextRow) {
             // read all the rows
@@ -174,20 +181,52 @@ public class MediaDal {
         return mediaList;
     }
 
-    public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
-        return null;
+    public ArrayList<AbstractMedia> getByMediaType(MediaType type)
+    {
+
+        String query = "SELECT * FROM media WHERE name = %s";
+        ResultSet rs = executeQuery(String.format(query, type));
+        return  buildMediaObject(rs);
+
     }
 
-    public ArrayList<AbstractMedia> getByName(String name) {
-        return null;
+    public ArrayList<AbstractMedia> getByName(String name) 
+    {
+        String query = "SELECT * FROM media WHERE name = %s";
+        ResultSet rs = executeQuery(String.format(query, name));
+        return  buildMediaObject(rs);
+
     }
 
     public boolean checkoutMedia(int id) {
-        return false;
+        AbstractMedia abstractMedia = getById(id);
+        if (abstractMedia!=null)
+        {
+            if(abstractMedia.getStatus()==MediaStatus.AVAILABLE)
+            {
 
+                String query = "UPDATE status FROM media WHERE id = %s SET %s ";
+                int rs = executeUpdate(String.format(query, id , MediaStatus.LOANED));
+                if (rs > 0)
+                    return true;
+            }
+        }
+        return false;
     }
 
     public boolean returnMedia(int id) {
+        AbstractMedia abstractMedia = getById(id);
+        if (abstractMedia!=null)
+        {
+            if(abstractMedia.getStatus()==MediaStatus.LOANED)
+            {
+
+                String query = "UPDATE status FROM media WHERE id = %s SET %s ";
+                int rs = executeUpdate(String.format(query, id , MediaStatus.AVAILABLE));
+                if (rs > 0)
+                    return true;
+            }
+        }
         return false;
 
     }
