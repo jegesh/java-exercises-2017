@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b459bf0-bcd8-4e17-8948-40dffbf5d626" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dal/MediaDal.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/ExceptionPractice.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/DbMain.java" afterPath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/DbMain.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/library/Library.java" afterPath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/library/Library.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/media/AbstractMedia.java" afterPath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/media/AbstractMedia.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/DatabaseConnector.java" afterPath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/DatabaseConnector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/UserInputHandler.java" afterPath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/UserInputHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dal/MediaDAL.java" afterPath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dal/MediaDAL.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dao/AbstractMedia.java" afterPath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dao/AbstractMedia.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dao/Book.java" afterPath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dao/Book.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dao/Magazine.java" afterPath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dao/Magazine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dao/MediaType.java" afterPath="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dao/MediaType.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,12 +26,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
               <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DbMain.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/DbMain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-65">
+              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+              <folding>
+                <element signature="e#1235#1250#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,6 +69,7 @@
         <option value="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dal/MediaDal.java" />
         <option value="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dal/MediaDAL.java" />
         <option value="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/DbMain.java" />
       </list>
     </option>
   </component>
@@ -426,6 +450,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="217" y="29" width="1501" height="957" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -433,7 +458,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37146226" sideWeight="0.50774413" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37146226" sideWeight="0.50774413" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37146226" sideWeight="0.4922559" order="2" side_tool="false" content_ui="tabs" />
@@ -477,17 +502,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dal/MediaDAL.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/sql/dal/MediaDal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="39" column="20" lean-forward="false" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/DbMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -496,6 +514,16 @@
         <state relative-caret-position="17">
           <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/il/co/electriccollege/library/DbMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-65">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="e#1235#1250#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

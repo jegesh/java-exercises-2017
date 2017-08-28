@@ -4,6 +4,11 @@ import java.util.Date;
 
 public class Book extends AbstractMedia {
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4a28805c86a54771b33bf736503f70b91ae5bdca
     //constructors
     public Book(String name, String publisher, Date publicationDate) {
         super(name, publisher, publicationDate);
@@ -13,6 +18,10 @@ public class Book extends AbstractMedia {
         super(originalBook.getName(), originalBook.getPublisher(), originalBook.getPublicationDate());
     }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4a28805c86a54771b33bf736503f70b91ae5bdca
     //implement methods
     public int getFine() {
         // TODO: 21/08/2017

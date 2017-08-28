@@ -1,10 +1,10 @@
 package il.co.electriccollege.library.sql.dao;
 
 /**
- * Created by Comp14 on 23/08/2017.
+ * Created by yaakov on 8/23/17.
  */
 public enum MediaType {
     BOOK,
     MAGAZINE,
-    AUDIOBOOK;
+    AUDIOBOOK
 }
