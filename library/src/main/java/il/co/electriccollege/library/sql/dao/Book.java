@@ -12,6 +12,9 @@ public class Book extends AbstractMedia {
     public Book(Book originalBook){
         super(originalBook.getName(), originalBook.getPublisher(), originalBook.getPublicationDate());
     }
+    public Book(){
+
+    };
 
     //implement methods
     public int getFine() {

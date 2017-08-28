@@ -3,7 +3,6 @@ package il.co.electriccollege.library.sql.dao;
 import java.util.Date;
 
 public abstract class AbstractMedia {
-    private MediaType type;
     private Date checkOutDate;
     private String name;
     private static int id;
@@ -42,6 +41,12 @@ public abstract class AbstractMedia {
         this.publicationDate = publicationDate;
     }
 
+    public AbstractMedia() {
+    }
+
+
+    //get&set
+
     public MediaType getType() {
         return type;
     }
@@ -54,10 +59,6 @@ public abstract class AbstractMedia {
         this.mediaId = id;
     }
 
-    public AbstractMedia() {
-    }
-
-    //get&set
     public Date getCheckOutDate() {
         return checkOutDate;
     }
@@ -106,13 +107,6 @@ public abstract class AbstractMedia {
         return mediaId;
     }
 
-    public MediaType getType() {
-        return type;
-    }
-
-    public void setType(MediaType type) {
-        this.type = type;
-    }
 
     //to string
     @Override

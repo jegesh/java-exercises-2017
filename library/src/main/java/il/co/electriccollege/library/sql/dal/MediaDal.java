@@ -36,6 +36,11 @@ public class MediaDal {
         databaseConnector = connector;
     }
 
+    private String formatDate(Date d) {
+        DateFormat isoFormat = new SimpleDateFormat("YYYY-MM-dd");
+        return isoFormat.format(d);
+    }
+
     /**
      * Example query:
      * INSERT INTO library (name, publication_date, media_type, media_status, publisher, narrator, duration, issue)
@@ -57,10 +62,12 @@ public class MediaDal {
         MediaStatus status = MediaStatus.AVAILABLE;
         Date publicationDate = media.getPublicationDate();
         String narrator = null;
+        String mediaType = MediaType.BOOK.name();
         int duration = 0;
         String issue = "";
 
         if (media instanceof AudioBook) {
+            mediaType = MediaType.AUDIOBOOK.name();
             narrator = "'" + ((AudioBook) media).getNarrator() + "'";
             duration = ((AudioBook) media).getDuration();
         }
@@ -81,23 +88,40 @@ public class MediaDal {
         return result > 0;
     }
 
-    private String formatDate(Date d) {
-        DateFormat isoFormat = new SimpleDateFormat("YYYY-MM-dd");
-        return isoFormat.format(d);
+    private Statement getStatement() throws SQLException {
+        conn = databaseConnector.getDbConnection();
+        if (conn != null) {
+
+            System.out.println("Creating database statement");
+            // create query statement
+            stmt = conn.createStatement();
+            return stmt;
+        }
+        throw new SQLException("Unable to connect to database");
     }
 
-    public boolean removeMedia(AbstractMedia media) {
-        return false;
+    private int executeUpdate(String queryStr) {
+        try {
+            stmt = getStatement();
+            int result = stmt.executeUpdate(queryStr);
+            return result;
 
+        } catch (SQLException se) {
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }
+        return -1;
     }
 
-    public AbstractMedia getById(int id) {
-        String query = "SELECT * FROM media WHERE id = %s";
-        ResultSet rs = executeQuery(String.format(query, id));
-        if (rs != null) {
-            ArrayList<AbstractMedia> returnedObjs = buildMediaObject(rs);
-            if (returnedObjs != null)
-                return returnedObjs.get(0);
+    private ResultSet executeQuery(String queryStr) {
+        try {
+            stmt = getStatement();
+            ResultSet rs = stmt.executeQuery(queryStr);
+            return rs;
+
+        } catch (SQLException se) {
+            //Handle errors for JDBC
+            se.printStackTrace();
         }
         return null;
     }
@@ -174,59 +198,68 @@ public class MediaDal {
         return mediaList;
     }
 
+    public AbstractMedia getById(int id) {
+        String query = "SELECT * FROM media WHERE id = %s";
+        ResultSet rs = executeQuery(String.format(query, id));
+        if (rs != null) {
+            ArrayList<AbstractMedia> returnedObjs = buildMediaObject(rs);
+            if (returnedObjs != null)
+                return returnedObjs.get(0);
+        }
+        return null;
+    }
+//ours
+    public boolean removeMedia(AbstractMedia media) {
+    //DELETE FROM table_name WHERE some_column = some_value
+        String query = "DELETE FROM %s WHERE %s=%s";
+        executeUpdate(String.format(query, TABLE_NAME, FIELD_ID, media.getId()));
+        return false;
+
+    }
+
     public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
+     //SELECT * FROM table_name WHERE some_column = some_value
+        String query="SELECT * FROM %s WHERE %s = '%s'";
+        query= String.format(query, TABLE_NAME,FIELD_MEDIA_TYPE,type);
+        ResultSet rs =executeQuery(query);
+        if(rs!=null)
+        {
+           return buildMediaObject(rs);
+        }
         return null;
     }
 
     public ArrayList<AbstractMedia> getByName(String name) {
+        //SELECT * FROM table_name WHERE some_column = some_value
+        String query="SELECT * FROM %s WHERE %s = '%s'";
+        query= String.format(query, TABLE_NAME,FIELD_NAME,name);
+        ResultSet rs =executeQuery(query);
+        if(rs!=null)
+        {
+            return buildMediaObject(rs);
+        }
         return null;
     }
 
     public boolean checkoutMedia(int id) {
+        //UPDATE Customers SET ContactName='Juan' WHERE Country='Mexico';
+        String query="UPDATE %s SET %s = '%s' WHERE %s = '%s'";
+        query= String.format(query, TABLE_NAME,FIELD_MEDIA_STATUS,MediaStatus.LOANED.name(),FIELD_ID,id);
+        if(executeUpdate(query)>0)
+            return true;
         return false;
 
     }
 
     public boolean returnMedia(int id) {
+        //UPDATE Customers SET ContactName='Juan' WHERE Country='Mexico';
+        String query="UPDATE %s SET %s = '%s' WHERE %s = '%s'";
+        query= String.format(query, TABLE_NAME,FIELD_MEDIA_STATUS,MediaStatus.AVAILABLE.name(),FIELD_ID,id);
+        if (executeUpdate(query)>0)
+            return true;
         return false;
 
     }
 
-    private Statement getStatement() throws SQLException {
-        conn = databaseConnector.getDbConnection();
-        if (conn != null) {
 
-            System.out.println("Creating database statement");
-            // create query statement
-            stmt = conn.createStatement();
-            return stmt;
-        }
-        throw new SQLException("Unable to connect to database");
-    }
-
-    private int executeUpdate(String queryStr) {
-        try {
-            stmt = getStatement();
-            int result = stmt.executeUpdate(queryStr);
-            return result;
-
-        } catch (SQLException se) {
-            //Handle errors for JDBC
-            se.printStackTrace();
-        }
-        return -1;
-    }
-
-    private ResultSet executeQuery(String queryStr) {
-        try {
-            stmt = getStatement();
-            ResultSet rs = stmt.executeQuery(queryStr);
-            return rs;
-
-        } catch (SQLException se) {
-            //Handle errors for JDBC
-            se.printStackTrace();
-        }
-        return null;
-    }
 }
