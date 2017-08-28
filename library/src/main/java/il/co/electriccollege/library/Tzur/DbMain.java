@@ -39,7 +39,7 @@ public class DbMain {
 //        for (AbstractMedia d : al) {
 //            System.out.println(d);
 //        }
-        System.out.println(mediaDal.checkoutMedia(12));
+        System.out.println(mediaDal.checkoutMedia(1));
 //        mediaDal.returnMedia(2);
     }
 }
