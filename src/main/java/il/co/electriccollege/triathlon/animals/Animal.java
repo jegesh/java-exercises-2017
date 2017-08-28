@@ -60,7 +60,9 @@ public abstract class Animal implements Movable {
         this.energyBurnRate+=5;
     }
     public void rest(){
-        this.currentSpeed = 10000;
+
+        this.currentSpeed = 10100;
+
     }
 
 }
