@@ -28,4 +28,9 @@ public class Book extends AbstractMedia {
     public Book clone() throws CloneNotSupportedException {
         return new Book(getName(), getPublisher(), getPublicationDate());
     }
+
+    @Override
+    public String toString() {
+        return "Book{} " + super.toString();
+    }
 }

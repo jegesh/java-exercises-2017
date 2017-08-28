@@ -178,10 +178,33 @@ public class MediaDal {
     }
 
     public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
-        return null;
+        ArrayList<AbstractMedia> returnedObjs;
+        String query = "SELECT * FROM media WHERE media_type = '%s'";
+        
+        ResultSet rs = executeQuery(String.format(query, type));
+
+           if (rs != null) {
+
+                returnedObjs = buildMediaObject(rs);
+                if (returnedObjs != null)
+                    return returnedObjs;
+           }
+            return null;
     }
 
     public ArrayList<AbstractMedia> getByName(String name) {
+
+        ArrayList<AbstractMedia> returnedObjs;
+        String query = "SELECT * FROM media WHERE name = '%s'";
+
+        ResultSet rs = executeQuery(String.format(query, name));
+
+        if (rs != null) {
+
+            returnedObjs = buildMediaObject(rs);
+            if (returnedObjs != null)
+                return returnedObjs;
+        }
         return null;
     }
 

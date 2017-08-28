@@ -30,4 +30,11 @@ public class Magazine extends AbstractMedia {
         // TODO: 21/08/2017
         return 14;
     }
+
+    @Override
+    public String toString() {
+        return "Magazine{" +
+                "issueNo='" + issueNo + '\'' +
+                "} " + super.toString();
+    }
 }
