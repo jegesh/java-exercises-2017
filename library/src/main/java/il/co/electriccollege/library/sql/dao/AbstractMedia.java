@@ -10,7 +10,7 @@ public abstract class AbstractMedia {
     private MediaStatus status;
     private String publisher;
     private Date publicationDate;
-
+    private MediaType mediaType;
     //abstract methods
     public abstract int getFine();
 
@@ -36,7 +36,12 @@ public abstract class AbstractMedia {
 
     public AbstractMedia() {
     }
-
+    public MediaType getType(){
+        return mediaType;
+    }
+    public void setType(MediaType mediaType){
+        this.mediaType = mediaType;
+    }
     //get&set
     public Date getCheckOutDate() {
         return checkOutDate;
