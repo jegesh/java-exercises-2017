@@ -18,5 +18,6 @@ public class DbMain {
         MediaDal mediaDal = new MediaDal(new DatabaseConnector());
         AbstractMedia returnedMedia = mediaDal.getById(1);
         System.out.println(returnedMedia);
+        mediaDal.addMediaToLibrary(returnedMedia);
     }
 }

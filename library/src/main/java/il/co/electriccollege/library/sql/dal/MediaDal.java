@@ -18,20 +18,11 @@ public class MediaDal {
     private DatabaseConnector databaseConnector;
     private Statement stmt;
     private Connection conn;
-
+    //constructor
     public MediaDal(DatabaseConnector connector){
         databaseConnector = connector;
     }
-
-    public boolean addMediaToLibrary(AbstractMedia media){
-        return false;
-    }
-
-    public boolean removeMedia(AbstractMedia media){
-        return false;
-
-    }
-
+    //done by yaakov
     public AbstractMedia getById(int id){
         String query = "SELECT * FROM media WHERE id = %s";
         ResultSet rs = executeQuery(String.format(query, id));
@@ -42,7 +33,7 @@ public class MediaDal {
         }
         return null;
     }
-
+    //done by yaakov
     private ArrayList<AbstractMedia> buildMediaObject(ResultSet rs){
         ArrayList<AbstractMedia> mediaList = new ArrayList<>();
         boolean hasNextRow = true;
@@ -53,13 +44,13 @@ public class MediaDal {
                 // here we do the actual work
                 if(hasNextRow){
                     if (rs.getString("media_type").equals(MediaType.BOOK.name())){
-                            Book book = new Book(
-                                    rs.getString("name"),
-                                    rs.getString("publisher"),
-                                    rs.getDate("publication_date")
-                                    );
-                            book.setId(rs.getInt("id"));
-                            mediaList.add(book);
+                        Book book = new Book(
+                                rs.getString("name"),
+                                rs.getString("publisher"),
+                                rs.getDate("publication_date")
+                        );
+                        book.setId(rs.getInt("id"));
+                        mediaList.add(book);
                     }
                 }
 
@@ -88,25 +79,7 @@ public class MediaDal {
         }
         return mediaList;
     }
-
-    public ArrayList<AbstractMedia> getByMediaType(MediaType type){
-        return null;
-    }
-
-    public ArrayList<AbstractMedia> getByName(String name){
-        return null;
-    }
-
-    public boolean checkoutMedia(int id){
-        return false;
-
-    }
-
-    public boolean returnMedia(int id){
-        return false;
-
-    }
-
+    //done ny yaakov
     private ResultSet executeQuery(String queryStr) {
         conn = databaseConnector.getDbConnection();
         if (conn != null) {
@@ -127,4 +100,34 @@ public class MediaDal {
         }
         return null;
     }
+
+    //todo
+    public boolean addMediaToLibrary(AbstractMedia media){
+        String queryStr = "INSERT INTO `library`.`media` (" +
+                media.getName()+", "+media.getPublicationDate()+", "+media.getType()+", "+media.getStatus()+", "+
+                media.getPublisher()+", "+null+", "+null+", "+null;
+
+        return false;
+    }
+    //todo
+    public boolean removeMedia(AbstractMedia media){
+        return false;
+    }
+    //todo
+    public ArrayList<AbstractMedia> getByMediaType(MediaType type){
+        return null;
+    }
+    //todo
+    public ArrayList<AbstractMedia> getByName(String name){
+        return null;
+    }
+    //todo
+    public boolean checkoutMedia(int id){
+        return false;
+}
+    //todo
+    public boolean returnMedia(int id){
+        return false;
+}
+
 }

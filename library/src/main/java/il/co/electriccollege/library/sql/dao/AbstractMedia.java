@@ -8,8 +8,11 @@ public abstract class AbstractMedia {
     private static int id;
     private int mediaId;
     private MediaStatus status;
+    private MediaType type;
     private String publisher;
     private Date publicationDate;
+
+
 
     //abstract methods
     public abstract int getFine();
@@ -22,10 +25,18 @@ public abstract class AbstractMedia {
 
 
     //constructors
+
+    public AbstractMedia(Date checkOutDate, String name, int mediaId, MediaStatus status, String publisher, Date publicationDate) {
+        this.checkOutDate = checkOutDate;
+        this.name = name;
+        this.mediaId = mediaId;
+        this.status = status;
+        this.publisher = publisher;
+        this.publicationDate = publicationDate;
+    }
+
     public AbstractMedia(String name, String publisher, Date publicationDate) {
         this.name = name;
-        this.mediaId = id;
-        id++;
         this.publisher = publisher;
         this.publicationDate = publicationDate;
     }
@@ -82,6 +93,19 @@ public abstract class AbstractMedia {
         this.publicationDate = publicationDate;
     }
 
+    public int getMediaId() {
+        return mediaId;
+    }
+
+    public MediaType getType() {
+        return type;
+    }
+
+    public void setType(MediaType type) {
+        this.type = type;
+    }
+
+    //to string
     @Override
     public String toString() {
         String print = "Name: %s, id: %s, status: %s";
