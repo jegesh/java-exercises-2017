@@ -6,7 +6,7 @@ import il.co.electriccollege.inheritance.faces.Submergeable;
  * Created by yaakov on 8/10/17.
  */
 public class Fish extends Animal implements Submergeable{
-    private String name;
+    String name;
 
     public Fish(String name){
         this.name = name;
@@ -37,19 +37,12 @@ public class Fish extends Animal implements Submergeable{
         return false;
     }
 
-    public String toString() {
-        return "Fish{" +
-                "name='" + name + '\'' +
-                '}';
-    }
-
-    @Override
     public boolean isUnderwater() {
-        return false;
+        return true;
     }
 
     @Override
     public int getMaxTimeUnderwater() {
-        return 0;
+        return Integer.MAX_VALUE;
     }
 }
