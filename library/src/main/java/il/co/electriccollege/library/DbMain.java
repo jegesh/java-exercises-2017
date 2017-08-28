@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Created by yaakov on 8/23/17.
@@ -23,9 +24,20 @@ public class DbMain {
 //        System.out.println(returnedMedia);
 
         // Add to library
-        Book b = new Book("The Dibbuk", "Random House", Main.getDateWithCalendar("09/09/1980"));
+        Book b = new Book("The Dibbuk", "Random Cottedge", Main.getDateWithCalendar("09/09/1980"));
         b.setType(MediaType.BOOK);
-        boolean added = mediaDal.addMediaToLibrary(b);
-        System.out.println("Was book added to library? " + added);
-    }
+//        boolean added = mediaDal.addMediaToLibrary(b);
+//        System.out.println("Was book added to library? " + added);
+//        boolean removed =mediaDal.removeMedia(b);
+//        System.out.println("Was book removed from library? " + removed);
+
+        ArrayList<AbstractMedia> arr = new ArrayList<AbstractMedia>();
+        arr = mediaDal.getByMediaType(MediaType.BOOK);
+
+        for (AbstractMedia curr: arr ) {
+            System.out.println(curr.toString());
+        }
+        }
+
+
 }

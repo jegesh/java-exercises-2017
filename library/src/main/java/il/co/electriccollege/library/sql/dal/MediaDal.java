@@ -87,8 +87,14 @@ public class MediaDal {
     }
 
     public boolean removeMedia(AbstractMedia media) {
-        return false;
+        String name = media.getName();
 
+        String query = "DELETE from MEDIA where name='"+name+"'";
+        int res =executeUpdate(query);
+        if (res !=0)
+        return true;
+        else
+            return false;
     }
 
     public AbstractMedia getById(int id) {
@@ -102,13 +108,10 @@ public class MediaDal {
         return null;
     }
 
-<<<<<<< HEAD
+
     private ArrayList<AbstractMedia> buildMediaObject(ResultSet rs){
         ArrayList<AbstractMedia> mediaList = new ArrayList<AbstractMedia>();
-=======
-    private ArrayList<AbstractMedia> buildMediaObject(ResultSet rs) {
-        ArrayList<AbstractMedia> mediaList = new ArrayList<>();
->>>>>>> 359795762fce42113a73c8e06a3e2d1498802759
+
         boolean hasNextRow = true;
         while (hasNextRow) {
             // read all the rows
@@ -180,7 +183,20 @@ public class MediaDal {
     }
 
     public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
+
+        ArrayList<AbstractMedia> arrayList = new ArrayList<AbstractMedia>();
+
+        String query = "SELECT * FROM media WHERE media_type = %s";
+        System.out.println(String.format(query,type));
+        ResultSet rs = executeQuery(String.format(query,type));
+        if (rs != null) {
+
+            ArrayList<AbstractMedia> returnedObjs = buildMediaObject(rs);
+            if (returnedObjs != null)
+                return returnedObjs;
+            }
         return null;
+
     }
 
     public ArrayList<AbstractMedia> getByName(String name) {
@@ -193,6 +209,7 @@ public class MediaDal {
     }
 
     public boolean returnMedia(int id) {
+
         return false;
 
     }
