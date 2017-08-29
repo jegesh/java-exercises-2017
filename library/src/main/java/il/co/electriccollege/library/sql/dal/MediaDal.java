@@ -31,6 +31,7 @@ public class MediaDal {
     private static final String TABLE_NAME = "media";
     private static final String FIELD_PUBLISHER = "publisher";
     private static final String FIELD_PUBLICATION_DATE = "publication_date";
+    private ArrayList<AbstractMedia> returnedList;
 
     public MediaDal(DatabaseConnector connector) {
         databaseConnector = connector;
@@ -81,10 +82,7 @@ public class MediaDal {
         return result > 0;
     }
 
-    private String formatDate(Date d) {
-        DateFormat isoFormat = new SimpleDateFormat("YYYY-MM-dd");
-        return isoFormat.format(d);
-    }
+
 
     public boolean removeMedia(AbstractMedia media) {
         String name = media.getName();
@@ -108,6 +106,88 @@ public class MediaDal {
         return null;
     }
 
+
+    public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
+
+           String query = "SELECT * FROM media WHERE media_type = '%s'";
+        System.out.println(String.format(query,type));
+        ResultSet rs = executeQuery(String.format(query,type));
+        if (rs != null) {
+
+            ArrayList<AbstractMedia> returnedList = buildMediaObject(rs);
+            if (returnedList != null)
+                return returnedList;
+            }
+
+        return null;
+
+    }
+
+    public ArrayList<AbstractMedia> getByName(String name) {
+
+        String query = "SELECT * FROM media WHERE name ='" + name + "'" ;
+        System.out.println(String.format(query,name));
+        ResultSet rs = executeQuery(String.format(query,name));
+        if (rs != null) {
+
+            ArrayList<AbstractMedia> returnedList = buildMediaObject(rs);
+            if (returnedList != null)
+
+                return returnedList;
+        }
+
+        return null;
+    }
+
+    public boolean checkoutMedia(int id) {
+
+       // ArrayList<AbstractMedia> mediaList = new ArrayList<AbstractMedia>();
+         AbstractMedia ab = getById(id);
+
+        System.out.println(ab.toString());
+
+        String query1 = "UPDATE %s (%s, %s, %s, %s, %s, %s, %s, %s) ";
+        query1 = String.format(query1, TABLE_NAME, FIELD_NAME, FIELD_PUBLICATION_DATE,
+                FIELD_MEDIA_TYPE, FIELD_MEDIA_STATUS, FIELD_PUBLISHER, FIELD_NARRATOR,
+                FIELD_DURATION, FIELD_ISSUE);
+
+        String query2 = "VALUES ('%s', DATE '%s', '%s', '%s', '%s', %s, '%s', '%s') where id=" + id ;
+
+
+        MediaStatus status = MediaStatus.LOANED;
+        String narrator = null;
+        int duration = 0;
+        String issue = "";
+
+        if (ab instanceof AudioBook) {
+            narrator = "'" + ((AudioBook) ab).getNarrator() + "'";
+            duration = ((AudioBook) ab).getDuration();
+        }
+        if (ab instanceof Magazine) {
+            issue = ((Magazine) ab).getIssueNo();
+        }
+
+        query2 = String.format(query2,ab.getName(), ab.getPublicationDate(),
+                ab.getType(), status,ab.getPublisher(), narrator, duration, issue
+        );
+        int result = -1;
+        try {
+            System.out.println(query1 + query2);
+            result = executeUpdate(query1 + query2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return result > 0;
+
+           }
+
+
+    public boolean returnMedia(int id) {
+
+        return false;
+
+    }
 
     private ArrayList<AbstractMedia> buildMediaObject(ResultSet rs){
         ArrayList<AbstractMedia> mediaList = new ArrayList<AbstractMedia>();
@@ -182,38 +262,6 @@ public class MediaDal {
         return mediaList;
     }
 
-    public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
-
-        ArrayList<AbstractMedia> arrayList = new ArrayList<AbstractMedia>();
-
-        String query = "SELECT * FROM media WHERE media_type = %s";
-        System.out.println(String.format(query,type));
-        ResultSet rs = executeQuery(String.format(query,type));
-        if (rs != null) {
-
-            ArrayList<AbstractMedia> returnedObjs = buildMediaObject(rs);
-            if (returnedObjs != null)
-                return returnedObjs;
-            }
-        return null;
-
-    }
-
-    public ArrayList<AbstractMedia> getByName(String name) {
-        return null;
-    }
-
-    public boolean checkoutMedia(int id) {
-        return false;
-
-    }
-
-    public boolean returnMedia(int id) {
-
-        return false;
-
-    }
-
     private Statement getStatement() throws SQLException {
         conn = databaseConnector.getDbConnection();
         if (conn != null) {
@@ -250,5 +298,10 @@ public class MediaDal {
             se.printStackTrace();
         }
         return null;
+    }
+
+    private String formatDate(Date d) {
+        DateFormat isoFormat = new SimpleDateFormat("YYYY-MM-dd");
+        return isoFormat.format(d);
     }
 }

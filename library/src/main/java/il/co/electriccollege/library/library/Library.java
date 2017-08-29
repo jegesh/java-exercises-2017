@@ -18,7 +18,7 @@ public class Library {
     }
 
     public Library(){
-        bookSet = new HashMap<>();
+        bookSet = new HashMap<Integer, AbstractMedia>();
         bookSet = new HashMap<Integer, AbstractMedia>();
         bookSet = new HashMap<Integer,AbstractMedia>();
     }
