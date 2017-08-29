@@ -65,7 +65,7 @@ public abstract class AbstractDish {
 
     @Override
     public String toString() {
-        return "AbstractDish{" +
+        return "Dish{" +
                 "name='" + name + '\'' +
                 ", id=" + id +
                 ", description='" + description + '\'' +
