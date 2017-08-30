@@ -1,8 +1,16 @@
-package il.co.electriccollege.library.media;
+package il.co.electriccollege.library.gil.sql.dao;
 
 import java.util.Date;
 
 public class Magazine extends AbstractMedia {
+    public String getIssueNo() {
+        return issueNo;
+    }
+
+    public void setIssueNo(String issueNo) {
+        this.issueNo = issueNo;
+    }
+
     private String issueNo;
 
     //constractors
