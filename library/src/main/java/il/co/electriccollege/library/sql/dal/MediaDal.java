@@ -184,16 +184,16 @@ public class MediaDal {
 
     public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
 
-        ArrayList<AbstractMedia> arrayList = new ArrayList<AbstractMedia>();
+     //   ArrayList<AbstractMedia> arrayList = new ArrayList<AbstractMedia>();
 
-        String query = "SELECT * FROM media WHERE media_type = %s";
+        String query = "SELECT * FROM media WHERE media_type = '%s'";
         System.out.println(String.format(query,type));
         ResultSet rs = executeQuery(String.format(query,type));
         if (rs != null) {
 
-            ArrayList<AbstractMedia> returnedObjs = buildMediaObject(rs);
-            if (returnedObjs != null)
-                return returnedObjs;
+            ArrayList<AbstractMedia> returnedList = buildMediaObject(rs);
+            if (returnedList != null)
+                return returnedList;
             }
         return null;
 
