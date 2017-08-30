@@ -5,5 +5,5 @@ public enum Category {
     BREAKFAST,
     PASTA,
     SANDWICHES;
-    
+
 }

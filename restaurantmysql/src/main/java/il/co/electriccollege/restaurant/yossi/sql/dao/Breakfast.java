@@ -2,36 +2,25 @@ package il.co.electriccollege.restaurant.yossi.sql.dao;
 
 public class Breakfast extends AbstractDish{
 
-    String egg;
-    String drink;
+    String eggs;
 
-    public Breakfast(String name, String description, float price, String category, String egg, String drink) {
+    public Breakfast(String name, String description, float price, String category, String eggs) {
         super(name, description, price, category);
-        this.egg = egg;
-        this.drink = drink;
+        this.eggs = eggs;
     }
 
-    public String getEgg() {
-        return egg;
+    public String getEggs() {
+        return eggs;
     }
 
-    public void setEgg(String egg) {
-        this.egg = egg;
-    }
-
-    public String getDrink() {
-        return drink;
-    }
-
-    public void setDrink(String drink) {
-        this.drink = drink;
+    public void setEggs(String eggs) {
+        this.eggs = eggs;
     }
 
     @Override
     public String toString() {
         return "Breakfast{" +
-                "egg='" + egg + '\'' +
-                ", drink='" + drink + '\'' +
+                "eggs='" + eggs + '\'' +
                 "} " + super.toString();
     }
 }
