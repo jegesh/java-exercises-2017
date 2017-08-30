@@ -3,22 +3,22 @@ package il.co.electriccollege.restaurant.yossi.sql.dao;
 public abstract class AbstractDish {
 
     int id;
-    String name;
-    public String description;
-    public float price;
-    Category category;
-    int countId = 0;
+    private String name;
+    private String description;
+    private float price;
+    private Category category;
+    private int countId = 0;
 
     public AbstractDish() {
     }
 
-    public AbstractDish(int id, String name, String description, float price, Category category) {
+    /*public AbstractDish(int id, String name, String description, float price, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = category;
-    }
+    }*/
 
     public AbstractDish(String name, String description, float price, Category category) {
         this.name = name;

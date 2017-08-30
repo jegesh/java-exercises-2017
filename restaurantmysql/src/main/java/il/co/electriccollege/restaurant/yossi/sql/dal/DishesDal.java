@@ -42,7 +42,7 @@ public class DishesDal {
 
         String name = dish.getName();
         String description = dish.getDescription();
-        int price = 0;
+        float price = dish.getPrice();
         Category category = dish.getCategory();
         String eggs = null;
         String typeOfPasta = null;
