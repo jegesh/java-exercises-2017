@@ -3,7 +3,7 @@ package il.co.electriccollege.restaurant.yossi.sql.dao;
 public class Pasta extends AbstractDish{
 
     String typeOfPasta;
-    String sauce;
+    public String sauce;
 
     public Pasta(String name, String description, float price, Category category, String typeOfPasta, String sauce) {
         super(name, description, price, category);

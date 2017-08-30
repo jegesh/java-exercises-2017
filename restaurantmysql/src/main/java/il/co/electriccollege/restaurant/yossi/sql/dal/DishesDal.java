@@ -1,8 +1,7 @@
 package il.co.electriccollege.restaurant.yossi.sql.dal;
 
 import il.co.electriccollege.restaurant.yossi.sql.DatabaseConnector;
-import il.co.electriccollege.restaurant.yossi.sql.dao.AbstractDish;
-import il.co.electriccollege.restaurant.yossi.sql.dao.Category;
+import il.co.electriccollege.restaurant.yossi.sql.dao.*;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -41,9 +40,28 @@ public class DishesDal {
 
         String name = dish.getName();
         String description = dish.getDescription();
+        int price = 0;
         Category category = null;
-        int duration = 0;
-        String issue = "";
+        String typeOfPasta = null;
+        String sauce = null;
+        String eggs = null;
+        String breadType = null;
+        String sizeOfSandwich = null;
+
+        if (dish instanceof Breakfast) {
+            eggs = "'" + ((Breakfast) dish).getEggs() + "'";
+        }
+
+        if (dish instanceof Pasta) {
+            typeOfPasta = "'" + ((Pasta) dish).getTypeOfPasta() + "'";
+            sauce = "'" + ((Pasta) dish).getSauce() + "'";
+        }
+
+        if (dish instanceof Sandwiches) {
+            breadType = "'" + ((Sandwiches) dish).getBreadType() + "'";
+            sizeOfSandwich = "'" + ((Sandwiches) dish).getSizeOfSandwich() + "'";
+        }
+
     }
 
     public void getAllDishes()

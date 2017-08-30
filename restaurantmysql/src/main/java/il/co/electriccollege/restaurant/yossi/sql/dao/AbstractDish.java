@@ -5,7 +5,7 @@ public abstract class AbstractDish {
     int id;
     String name;
     public String description;
-    float price;
+    public float price;
     Category category;
     int countId = 0;
 
