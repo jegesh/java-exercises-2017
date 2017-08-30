@@ -262,38 +262,7 @@ public class MediaDal {
         return mediaList;
     }
 
-    public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
-
-        ArrayList<AbstractMedia> arrayList = new ArrayList<AbstractMedia>();
-
-        String query = "SELECT * FROM media WHERE media_type = %s";
-        System.out.println(String.format(query,type));
-        ResultSet rs = executeQuery(String.format(query,type));
-        if (rs != null) {
-
-            ArrayList<AbstractMedia> returnedObjs = buildMediaObject(rs);
-            if (returnedObjs != null)
-                return returnedObjs;
-            }
-        return null;
-
-    }
-
-    public ArrayList<AbstractMedia> getByName(String name) {
-        return null;
-    }
-
-    public boolean checkoutMedia(int id) {
-        return false;
-
-    }
-
-    public boolean returnMedia(int id) {
-
-        return false;
-
-    }
-
+<<<<<<< HEAD
     public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
 
      //   ArrayList<AbstractMedia> arrayList = new ArrayList<AbstractMedia>();
@@ -326,6 +295,8 @@ public class MediaDal {
 
     }
 
+=======
+>>>>>>> eefd3dbb6360b4a1338a841b8b15378f3b45df45
     private Statement getStatement() throws SQLException {
         conn = databaseConnector.getDbConnection();
         if (conn != null) {

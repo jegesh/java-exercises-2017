@@ -26,8 +26,8 @@ public class DbMain {
 //        // Add to library
 //        Book b = new Book("The Tibbuk", "Constant House", Main.getDateWithCalendar("09/09/1999"));
 //        b.setType(MediaType.BOOK);
-//        boolean added = mediaDal.addMediaToLibrary(b);
-//        System.out.println("Was book added to library? " + added);
+  //      boolean added = mediaDal.addMediaToLibrary(b);
+  //      System.out.println("Was book added to library? " + added);
 ////        boolean removed =mediaDal.removeMedia(b);
 ////        System.out.println("Was book removed from library? " + removed);
 //
@@ -40,7 +40,7 @@ public class DbMain {
 //
 //                }
 
-       mediaDal.checkoutMedia(3);
+      // mediaDal.checkoutMedia(3);
 
     }
 
