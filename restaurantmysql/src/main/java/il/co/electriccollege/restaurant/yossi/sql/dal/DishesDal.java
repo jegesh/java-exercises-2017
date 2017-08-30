@@ -4,6 +4,8 @@ import il.co.electriccollege.restaurant.yossi.sql.DatabaseConnector;
 import il.co.electriccollege.restaurant.yossi.sql.dao.*;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 
@@ -16,22 +18,22 @@ public class DishesDal {
     public static final String FIELD_PRICE = "price";
     public static final String FIELD_EGGS = "eggs";
     public static final String FIELD_CATEGORY = "category";
-    public static final String FIELD_TYPE_OF_PASTA = "type of pasta";
-    public static final String FIELD_SAUCE_TYPE = "sauce type";
-    public static final String FIELD_BREAD_TYPE = "bread type";
-    public static final String FIELD_SIZE_OF_SANDWICH = "size of sandwich";
+    public static final String FIELD_TYPE_OF_PASTA = "typeOfPasta";
+    public static final String FIELD_SAUCE_TYPE = "sauce";
+    public static final String FIELD_BREAD_TYPE = "breadType";
+    public static final String FIELD_SIZE_OF_SANDWICH = "sizeOfSandwich";
     private DatabaseConnector databaseConnector;
     private Statement stmt;
     private Connection conn;
-    private static final String TABLE_NAME = "restaurant";
+    private static final String TABLE_NAME = "dishes";
 
 
     public DishesDal(DatabaseConnector connector) {
         databaseConnector = connector;
     }
 
-    public void addDish(AbstractDish dish){
-        String query1 = "INSERT INTO %s (%s, %s, %s, %s, %s, %s, %s, %s' %s) ";
+    public boolean addDish(AbstractDish dish){
+        String query1 = "INSERT INTO %s (%s, %s, %s, %s, %s, %s, %s, %s, %s) ";
         query1 = String.format(query1, TABLE_NAME, FIELD_NAME, FIELD_DESCRIPTION, FIELD_PRICE,
                 FIELD_CATEGORY, FIELD_EGGS, FIELD_TYPE_OF_PASTA,
                 FIELD_SAUCE_TYPE, FIELD_BREAD_TYPE, FIELD_SIZE_OF_SANDWICH);
@@ -41,10 +43,10 @@ public class DishesDal {
         String name = dish.getName();
         String description = dish.getDescription();
         int price = 0;
-        Category category = null;
+        Category category = dish.getCategory();
+        String eggs = null;
         String typeOfPasta = null;
         String sauce = null;
-        String eggs = null;
         String breadType = null;
         String sizeOfSandwich = null;
 
@@ -62,6 +64,17 @@ public class DishesDal {
             sizeOfSandwich = "'" + ((Sandwiches) dish).getSizeOfSandwich() + "'";
         }
 
+        query2 = String.format(query2, name, description, price,
+                category, eggs, typeOfPasta, sauce, breadType, sizeOfSandwich
+        );
+        int result = -1;
+        try {
+            result = executeUpdate(query1 + query2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return result > 0;
     }
 
     public void getAllDishes()
@@ -84,5 +97,43 @@ public class DishesDal {
     public void updatePrice(AbstractDish dish, float i)
     {
 
+    }
+
+    private Statement getStatement() throws SQLException {
+        conn = databaseConnector.getDbConnection();
+        if (conn != null) {
+
+            System.out.println("Creating database statement");
+            // create query statement
+            stmt = conn.createStatement();
+            return stmt;
+        }
+        throw new SQLException("Unable to connect to database");
+    }
+
+    private int executeUpdate(String queryStr) {
+        try {
+            stmt = getStatement();
+            int result = stmt.executeUpdate(queryStr);
+            return result;
+
+        } catch (SQLException se) {
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }
+        return -1;
+    }
+
+    private ResultSet executeQuery(String queryStr) {
+        try {
+            stmt = getStatement();
+            ResultSet rs = stmt.executeQuery(queryStr);
+            return rs;
+
+        } catch (SQLException se) {
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }
+        return null;
     }
 }
