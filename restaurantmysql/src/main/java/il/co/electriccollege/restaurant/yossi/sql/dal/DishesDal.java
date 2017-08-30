@@ -42,7 +42,7 @@ public class DishesDal {
 
         String name = dish.getName();
         String description = dish.getDescription();
-        float price = dish.getPrice();
+        double price = dish.getPrice();
         Category category = dish.getCategory();
         String eggs = "NULL";
         String typeOfPasta = "NULL";
@@ -51,17 +51,17 @@ public class DishesDal {
         String sizeOfSandwich = "NULL";
 
         if (dish instanceof Breakfast) {
-            eggs = "'" + ((Breakfast) dish).getEggs();
+            eggs =((Breakfast) dish).getEggs();
         }
 
         if (dish instanceof Pasta) {
-            typeOfPasta = "'" + ((Pasta) dish).getTypeOfPasta() + "'";
-            sauce = "'" + ((Pasta) dish).getSauce() + "'";
+            typeOfPasta = ((Pasta) dish).getTypeOfPasta();
+            sauce = ((Pasta) dish).getSauce();
         }
 
         if (dish instanceof Sandwiches) {
-            breadType = "'" + ((Sandwiches) dish).getBreadType() + "'";
-            sizeOfSandwich = "'" + ((Sandwiches) dish).getSizeOfSandwich() + "'";
+            breadType = ((Sandwiches) dish).getBreadType();
+            sizeOfSandwich = ((Sandwiches) dish).getSizeOfSandwich();
         }
 
         query2 = String.format(query2, name, description,  price,
@@ -95,7 +95,7 @@ public class DishesDal {
     {
 
     }
-    public void updatePrice(AbstractDish dish, float i)
+    public void updatePrice(AbstractDish dish, double i)
     {
 
     }
