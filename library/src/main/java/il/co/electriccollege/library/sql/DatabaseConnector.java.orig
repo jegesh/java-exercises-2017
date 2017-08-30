@@ -1,8 +1,12 @@
 package il.co.electriccollege.library.sql;
 
+<<<<<<< HEAD
+import java.sql.*;
+=======
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+>>>>>>> 4a28805c86a54771b33bf736503f70b91ae5bdca
 
 /**
  * Created by yaakov on 8/19/17.
@@ -15,7 +19,7 @@ public class DatabaseConnector {
 
     //  Database credentials
     static final String USER = "root";
-    static final String PASS = "Java2017";
+    static final String PASS = "root";
 
     public Connection getDbConnection() {
 

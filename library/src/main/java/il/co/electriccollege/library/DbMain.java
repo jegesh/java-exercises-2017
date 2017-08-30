@@ -23,21 +23,27 @@ public class DbMain {
 //        AbstractMedia returnedMedia = mediaDal.getById(2);
 //        System.out.println(returnedMedia);
 
-        // Add to library
-        Book b = new Book("The Dibbuk", "Random Cottedge", Main.getDateWithCalendar("09/09/1980"));
-        b.setType(MediaType.BOOK);
+//        // Add to library
+//        Book b = new Book("The Tibbuk", "Constant House", Main.getDateWithCalendar("09/09/1999"));
+//        b.setType(MediaType.BOOK);
         boolean added = mediaDal.addMediaToLibrary(b);
         System.out.println("Was book added to library? " + added);
-//        boolean removed =mediaDal.removeMedia(b);
-//        System.out.println("Was book removed from library? " + removed);
+////        boolean removed =mediaDal.removeMedia(b);
+////        System.out.println("Was book removed from library? " + removed);
+//
+//        ArrayList<AbstractMedia> arr = new ArrayList<AbstractMedia>();
+////        arr = mediaDal.getByMediaType(MediaType.BOOK);
+//        arr = mediaDal.getByName("The Dibbuk");
+////
+//        for (AbstractMedia curr: arr ) {
+//            System.out.println(curr.toString());
+//
+//                }
 
-        ArrayList<AbstractMedia> arr = new ArrayList<AbstractMedia>();
-        arr = mediaDal.getByMediaType(MediaType.BOOK);
+       mediaDal.checkoutMedia(3);
 
-        for (AbstractMedia curr: arr ) {
-            System.out.println(curr.toString());
-        }
-        }
+    }
+
 
 
 }

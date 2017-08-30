@@ -1,0 +1,33 @@
+package il.co.electriccollege.library.sql;
+
+import java.util.Scanner;
+
+/**
+<<<<<<< HEAD
+ * Created by Comp14 on 23/08/2017.
+=======
+ * Created by yaakov on 8/23/17.
+>>>>>>> 4a28805c86a54771b33bf736503f70b91ae5bdca
+ */
+public class UserInputHandler {
+
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+<<<<<<< HEAD
+        System.out.println("Enter first name");
+        String first = scanner.nextLine();
+
+    }
+
+=======
+        System.out.println("Please enter your first name > ");
+        String first = scanner.nextLine();
+
+        System.out.println("Please enter your last name > ");
+        String last = scanner.nextLine();
+
+        System.out.println("Hello " + first + " " + last);
+    }
+>>>>>>> 4a28805c86a54771b33bf736503f70b91ae5bdca
+}
