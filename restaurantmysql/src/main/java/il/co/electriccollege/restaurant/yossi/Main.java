@@ -15,7 +15,8 @@ public class Main {
 
         DishesDal mediaDal = new DishesDal(new DatabaseConnector());
 
-        Breakfast b = new Breakfast("kafrit", "includ all vegteble and fresh drink", 50.00f, BREAKFAST,"shpigel eye");
+        Breakfast b = new Breakfast("kafrit", "includ all vegteble and fresh drink", 050.00f, BREAKFAST,"shpigel");
+        System.out.println(b.toString());
         mediaDal.addDish(b);
     }
 }

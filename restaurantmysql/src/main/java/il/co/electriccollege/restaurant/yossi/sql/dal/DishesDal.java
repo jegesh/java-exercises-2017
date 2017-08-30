@@ -38,20 +38,20 @@ public class DishesDal {
                 FIELD_CATEGORY, FIELD_EGGS, FIELD_TYPE_OF_PASTA,
                 FIELD_SAUCE_TYPE, FIELD_BREAD_TYPE, FIELD_SIZE_OF_SANDWICH);
 
-        String query2 = "VALUES ('%s', '%s', '%s', '%s', '%s', %s, '%s', '%s', '%s', '%s')";
+        String query2 = "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";
 
         String name = dish.getName();
         String description = dish.getDescription();
         float price = dish.getPrice();
         Category category = dish.getCategory();
-        String eggs = null;
-        String typeOfPasta = null;
-        String sauce = null;
-        String breadType = null;
-        String sizeOfSandwich = null;
+        String eggs = "NULL";
+        String typeOfPasta = "NULL";
+        String sauce = "NULL";
+        String breadType = "NULL";
+        String sizeOfSandwich = "NULL";
 
         if (dish instanceof Breakfast) {
-            eggs = "'" + ((Breakfast) dish).getEggs() + "'";
+            eggs = "'" + ((Breakfast) dish).getEggs();
         }
 
         if (dish instanceof Pasta) {
@@ -64,9 +64,10 @@ public class DishesDal {
             sizeOfSandwich = "'" + ((Sandwiches) dish).getSizeOfSandwich() + "'";
         }
 
-        query2 = String.format(query2, name, description, price,
-                category, eggs, typeOfPasta, sauce, breadType, sizeOfSandwich
+        query2 = String.format(query2, name, description,  price,
+                 category, eggs, typeOfPasta, sauce, breadType, sizeOfSandwich
         );
+
         int result = -1;
         try {
             result = executeUpdate(query1 + query2);
