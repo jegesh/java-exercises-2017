@@ -4,15 +4,15 @@ public abstract class AbstractDish {
 
     int id;
     String name;
-    String description;
+    public String description;
     float price;
-    String category;
-    int countId;
+    Category category;
+    int countId = 0;
 
     public AbstractDish() {
     }
 
-    public AbstractDish(int id, String name, String description, float price, String category) {
+    public AbstractDish(int id, String name, String description, float price, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -20,11 +20,12 @@ public abstract class AbstractDish {
         this.category = category;
     }
 
-    public AbstractDish(String name, String description, float price, String category) {
+    public AbstractDish(String name, String description, float price, Category category) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = category;
+        countId++;
     }
 
     public int getId() {
@@ -59,11 +60,11 @@ public abstract class AbstractDish {
         this.price = price;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
