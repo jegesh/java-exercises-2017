@@ -4,7 +4,7 @@ public class Breakfast extends AbstractDish{
 
     String eggs;
 
-    public Breakfast(String name, String description, float price, String category, String eggs) {
+    public Breakfast(String name, String description, float price, Category category, String eggs) {
         super(name, description, price, category);
         this.eggs = eggs;
     }
