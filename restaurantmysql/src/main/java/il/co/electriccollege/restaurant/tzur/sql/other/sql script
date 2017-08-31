@@ -1,0 +1,18 @@
+//create schema
+CREATE SCHEMA `restaurant` DEFAULT CHARACTER SET utf8 ;
+
+//create table
+CREATE TABLE `restaurant`.`dishes` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(150) NULL,
+  `price` DECIMAL(3,2) NOT NULL,
+  `category` VARCHAR(45) NOT NULL,
+  `category` VARCHAR(45) NOT NULL,
+
+  PRIMARY KEY (`id`));
+//add attribue from extent methods
+ALTER TABLE `restaurant`.`dishes`
+ADD COLUMN `include_drink` TINYINT(1) NULL AFTER `category`,
+ADD COLUMN `satiation_level` INT NULL COMMENT '1-10' AFTER `include_drink`,
+ADD COLUMN `sweet_level` INT NULL COMMENT '1-10' AFTER `satiation_level`;
