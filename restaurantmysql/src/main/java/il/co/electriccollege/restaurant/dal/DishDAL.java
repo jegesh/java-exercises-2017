@@ -30,12 +30,12 @@ public class DishDAL {
         this.databaseConnector = databaseConnector;
     }
 
- //////////////////// addDish()  //////////////
+    //////////////////// addDish()  //////////////
     public boolean addDish(Dish dish) {
         // fields: name, publication_date, media_type, media_status, publisher, narrator, duration, issue
         String query1 = "INSERT INTO %s (%s, %s, %s, %s) ";
         query1 = String.format(query1, TABLE_NAME, FIELD_NAME, FIELD_DESCRIPTION,
-                FIELD_PRICE,  FIELD_CATEGORY);
+                FIELD_PRICE, FIELD_CATEGORY);
 
         String query2 = "VALUES ('%s', '%s', %s, '%s')";
         String name = dish.getName();
@@ -52,7 +52,7 @@ public class DishDAL {
         if (dish instanceof EndDish) {
             category = ((EndDish) dish).getDishCategory();
         }
-        query2 = String.format(query2, name, description,price, category );
+        query2 = String.format(query2, name, description, price, category);
 
         int result = -1;
         try {
@@ -66,14 +66,54 @@ public class DishDAL {
         return result > 0;
     }
 
-    public boolean removeDish(Dish dish)
-    {
+    public boolean removeDish(Dish dish) {
+        Double price = dish.getPrice();
+        String query = "DELETE FROM dishes WHERE price='" + price + "'";
+        int result = -1;
+        try {
+            System.out.println(query);
+            result = executeUpdate(query);
 
-
-
-
-        return false;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return result > 0;
     }
+
+
+    public boolean updateDishPrice(Dish dish, double price) {
+        String name = dish.getName();
+        String description = dish.getDescription();
+
+        String query = "UPDATE dishes SET price=" + price + " WHERE name='" + name + "' and description='" + description + "'";
+        System.out.println(query);
+        int result = -1;
+
+        try {
+            result = executeUpdate(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return result > 0;
+    }
+
+    public ArrayList<Dish> getAllDishes() {
+        ArrayList<Dish> returnedArray = null;
+        String query = "SELECT * from dishes";
+
+        ResultSet rs = executeQuery(query);
+        if (rs != null) {
+            returnedArray = buildDishObject(rs);
+
+            if (returnedArray != null) {
+                return returnedArray;
+            }
+            }
+
+    }
+
 
     ////////////// ArrayList buildDishObject ///////
     private ArrayList<Dish> buildDishObject(ResultSet rs){
