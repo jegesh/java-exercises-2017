@@ -3,14 +3,14 @@ package il.co.electriccollege.restaurant.dish;
 /**
  * Created by Comp14 on 30/08/2017.
  */
-abstract  public class AbstractDish {
+abstract  public class Dish {
     private int id;
     private String name;
     private String description;
     private double price;
     private DishCategory dishCategory;
 
-    public AbstractDish(int id, String name, String description, double price, DishCategory dishCategory) {
+    public Dish(int id, String name, String description, double price, DishCategory dishCategory) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -18,10 +18,10 @@ abstract  public class AbstractDish {
         this.dishCategory = dishCategory;
     }
 
-    public AbstractDish() {
+    public Dish() {
     }
 
-    public AbstractDish(String name, String description, double price, DishCategory dishCategory) {
+    public Dish(String name, String description, double price, DishCategory dishCategory) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -70,7 +70,7 @@ abstract  public class AbstractDish {
 
     @Override
     public String toString() {
-        return "AbstractDish{" +
+        return "Dish{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

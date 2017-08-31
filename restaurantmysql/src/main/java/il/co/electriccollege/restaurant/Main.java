@@ -1,7 +1,8 @@
 package il.co.electriccollege.restaurant;
 
 import il.co.electriccollege.restaurant.dal.DishDAL;
-import il.co.electriccollege.restaurant.dao.DBConnector;
+import il.co.electriccollege.restaurant.dao.DatabaseConnector;
+import il.co.electriccollege.restaurant.dish.Dish;
 import il.co.electriccollege.restaurant.dish.StartDish;
 
 /**
@@ -10,12 +11,14 @@ import il.co.electriccollege.restaurant.dish.StartDish;
 public class Main {
 
     public static void main(String[] args) {
-        DishDAL dish = new DishDAL(new DBConnector());
+        DishDAL dish = new DishDAL(new DatabaseConnector());
 
-                StartDish sd = new StartDish("Salad", "Bulgarian", 2.5);
+        StartDish sd = new StartDish("Eggs", "russian", 3.0);
 
-              boolean added = dish.addDishToRestaurant(sd);
+              boolean added = dish.addDish(sd);
              System.out.println("Was dish added to Restaraunt? " + added);
+        Dish d1 =new StartDish("Eggs",null,0.0);
+        boolean removed= dish.removeDish(d1);
 
     }
 }
