@@ -2,9 +2,12 @@ package il.co.electriccollege.restaurant.yossi;
 
 import il.co.electriccollege.restaurant.yossi.sql.DatabaseConnector;
 import il.co.electriccollege.restaurant.yossi.sql.dal.DishesDal;
+import il.co.electriccollege.restaurant.yossi.sql.dao.AbstractDish;
 import il.co.electriccollege.restaurant.yossi.sql.dao.Breakfast;
 import il.co.electriccollege.restaurant.yossi.sql.dao.Pasta;
 import il.co.electriccollege.restaurant.yossi.sql.dao.Sandwiches;
+
+import java.util.ArrayList;
 
 import static il.co.electriccollege.restaurant.yossi.sql.dao.Category.BREAKFAST;
 import static il.co.electriccollege.restaurant.yossi.sql.dao.Category.PASTA;
@@ -21,8 +24,20 @@ public class Main {
 
         //Breakfast b = new Breakfast("kafrit", "includ all vegteble and fresh drink", 50, BREAKFAST,"shpigel");
         //Pasta p = new Pasta("3 chees", "includ 3 kind of smely chees", 62.55, PASTA,"spaghetti","cheesee");
-        Sandwiches s = new Sandwiches("salamy", "includ 2 kind of salamy with humus", 17.95, SANDWICHES,"brown","half");
-        System.out.println(s.toString());
-        mediaDal.addDish(s);
+        //Sandwiches s = new Sandwiches("salamy", "includ 2 kind of salamy with humus", 17.95, SANDWICHES,"brown","half");
+        //System.out.println(s.toString());
+        //mediaDal.addDish(s);
+
+
+        ArrayList<AbstractDish> dishList = new ArrayList<AbstractDish>();
+        System.out.println("\n");
+        System.out.println("ALL DISHES");
+        System.out.println("===================");
+        dishList = mediaDal.getAllDishes();
+        for (AbstractDish curr: dishList)
+        {
+            System.out.println("Current DISH: " + curr.toString());
+        }
+
     }
 }

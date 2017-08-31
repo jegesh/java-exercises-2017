@@ -7,7 +7,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+
+import static il.co.electriccollege.restaurant.yossi.sql.dao.Category.BREAKFAST;
+import static il.co.electriccollege.restaurant.yossi.sql.dao.Category.PASTA;
+import static il.co.electriccollege.restaurant.yossi.sql.dao.Category.SANDWICHES;
 
 
 public class DishesDal {
@@ -78,10 +83,99 @@ public class DishesDal {
         return result > 0;
     }
 
-    public void getAllDishes()
-    {
+    public ArrayList<AbstractDish> getAllDishes(){
+        ArrayList<AbstractDish> returnedObjs = null;
+        String query = "SELECT * FROM dishes";
+        ResultSet rs = executeQuery(query);
+
+        if (rs != null) {
+            returnedObjs = buildDishObject(rs);
+
+            if (returnedObjs != null) {
+                return returnedObjs;
+            }
+
+        }
+        return null;
 
     }
+
+    ////////////// ArrayList buildDishObject ///////
+    private ArrayList<AbstractDish> buildDishObject(ResultSet rs) {
+        ArrayList<AbstractDish> dishList = new ArrayList<AbstractDish>();
+
+        boolean hasNextRow = true;
+        while (hasNextRow) {
+            // read all the rows
+            try {
+                hasNextRow = rs.next();
+                // here we do the actual work
+                if (hasNextRow) {
+                    String name = rs.getString(FIELD_NAME);
+                    String description = rs.getString(FIELD_DESCRIPTION);
+                    float price = rs.getFloat(FIELD_PRICE);
+                    String category = rs.getString(FIELD_CATEGORY);
+
+                    AbstractDish dish = null;
+                    if (category.equals(BREAKFAST.name())) {
+                        dish = new Breakfast(
+                                name,
+                                description,
+                                price,
+                                BREAKFAST,
+                                rs.getString(FIELD_EGGS)
+
+                        );
+                    }
+                    if (category.equals(PASTA.name())) {
+                        dish = new Pasta(
+                                name,
+                                description,
+                                price,
+                                PASTA,
+                                rs.getString(FIELD_TYPE_OF_PASTA),
+                                rs.getString(FIELD_SAUCE_TYPE)
+                        );
+
+                    }
+                    if (category.equals(SANDWICHES.name())) {
+                        dish = new Sandwiches(
+                                name,
+                                description,
+                                price,
+                                SANDWICHES,
+                                rs.getString(FIELD_BREAD_TYPE),
+                                rs.getString(FIELD_SIZE_OF_SANDWICH)
+                        );
+                    }
+                    dish.setId(rs.getInt(FIELD_ID));
+                    dishList.add(dish);
+
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        //finally block used to close resources
+        try {
+            rs.close();
+            if (stmt != null)
+                stmt.close();
+        } catch (SQLException se2) {
+            // nothing we can do
+        }
+        try {
+            if (conn != null)
+                conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return dishList;
+    }
+
+
     public void getTenCheapestDishes()
     {
 
