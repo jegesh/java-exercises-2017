@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         DishDAL dish = new DishDAL(new DBConnector());
 
-                StartDish sd = new StartDish("Salad", "Bulgarian", 22.5);
+                StartDish sd = new StartDish("Salad", "Bulgarian", 2.5);
 
               boolean added = dish.addDishToRestaurant(sd);
              System.out.println("Was dish added to Restaraunt? " + added);

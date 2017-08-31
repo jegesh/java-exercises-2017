@@ -107,22 +107,6 @@ public class MediaDal {
     }
 
 
-    public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
-
-           String query = "SELECT * FROM media WHERE media_type = '%s'";
-        System.out.println(String.format(query,type));
-        ResultSet rs = executeQuery(String.format(query,type));
-        if (rs != null) {
-
-            ArrayList<AbstractMedia> returnedList = buildMediaObject(rs);
-            if (returnedList != null)
-                return returnedList;
-            }
-
-        return null;
-
-    }
-
     public ArrayList<AbstractMedia> getByName(String name) {
 
         String query = "SELECT * FROM media WHERE name ='" + name + "'" ;
@@ -183,11 +167,6 @@ public class MediaDal {
            }
 
 
-    public boolean returnMedia(int id) {
-
-        return false;
-
-    }
 
     private ArrayList<AbstractMedia> buildMediaObject(ResultSet rs){
         ArrayList<AbstractMedia> mediaList = new ArrayList<AbstractMedia>();
@@ -279,46 +258,6 @@ public class MediaDal {
 
     }
 
-    public ArrayList<AbstractMedia> getByName(String name) {
-        return null;
-    }
-
-    public boolean checkoutMedia(int id) {
-        return false;
-
-    }
-
-    public boolean returnMedia(int id) {
-
-        return false;
-
-    }
-
-    public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
-
-     //   ArrayList<AbstractMedia> arrayList = new ArrayList<AbstractMedia>();
-
-        String query = "SELECT * FROM media WHERE media_type = '%s'";
-        System.out.println(String.format(query,type));
-        ResultSet rs = executeQuery(String.format(query,type));
-        if (rs != null) {
-
-            ArrayList<AbstractMedia> returnedList = buildMediaObject(rs);
-            if (returnedList != null)
-                return returnedList;
-            }
-        return null;
-
-    }
-
-    public ArrayList<AbstractMedia> getByName(String name) {
-        return null;
-    }
-
-    public boolean checkoutMedia(int id) {
-        return false;
-
-    }
 
     public boolean returnMedia(int id) {
 
