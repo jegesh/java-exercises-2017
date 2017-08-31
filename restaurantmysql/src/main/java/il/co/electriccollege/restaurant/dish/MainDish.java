@@ -7,4 +7,9 @@ public class MainDish extends Dish {
     public MainDish(String name, String description, double price) {
         super(name, description, price, DishCategory.MAIN_DISH);
     }
+
+    @Override
+    public String toString() {
+        return "MainDish: " + super.toString();
+    }
 }

@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Comp14 on 30/08/2017.
@@ -100,20 +101,50 @@ public class DishDAL {
     }
 
     public ArrayList<Dish> getAllDishes() {
-        ArrayList<Dish> returnedArray = null;
+        ArrayList<Dish> returnedList = null;
         String query = "SELECT * from dishes";
 
         ResultSet rs = executeQuery(query);
         if (rs != null) {
-            returnedArray = buildDishObject(rs);
+            returnedList = buildDishObject(rs);
 
-            if (returnedArray != null) {
-                return returnedArray;
-            }
+            if (returnedList != null) {
+                return returnedList;
             }
 
+        }
+        return null;
     }
 
+        public ArrayList <Dish> getDishesByCategory(DishCategory category) {
+        ArrayList<Dish> returnedList = null;
+        String query = "SELECT * from dishes WHERE category='" + category + "'";
+
+        ResultSet rs = executeQuery(query);
+        if (rs != null) {
+            returnedList = buildDishObject(rs);
+                if (returnedList != null) {
+                    return returnedList;
+                }
+             }
+        return null;
+    }
+
+    public ArrayList<Dish>getTenCheapestDishes(){
+        ArrayList<Dish> returnedList = null;
+        String query = "SELECT * FROM dishes ORDER BY price ASC LIMIT 10";
+
+        ResultSet rs = executeQuery(query);
+        if (rs != null)
+        {
+            returnedList=buildDishObject(rs);
+                if (returnedList !=null)
+                {
+                    return returnedList;
+                }
+        }
+        return null;
+    }
 
     ////////////// ArrayList buildDishObject ///////
     private ArrayList<Dish> buildDishObject(ResultSet rs){
@@ -132,8 +163,6 @@ public class DishDAL {
                     String category = rs.getString(FIELD_CATEGORY);
 
                     Dish dish = null;
-                    dish.setId(rs.getInt(FIELD_ID));
-
                     if (category.equals(DishCategory.START_DISH.name())) {
                         dish = new StartDish(
                                 name,
@@ -156,7 +185,9 @@ public class DishDAL {
                                 price
                         );
                     }
+                    dish.setId(rs.getInt(FIELD_ID));
                      dishList.add(dish);
+
                 }
 
             } catch (SQLException e) {
