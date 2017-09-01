@@ -85,6 +85,6 @@ public class Dish {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", category=" + category +
-                '}';
+                "}\n**********\n";
     }
 }

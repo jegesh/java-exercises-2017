@@ -28,12 +28,12 @@ public class MenuDal {
     public static final String FIELD_SATIATION_LEVEL = "satiation_level";
     public static final String FIELD_SWEET_LEVEL = "sweet_level";
 
-
-    //basic SQL methods
+    //constructor
     public MenuDal(DatabaseConnector connector) {
         databaseConnector = connector;
     }
 
+    //basic SQL methods
     private Statement getStatement() throws SQLException {
         conn = databaseConnector.getDbConnection();
         if (conn != null) {
@@ -72,54 +72,6 @@ public class MenuDal {
         return null;
     }
 
-    public boolean addDishToMenu(Dish dish) {
-
-
-        String query1 = "INSERT INTO %s (%s, %s, %s, %s, %s, %s, %s) ";
-        query1 = String.format(query1, TABLE_NAME, FIELD_NAME, FIELD_DESCRIPTION,
-                FIELD_PRICE, FIELD_CATEGORY, FIELD_INCLUDE_DRINK, FIELD_SATIATION_LEVEL,
-                FIELD_SWEET_LEVEL);
-
-        String query2 = "VALUES ('%s','%s', '%s', '%s', %s, %s, %s)";
-        String name = dish.getName();
-        String description = dish.getDescription();
-        String price = "" + dish.getPrice();
-        String category = dish.getCategory().name();
-        String includeDrink = null;
-        String satiationLevel = null;
-        String sweetLevel = null;
-
-        if (dish instanceof FirstDish) {
-            includeDrink = "" + fromBoolToInt(((FirstDish) dish).isIncludeDrink());
-
-        }
-        if (dish instanceof MainDish) {
-            satiationLevel = "" + ((MainDish) dish).getSatiationLevel();
-        }
-        if (dish instanceof DessertDish) {
-            sweetLevel = "" + ((DessertDish) dish).getSweetLevel();
-        }
-
-        query2 = String.format(query2, name, description, price, category,
-                includeDrink, satiationLevel, sweetLevel);
-        int result = -1;
-        try {
-            result = executeUpdate(query1 + query2);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return false;
-        }
-        return result > 0;
-    }
-
-    private int fromBoolToInt(boolean boolNum) {
-        return boolNum ? 1 : 0;
-    }
-
-    private boolean fromIntToBool(int intNum) {
-        return intNum == 0 ? false : true;
-    }
-
     private ArrayList<Dish> buildMediaObject(ResultSet rs) {
         ArrayList<Dish> dishList = new ArrayList<>();
         boolean hasNextRow = true;
@@ -135,8 +87,8 @@ public class MenuDal {
                     float price = rs.getFloat(FIELD_PRICE);
                     Category category = Category.valueOf(rs.getString(FIELD_CATEGORY));
                     boolean includeDrink = rs.getBoolean(FIELD_INCLUDE_DRINK);
-                    int satiationLevel=rs.getInt(FIELD_SATIATION_LEVEL);
-                    int sweetLevel=rs.getInt(FIELD_SWEET_LEVEL);
+                    int satiationLevel = rs.getInt(FIELD_SATIATION_LEVEL);
+                    int sweetLevel = rs.getInt(FIELD_SWEET_LEVEL);
 
                     Dish dish = null;
 
@@ -179,16 +131,58 @@ public class MenuDal {
         return dishList;
     }
 
-    public Dish getById(int id) {
-        String query = "SELECT * FROM %s WHERE id = %s";
-        ResultSet rs = executeQuery(String.format(query,TABLE_NAME, id));
-        if (rs != null) {
-            ArrayList<Dish> returnedObjs = buildMediaObject(rs);
-            if (returnedObjs != null) {
-                return returnedObjs.get(0);
-            }
+    //add in methods
+    private int fromBoolToInt(boolean boolNum) {
+        return boolNum ? 1 : 0;
+    }
+
+    private boolean fromIntToBool(int intNum) {
+        return intNum == 0 ? false : true;
+    }
+
+    //custom methods
+    public boolean addDishToMenu(Dish dish) {
+
+
+        String query1 = "INSERT INTO %s (%s, %s, %s, %s, %s, %s, %s) ";
+        query1 = String.format(query1, TABLE_NAME, FIELD_NAME, FIELD_DESCRIPTION,
+                FIELD_PRICE, FIELD_CATEGORY, FIELD_INCLUDE_DRINK, FIELD_SATIATION_LEVEL,
+                FIELD_SWEET_LEVEL);
+
+
+        String name = "'" + dish.getName() + "'";
+        String description = "'" + dish.getDescription() + "'";
+        String price = "" + dish.getPrice();
+        String category = dish.getCategory().name();
+        String includeDrink = null;
+        String satiationLevel = null;
+        String sweetLevel = null;
+
+        if (dish instanceof FirstDish) {
+            includeDrink = "" + fromBoolToInt(((FirstDish) dish).isIncludeDrink());
+
         }
-        return null;
+        if (dish instanceof MainDish) {
+            satiationLevel = "" + ((MainDish) dish).getSatiationLevel();
+        }
+        if (dish instanceof DessertDish) {
+            sweetLevel = "" + ((DessertDish) dish).getSweetLevel();
+        }
+        String query2 = "VALUES (%s, %s, %s, '%s', %s, %s, %s)";
+        query2 = String.format(query2, name, description, price, category,
+                includeDrink, satiationLevel, sweetLevel);
+
+        //check statement
+        System.out.println(query1 + query2);
+
+        int result = -1;
+        try {
+            result = executeUpdate(query1 + query2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return result > 0;
     }
 
     public boolean removeDish(Dish dish) {
@@ -198,6 +192,72 @@ public class MenuDal {
         return false;
 
     }
+
+    public ArrayList<Dish> getAllDishes() {
+        String query = "SELECT * FROM %s";
+        ResultSet rs = executeQuery(String.format(query, TABLE_NAME));
+        if (rs != null) {
+            ArrayList<Dish> returnedObjs = buildMediaObject(rs);
+            if (returnedObjs != null) {
+                return returnedObjs;
+            }
+        }
+        return null;
+    }
+
+    public void cleanTable() {
+        String query = "TRUNCATE %s";
+        executeUpdate(String.format(query, TABLE_NAME));
+    }
+
+    public Dish getById(int id) {
+        String query = "SELECT * FROM %s WHERE %s = %s";
+        ResultSet rs = executeQuery(String.format(query, TABLE_NAME,FIELD_ID, id));
+        if (rs != null) {
+            ArrayList<Dish> returnedObjs = buildMediaObject(rs);
+            if (returnedObjs != null) {
+                return returnedObjs.get(0);
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Dish> getTenCheapestDishes() {
+        //SELECT * FROM restaurant.dishes order by price limit 10;
+        String query = "SELECT * FROM %s ORDER BY %s LIMIT 10";
+        ResultSet rs = executeQuery(String.format(query, TABLE_NAME, FIELD_PRICE));
+        if (rs != null) {
+            ArrayList<Dish> returnedObjs = buildMediaObject(rs);
+            if (returnedObjs != null) {
+                return returnedObjs;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Dish> getDishesByCategory(Category category) {
+        String query = "SELECT * FROM %s WHERE %s = '%s'";
+        ResultSet rs = executeQuery(String.format(query, TABLE_NAME,FIELD_CATEGORY, category.name()));
+
+        if (rs != null) {
+            ArrayList<Dish> returnedObjs = buildMediaObject(rs);
+            if (returnedObjs != null) {
+                return returnedObjs;
+            }
+        }
+        return null;
+    }
+
+    public boolean updatePrice(Dish dish, float newPrice) {
+        //UPDATE Customers SET ContactName='Juan' WHERE Country='Mexico';
+        String query="UPDATE %s SET %s = %s WHERE %s = '%s'";
+        query= String.format(query, TABLE_NAME,FIELD_PRICE, newPrice,FIELD_ID,dish.getDishId());
+        if(executeUpdate(query)>0)
+            return true;
+        return false;
+
+    }
+    // TODO: 01/09/2017
 }
 
 

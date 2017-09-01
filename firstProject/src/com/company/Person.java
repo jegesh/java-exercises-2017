@@ -1,8 +1,8 @@
 package com.company;
 
-public class Person {
+public class Person implements Living{
 
-    private String name = "animalClass";
+    private String name = "person";
     private int age;
     private boolean canFly;
 
@@ -11,7 +11,7 @@ public class Person {
         this.age = age;
         this.canFly = canFly;
     }
-
+    @Override
     public String getName() {
         return name;
     }

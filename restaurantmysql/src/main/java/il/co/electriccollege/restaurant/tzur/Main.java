@@ -7,6 +7,9 @@ import il.co.electriccollege.restaurant.tzur.sql.dao.DessertDish;
 import il.co.electriccollege.restaurant.tzur.sql.dao.Dish;
 import il.co.electriccollege.restaurant.tzur.sql.dao.FirstDish;
 import il.co.electriccollege.restaurant.tzur.sql.dao.MainDish;
+import il.co.electriccollege.restaurant.tzur.sql.dao.enums.Category;
+
+import java.util.ArrayList;
 
 /**
  * Created by yaakov on 8/28/17.
@@ -14,25 +17,47 @@ import il.co.electriccollege.restaurant.tzur.sql.dao.MainDish;
 public class Main {
 
     public static void main(String[] args) {
+
         MenuDal myMenu = new MenuDal(new DatabaseConnector());
-        FirstDish myFirstDish = new FirstDish("סלט בריאות", "טבעוני", 15.5F, true);
-        MainDish myMainDish = new MainDish("סטייק", "300 גרם, עם תוספת אחת", 70, 8);
-        DessertDish mydessertDish = new DessertDish("עוגה", "3 שכבות", 30, 7);
-//        tests
 
-//        add
-//        myMenu.addDishToMenu(myFirstDish);
-//        myMenu.addDishToMenu(myMainDish);
-//        myMenu.addDishToMenu(mydessertDish);
 
-//        query
+//        ***tests***
+
+//        ***clean Table***
+//        myMenu.cleanTable();
+//        ***add***
+//        for (int i = 1; i < 5; i++) {
+//            FirstDish myFirstDish = new FirstDish("סלט בריאות" + i, "טבעוני", 0 + i, true);
+//            MainDish myMainDish = new MainDish("סטייק" + i, "300 גרם, עם תוספת אחת", 3 + i, 8);
+//            DessertDish mydessertDish = new DessertDish("עוגה" + i, "3 שכבות", 10 + i, 7);
+//
+//            myMenu.addDishToMenu(myFirstDish);
+//            myMenu.addDishToMenu(myMainDish);
+//            myMenu.addDishToMenu(mydessertDish);
+//        }
+//
+
+//        ***query***
 //        Dish testDish = myMenu.getById(3);
 //        System.out.println(testDish);
 
-//        update/delete
+//        ***update/delete***
 //        Dish testDish = new Dish();
 //        testDish.setDishId(4);
 //        myMenu.removeDish(testDish);
+
+//        ***custom methods***
+        ArrayList<Dish> dishArrayList = new ArrayList<>();
+//        dishArrayList=myMenu.getAllDishes();
+
+//        dishArrayList=myMenu.getTenCheapestDishes();
+
+//        dishArrayList = myMenu.getDishesByCategory(Category.DESSERT);
+//        System.out.println(dishArrayList.get(0));
+
+//        myMenu.updatePrice(dishArrayList.get(0), 20);
+//        dishArrayList = myMenu.getDishesByCategory(Category.DESSERT);
+//        System.out.println(dishArrayList.get(0));
 
 
     }

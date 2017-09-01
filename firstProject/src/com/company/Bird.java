@@ -2,7 +2,13 @@ package com.company;
 
 public class Bird extends Animal {
     private String name = "birdClass";
-    public Bird(String name, int age) {
-        super( age,true);
+
+    public Bird(int age) {
+        super(age, true);
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

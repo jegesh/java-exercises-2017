@@ -1,8 +1,8 @@
 package com.company;
 
-public class Animal {
+public class Animal implements Living{
 
-    private String name = "animalClass";
+    private String name = "animal";
     private int age;
     private boolean canFly;
 
