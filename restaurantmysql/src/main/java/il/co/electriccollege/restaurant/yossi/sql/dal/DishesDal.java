@@ -176,22 +176,59 @@ public class DishesDal {
     }
 
 
-    public void getTenCheapestDishes()
+    public ArrayList<AbstractDish> getTenCheapestDishes()
     {
+        ArrayList<AbstractDish> returnedObjs = null;
+        String query = "SELECT * FROM dishes ORDER BY price ASC LIMIT 3";
+        ResultSet rs = executeQuery(query);
 
+        if (rs != null) {
+            returnedObjs = buildDishObject(rs);
+
+            if (returnedObjs != null) {
+                return returnedObjs;
+            }
+
+        }
+        return null;
     }
-    public void getDishesByCategory(String category)
+    public ArrayList<AbstractDish> getDishesByCategory(String category)
     {
+        ArrayList<AbstractDish> returnedObjs = null;
+        String query = "SELECT * FROM dishes WHERE category ='" + category + "'";
+        ResultSet rs = executeQuery(query);
 
+        if (rs != null) {
+            returnedObjs = buildDishObject(rs);
+
+            if (returnedObjs != null) {
+                return returnedObjs;
+            }
+
+        }
+        return null;
     }
 
     public void removeDish(AbstractDish dish)
     {
 
     }
-    public void updatePrice(AbstractDish dish, double i)
+    public boolean updatePrice(AbstractDish dish, double price)
     {
+        String name = dish.getName();
+        String description = dish.getDescription();
 
+        String query = "UPDATE dishes SET price=" + price + " WHERE name='" + name + "' and description='" + description + "'";
+        System.out.println(query);
+        int result = -1;
+
+        try {
+            result = executeUpdate(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return result > 0;
     }
 
     private Statement getStatement() throws SQLException {
