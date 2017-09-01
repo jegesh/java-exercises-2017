@@ -209,9 +209,21 @@ public class DishesDal {
         return null;
     }
 
-    public void removeDish(AbstractDish dish)
+    public boolean removeDish(AbstractDish dish)
     {
+        String name = dish.getName();
+        String description = dish.getDescription();
+        String query = "DELETE FROM dishes WHERE name='" + name + "' and description='" + description + "'";
+        int result = -1;
+        try {
+            System.out.println(query);
+            result = executeUpdate(query);
 
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return result > 0;
     }
     public boolean updatePrice(AbstractDish dish, double price)
     {

@@ -58,11 +58,41 @@ public class Main {
             System.out.println("Current DISH: " + curr.toString());
         }
 
-        Breakfast b1 = new Breakfast("greeny", "includ all vegteble and fresh drink and frut", 30, BREAKFAST,"flat egg");
+        /*Breakfast b1 = new Breakfast("greeny", "includ all vegteble and fresh drink and frut", 30, BREAKFAST,"flat egg");
         System.out.println(b1.toString());
         dishesDal.addDish(b1);
         boolean updated = dishesDal.updatePrice(b1,29.5);
-        System.out.println("Was dish updated by price? " + updated);
+        System.out.println("Was dish updated by price? " + updated);*/
+
+
+
+        Pasta p1 = new Pasta("3 chees", "includ 3 kind of smely chees", 62.55, PASTA,"spaghetti","cheesee");
+        System.out.println(p1.toString());
+        dishesDal.addDish(p1);
+        ///get all by catagory
+        ArrayList<AbstractDish> dishList3 = new ArrayList<AbstractDish>();
+        System.out.println("\n");
+        System.out.println("BY CATAGORY");
+        System.out.println("===================");
+        dishList3 = dishesDal.getDishesByCategory(Category.PASTA.name());
+        for (AbstractDish curr: dishList3)
+        {
+            System.out.println("Current DISH: " + curr.toString());
+        }
+
+        dishesDal.removeDish(p1);
+        System.out.println("****   " + p1);
+
+        ///get all by catagory
+        ArrayList<AbstractDish> dishList4 = new ArrayList<AbstractDish>();
+        System.out.println("\n");
+        System.out.println("BY CATAGORY");
+        System.out.println("===================");
+        dishList4 = dishesDal.getDishesByCategory(Category.PASTA.name());
+        for (AbstractDish curr: dishList4)
+        {
+            System.out.println("Current DISH: " + curr.toString());
+        }
 
     }
 
