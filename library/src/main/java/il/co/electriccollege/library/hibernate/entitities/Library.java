@@ -10,6 +10,15 @@ import javax.persistence.*;
 public class Library {
     private long id;
     private String name;
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
