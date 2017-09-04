@@ -243,7 +243,7 @@ public class MediaDal {
 
     public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
 
-        ArrayList<AbstractMedia> arrayList = new ArrayList<AbstractMedia>();
+      //  ArrayList<AbstractMedia> arrayList = new ArrayList<AbstractMedia>();
 
         String query = "SELECT * FROM media WHERE media_type = %s";
         System.out.println(String.format(query,type));

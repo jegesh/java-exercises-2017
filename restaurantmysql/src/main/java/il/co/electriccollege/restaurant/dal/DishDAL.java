@@ -110,8 +110,9 @@ public class DishDAL {
             if (returnedArray != null) {
                 return returnedArray;
             }
-            }
+        }
 
+    return null;
     }
 
 
