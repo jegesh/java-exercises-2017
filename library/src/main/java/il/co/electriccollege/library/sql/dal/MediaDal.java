@@ -14,9 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-/**
- * Created by yaakov on 8/23/17.
- */
+
 public class MediaDal {
     public static final String FIELD_ID = "id";
     public static final String FIELD_NARRATOR = "narrator";
