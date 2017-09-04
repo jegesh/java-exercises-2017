@@ -49,7 +49,7 @@ public class Main {
             System.out.println(d);
         }
         Dish forUpdate = dishesDal.getById(2);
-        dishesDal.updatePrice(forUpdate, 2222);
+        dishesDal.updatePrice(forUpdate, 222);
         dishesDal.removeDish(forUpdate);
     }
 }

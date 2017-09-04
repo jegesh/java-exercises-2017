@@ -9,6 +9,7 @@ public abstract class Dish {
     private float price;
     private String description;
     public Dish(){}
+
     public Dish(String name, float price){
         this.name = name;
         this.price = price;
