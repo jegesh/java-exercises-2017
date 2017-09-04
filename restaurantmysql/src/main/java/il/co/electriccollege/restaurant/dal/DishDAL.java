@@ -113,9 +113,7 @@ public class DishDAL {
             }
         }
 
-        }
-        return null;
-    return null;
+     return null;
     }
 
         public ArrayList <Dish> getDishesByCategory(DishCategory category) {
