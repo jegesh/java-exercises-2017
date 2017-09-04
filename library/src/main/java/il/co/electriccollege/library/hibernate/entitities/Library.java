@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="library")
 public class Library {
-    private long id;
+    private int id;
     private String name;
     private String address;
 
@@ -23,7 +23,7 @@ public class Library {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column
-    public long getId() {
+    public int getId() {
         return this.id;
     }
 
@@ -36,7 +36,7 @@ public class Library {
         this.name = name;
     }
 
-    public void setId(long id){
+    public void setId(int id){
         this.id = id;
     }
 

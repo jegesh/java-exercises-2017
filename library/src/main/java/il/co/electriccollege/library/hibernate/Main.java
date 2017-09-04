@@ -25,9 +25,7 @@ public class Main {
         book.setName("Lord of the Rings");
         book.setPublicationDate(new GregorianCalendar(1942, 5, 12).getTime());
         book.setStatus(MediaStatus.AVAILABLE.name());
-        Library library = new Library();
-        library.setName("Hadera Library");
-        library.setAddress("10 HaShalom");
+        Library library = session.get(Library.class, 2);
         book.setLibrary(library);
         session.save(book);
 
