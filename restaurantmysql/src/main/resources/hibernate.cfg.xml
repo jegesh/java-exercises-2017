@@ -16,7 +16,7 @@
         <!-- Database connection settings -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/library</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/resturant</property>
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
 
@@ -34,7 +34,12 @@
         <!-- Drop and re-create the database schema on startup -->
         <!--<property name="hbm2ddl.auto">update</property>-->
 
-        <mapping class="il.co.electriccollege.library.hibernate.entitities.Media"/>
+        <!--<mapping class="il.co.electriccollege.restaurantmysql.hibernate.entitities."/>-->
+        <!--<mapping class="il.co.electriccollege.restaurant.irena.hibernate.dao.Grill"></mapping>-->
+        <mapping class="il.co.electriccollege.restaurant.irena.hibernate.dao.Dish"></mapping>
+        <!--<mapping class="il.co.electriccollege.restaurant.irena.hibernate.dao.Dessert"></mapping>-->
+        <!--<mapping class="il.co.electriccollege.restaurant.irena.hibernate.dao.BusinessLunch"></mapping>-->
+        <!--<mapping class="il.co.electriccollege.restaurant.irena.hibernate.dao.enums.CategoryEnum"></mapping>-->
 
     </session-factory>
 

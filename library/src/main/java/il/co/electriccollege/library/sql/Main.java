@@ -1,4 +1,4 @@
-package il.co.electriccollege.library;
+package il.co.electriccollege.library.sql;
 
 import il.co.electriccollege.library.irena.exceptions.LibraryException;
 import il.co.electriccollege.library.irena.lender.Lender;
@@ -18,8 +18,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
-
 
 /**
  * Created by yaakov on 8/20/17.

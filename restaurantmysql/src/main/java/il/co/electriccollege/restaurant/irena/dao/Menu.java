@@ -1,7 +1,5 @@
 package il.co.electriccollege.restaurant.irena.dao;
 
-import il.co.electriccollege.restaurant.irena.enums.Garnish;
-
 /**
  * Created by Comp8 on 30/08/17.
  */

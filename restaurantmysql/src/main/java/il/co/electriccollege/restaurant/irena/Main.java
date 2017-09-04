@@ -2,7 +2,7 @@ package il.co.electriccollege.restaurant.irena;
 
 import il.co.electriccollege.restaurant.irena.dal.DishesDal;
 import il.co.electriccollege.restaurant.irena.dao.Dish;
-import il.co.electriccollege.restaurant.irena.enums.*;
+import il.co.electriccollege.restaurant.irena.hibernate.dao.enums.*;
 import il.co.electriccollege.restaurant.irena.model.DatabaseConnector;
 
 import java.util.ArrayList;

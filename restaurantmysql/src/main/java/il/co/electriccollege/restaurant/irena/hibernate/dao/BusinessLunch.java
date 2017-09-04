@@ -1,4 +1,4 @@
-package il.co.electriccollege.restaurant.irena.dao;
+package il.co.electriccollege.restaurant.irena.hibernate.dao;
 
 import il.co.electriccollege.restaurant.irena.hibernate.dao.enums.Garnish;
 
@@ -10,9 +10,12 @@ import javax.persistence.Table;
  * Created by IrKha on 29.08.2017.
  */
 @Entity
-@Table
+@Table(name="dishes")
 public class BusinessLunch extends Dish {
     private Garnish garnish;
+    /*public BusinessLunch(){
+        super();
+    }*/
     public BusinessLunch(Garnish garnish){
         super();
         this.garnish = garnish;

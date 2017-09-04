@@ -1,4 +1,4 @@
-package il.co.electriccollege.restaurant.irena.dao;
+package il.co.electriccollege.restaurant.irena.hibernate.dao;
 
 import il.co.electriccollege.restaurant.irena.hibernate.dao.enums.DrinkEnum;
 
@@ -10,14 +10,15 @@ import javax.persistence.Table;
  * Created by IrKha on 29.08.2017.
  */
 @Entity
-@Table
+@Table(name="dishes")
 public class Dessert extends Dish {
     private DrinkEnum drinkEnum;
+    public Dessert(){}
     public Dessert(DrinkEnum drinkEnum){
         super();
         this.drinkEnum = drinkEnum;
     }
-    @Column
+@Column(name="drink")
     public DrinkEnum getDrinkEnum() {
         return drinkEnum;
     }

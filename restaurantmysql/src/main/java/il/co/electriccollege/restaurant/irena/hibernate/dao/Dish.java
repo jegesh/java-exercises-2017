@@ -1,4 +1,4 @@
-package il.co.electriccollege.restaurant.irena.dao;
+package il.co.electriccollege.restaurant.irena.hibernate.dao;
 
 import javax.persistence.*;
 
@@ -6,13 +6,12 @@ import javax.persistence.*;
  * Created by IrKha on 29.08.2017.
  */
 @Entity
-@Table(name = "dishes")
-public abstract class Dish {
+@Table(name="dishes")
+public class Dish {
     private int id;
     private String name;
     private float price;
     private String description;
-
     public Dish(){}
 
     public Dish(String name, float price){
@@ -25,6 +24,7 @@ public abstract class Dish {
     public int getId() {
         return id;
     }
+
     @Column
     public String getDescription() {
         return description;

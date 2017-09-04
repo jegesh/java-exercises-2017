@@ -3,7 +3,7 @@ package il.co.electriccollege.restaurant.irena.dal;
 
 import il.co.electriccollege.restaurant.irena.model.DatabaseConnector;
 import il.co.electriccollege.restaurant.irena.dao.*;
-import il.co.electriccollege.restaurant.irena.enums.*;
+import il.co.electriccollege.restaurant.irena.hibernate.dao.enums.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
