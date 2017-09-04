@@ -164,8 +164,6 @@ public class MediaDal {
 
            }
 
-
-
     private ArrayList<AbstractMedia> buildMediaObject(ResultSet rs){
         ArrayList<AbstractMedia> mediaList = new ArrayList<AbstractMedia>();
 
@@ -253,7 +251,6 @@ public class MediaDal {
                 return returnedObjs;
             }
         return null;
-
     }
 
 
