@@ -36,6 +36,11 @@ public class MediaDal {
         databaseConnector = connector;
     }
 
+    private String formatDate(Date d) {
+        DateFormat isoFormat = new SimpleDateFormat("YYYY-MM-dd");
+        return isoFormat.format(d);
+    }
+
     /**
      * Example query:
      * INSERT INTO library (name, publication_date, media_type, media_status, publisher, narrator, duration, issue)
@@ -57,10 +62,12 @@ public class MediaDal {
         MediaStatus status = MediaStatus.AVAILABLE;
         Date publicationDate = media.getPublicationDate();
         String narrator = null;
+        String mediaType = MediaType.BOOK.name();
         int duration = 0;
         String issue = "";
 
         if (media instanceof AudioBook) {
+            mediaType = MediaType.AUDIOBOOK.name();
             narrator = "'" + ((AudioBook) media).getNarrator() + "'";
             duration = ((AudioBook) media).getDuration();
         }
@@ -79,117 +86,6 @@ public class MediaDal {
             return false;
         }
         return result > 0;
-    }
-
-    private String formatDate(Date d) {
-        DateFormat isoFormat = new SimpleDateFormat("YYYY-MM-dd");
-        return isoFormat.format(d);
-    }
-
-    public boolean removeMedia(AbstractMedia media) {
-        return false;
-
-    }
-
-    public AbstractMedia getById(int id) {
-        String query = "SELECT * FROM media WHERE id = %s";
-        ResultSet rs = executeQuery(String.format(query, id));
-        if (rs != null) {
-            ArrayList<AbstractMedia> returnedObjs = buildMediaObject(rs);
-            if (returnedObjs != null)
-                return returnedObjs.get(0);
-        }
-        return null;
-    }
-
-    private ArrayList<AbstractMedia> buildMediaObject(ResultSet rs) {
-        ArrayList<AbstractMedia> mediaList = new ArrayList<>();
-        boolean hasNextRow = true;
-        while (hasNextRow) {
-            // read all the rows
-            try {
-                hasNextRow = rs.next();
-                // here we do the actual work
-                if (hasNextRow) {
-                    String name = rs.getString(FIELD_NAME);
-                    String publisher = rs.getString(FIELD_PUBLISHER);
-                    Date publicationDate = rs.getDate(FIELD_PUBLICATION_DATE);
-                    int duration = rs.getInt(FIELD_DURATION);
-                    String mediaType = rs.getString(FIELD_MEDIA_TYPE);
-                    AbstractMedia media = null;
-
-                    if (mediaType.equals(MediaType.BOOK.name())) {
-                        media = new Book(
-                                name,
-                                publisher,
-                                publicationDate
-                        );
-                    }
-                    if (mediaType.equals(MediaType.AUDIOBOOK.name())) {
-                        media = new AudioBook(
-                                name,
-                                publisher,
-                                publicationDate,
-                                rs.getString(FIELD_NARRATOR),
-                                duration
-                        );
-
-                    }
-                    if (mediaType.equals(MediaType.MAGAZINE.name())) {
-                        media = new Magazine(
-                                name,
-                                publisher,
-                                publicationDate,
-                                rs.getString(FIELD_ISSUE)
-                        );
-                    }
-                    media.setType(MediaType.valueOf(mediaType));
-                    media.setStatus(MediaStatus.valueOf(rs.getString(FIELD_MEDIA_STATUS)));
-                    media.setId(rs.getInt(FIELD_ID));
-                    mediaList.add(media);
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-
-                return null;
-            }
-
-
-        }
-        //finally block used to close resources
-        try {
-            rs.close();
-            if (stmt != null)
-                stmt.close();
-        } catch (SQLException se2) {
-            // nothing we can do
-        }
-        try {
-            if (conn != null)
-                conn.close();
-        } catch (SQLException se) {
-            se.printStackTrace();
-        }
-        return mediaList;
-    }
-
-    public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
-        return null;
-    }
-
-    public ArrayList<AbstractMedia> getByName(String name) {
-        return null;
-    }
-
-    public boolean checkoutMedia(int id) {
-        return false;
-
-    }
-
-    public boolean returnMedia(int id) {
-        return false;
-
     }
 
     private Statement getStatement() throws SQLException {
@@ -229,4 +125,173 @@ public class MediaDal {
         }
         return null;
     }
+
+    private ArrayList<AbstractMedia> buildMediaObject(ResultSet rs) {
+        ArrayList<AbstractMedia> mediaList = new ArrayList<>();
+        boolean hasNextRow = true;
+        while (hasNextRow) {
+            // read all the rows
+            try {
+                hasNextRow = rs.next();
+                // here we do the actual work
+                if (hasNextRow) {
+                    String name = rs.getString(FIELD_NAME);
+                    String publisher = rs.getString(FIELD_PUBLISHER);
+                    Date publicationDate = rs.getDate(FIELD_PUBLICATION_DATE);
+                    int duration = rs.getInt(FIELD_DURATION);
+                    String mediaType = rs.getString(FIELD_MEDIA_TYPE);
+
+                    int libraryId = rs.getInt("library_id");
+                    String libraryName = rs.getString("library_name");
+                    String address = rs.getString("address");
+
+                    Library library = new Library();
+                    library.setName(libraryName);
+                    library.setId(libraryId);
+                    library.setAddress(address);
+
+                    AbstractMedia media = null;
+
+                    if (mediaType.equals(MediaType.BOOK.name())) {
+                        media = new Book(
+                                name,
+                                publisher,
+                                publicationDate
+                        );
+                    }
+                    if (mediaType.equals(MediaType.AUDIOBOOK.name())) {
+                        media = new AudioBook(
+                                name,
+                                publisher,
+                                publicationDate,
+                                rs.getString(FIELD_NARRATOR),
+                                duration
+                        );
+
+                    }
+                    if (mediaType.equals(MediaType.MAGAZINE.name())) {
+                        media = new Magazine(
+                                name,
+                                publisher,
+                                publicationDate,
+                                rs.getString(FIELD_ISSUE)
+                        );
+                    }
+                    media.setType(MediaType.valueOf(mediaType));
+                    media.setStatus(MediaStatus.valueOf(rs.getString(FIELD_MEDIA_STATUS)));
+                    media.setId(rs.getInt(FIELD_ID));
+                    media.setLibrary(library);
+                    mediaList.add(media);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+
+                return null;
+            }
+
+
+        }
+        //finally block used to close resources
+        try {
+            rs.close();
+            if (stmt != null)
+                stmt.close();
+        } catch (SQLException se2) {
+            // nothing we can do
+        }
+        try {
+            if (conn != null)
+                conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return mediaList;
+    }
+
+    public AbstractMedia getById(int id) {
+        String query = "SELECT * FROM media WHERE id = %s";
+        ResultSet rs = executeQuery(String.format(query, id));
+        if (rs != null) {
+            ArrayList<AbstractMedia> returnedObjs = buildMediaObject(rs);
+            if (returnedObjs != null)
+                return returnedObjs.get(0);
+        }
+        return null;
+    }
+    //ours
+    public boolean removeMedia(AbstractMedia media) {
+        //DELETE FROM table_name WHERE some_column = some_value
+        String query = "DELETE FROM %s WHERE %s=%s";
+        executeUpdate(String.format(query, TABLE_NAME, FIELD_ID, media.getId()));
+        return false;
+
+    }
+
+    /**
+     * query like this: SELECT media.*, library.* FROM media
+                        LEFT JOIN library ON media.library_id = library.id
+                        WHERE media.media_type='BOOK';
+     * @param type
+     * @return
+     */
+    public ArrayList<AbstractMedia> getByTypeWithLibrary(MediaType type){
+        String query = "SELECT media.*, library.id AS lib_id, library.name AS library_name, library.address FROM media " +
+                "LEFT JOIN library ON media.library_id = library.id " +
+                "WHERE media.media_type='%s'";
+        query = String.format(query, type.name());
+        ResultSet rs = executeQuery(query);
+        if(rs!=null)
+        {
+            return buildMediaObject(rs);
+        }
+        return null;
+
+    }
+
+    public ArrayList<AbstractMedia> getByMediaType(MediaType type) {
+        //SELECT * FROM table_name WHERE some_column = some_value
+        String query="SELECT * FROM %s WHERE %s = '%s'";
+        query= String.format(query, TABLE_NAME,FIELD_MEDIA_TYPE,type);
+        ResultSet rs =executeQuery(query);
+        if(rs!=null)
+        {
+            return buildMediaObject(rs);
+        }
+        return null;
+    }
+
+    public ArrayList<AbstractMedia> getByName(String name) {
+        //SELECT * FROM table_name WHERE some_column = some_value
+        String query="SELECT * FROM %s WHERE %s = '%s'";
+        query= String.format(query, TABLE_NAME,FIELD_NAME,name);
+        ResultSet rs =executeQuery(query);
+        if(rs!=null)
+        {
+            return buildMediaObject(rs);
+        }
+        return null;
+    }
+
+    public boolean checkoutMedia(int id) {
+        //UPDATE Customers SET ContactName='Juan' WHERE Country='Mexico';
+        String query="UPDATE %s SET %s = '%s' WHERE %s = '%s'";
+        query= String.format(query, TABLE_NAME,FIELD_MEDIA_STATUS,MediaStatus.LOANED.name(),FIELD_ID,id);
+        if(executeUpdate(query)>0)
+            return true;
+        return false;
+
+    }
+
+    public boolean returnMedia(int id) {
+        //UPDATE Customers SET ContactName='Juan' WHERE Country='Mexico';
+        String query="UPDATE %s SET %s = '%s' WHERE %s = '%s'";
+        query= String.format(query, TABLE_NAME,FIELD_MEDIA_STATUS,MediaStatus.AVAILABLE.name(),FIELD_ID,id);
+        if (executeUpdate(query)>0)
+            return true;
+        return false;
+
+    }
+
+
 }

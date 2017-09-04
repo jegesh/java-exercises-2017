@@ -18,6 +18,19 @@ public class Media {
     private String status;
     private String mediaType;
 
+    @ManyToOne
+    @JoinColumn(name = "library_id")
+    private Library library;
+
+    @Column
+    public Library getLibrary() {
+        return library;
+    }
+
+    public void setLibrary(Library library) {
+        this.library = library;
+    }
+
     @Column
     public String getName() {
         return name;
