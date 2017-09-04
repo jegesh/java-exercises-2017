@@ -18,6 +18,8 @@ public class Media {
     private String status;
     private String mediaType;
 
+    @ManyToOne
+    @JoinColumn(name = "library_id")
     private Library library;
 
     @Column
