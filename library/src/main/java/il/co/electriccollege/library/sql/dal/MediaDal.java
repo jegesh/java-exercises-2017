@@ -10,9 +10,7 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 /**
  * Created by yaakov on 8/23/17.
@@ -109,6 +107,7 @@ public class MediaDal {
             // read all the rows
             try {
                 hasNextRow = rs.next();
+
                 // here we do the actual work
                 if (hasNextRow) {
                     String name = rs.getString(FIELD_NAME);
@@ -183,7 +182,13 @@ public class MediaDal {
     }
 
     public boolean checkoutMedia(int id) {
-        return false;
+        AbstractMedia media = getById(id);
+        if(media == null || !media.getStatus().equals(MediaStatus.AVAILABLE)) return false;
+
+        String query = "UPDATE %s SET %s='%s' WHERE %s=%s";
+        query = String.format(query, TABLE_NAME, FIELD_MEDIA_STATUS, MediaStatus.LOANED.name(), FIELD_ID, id);
+
+        return executeUpdate(query) > 0;
 
     }
 

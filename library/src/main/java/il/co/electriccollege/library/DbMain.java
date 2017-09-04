@@ -2,23 +2,21 @@ package il.co.electriccollege.library;
 
 import il.co.electriccollege.library.sql.DatabaseConnector;
 import il.co.electriccollege.library.sql.dal.MediaDal;
-import il.co.electriccollege.library.sql.dao.AbstractMedia;
 import il.co.electriccollege.library.sql.dao.Book;
 import il.co.electriccollege.library.sql.dao.MediaType;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.IOException;
 
 /**
  * Created by yaakov on 8/23/17.
  */
 public class DbMain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        String configFile = args[0];
+
         // retrieval
-        MediaDal mediaDal = new MediaDal(new DatabaseConnector());
+        MediaDal mediaDal = new MediaDal(new DatabaseConnector(configFile));
 //        AbstractMedia returnedMedia = mediaDal.getById(2);
 //        System.out.println(returnedMedia);
 
