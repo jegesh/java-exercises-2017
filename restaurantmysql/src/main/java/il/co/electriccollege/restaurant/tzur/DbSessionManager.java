@@ -1,9 +1,10 @@
-package il.co.electriccollege.library.hibernate;
+package il.co.electriccollege.restaurant.tzur;
+
 
 import org.hibernate.SessionFactory;
-        import org.hibernate.boot.MetadataSources;
-        import org.hibernate.boot.registry.StandardServiceRegistry;
-        import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 /**
  * Created by yaakov on 8/22/17.

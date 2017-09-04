@@ -1,7 +1,12 @@
 package il.co.electriccollege.restaurant.tzur.sql.dao;
 
 import il.co.electriccollege.restaurant.tzur.sql.dao.enums.Category;
+import org.hibernate.annotations.Columns;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "dishes")
 public class Dish {
 
     private int dishId;
@@ -9,7 +14,6 @@ public class Dish {
     private String description;
     private float price;
     private Category category;
-
 
 
     //con
@@ -35,7 +39,8 @@ public class Dish {
     //get&set
 
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getDishId() {
         return dishId;
     }
@@ -44,6 +49,7 @@ public class Dish {
         this.dishId = dishId;
     }
 
+    @Column
     public String getName() {
         return name;
     }
@@ -52,6 +58,7 @@ public class Dish {
         this.name = name;
     }
 
+    @Column
     public String getDescription() {
         return description;
     }
@@ -60,6 +67,7 @@ public class Dish {
         this.description = description;
     }
 
+    @Column
     public float getPrice() {
         return price;
     }
@@ -68,6 +76,7 @@ public class Dish {
         this.price = price;
     }
 
+    @Column
     public Category getCategory() {
         return category;
     }

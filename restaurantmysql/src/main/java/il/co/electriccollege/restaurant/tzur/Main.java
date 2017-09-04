@@ -8,6 +8,8 @@ import il.co.electriccollege.restaurant.tzur.sql.dao.Dish;
 import il.co.electriccollege.restaurant.tzur.sql.dao.FirstDish;
 import il.co.electriccollege.restaurant.tzur.sql.dao.MainDish;
 import il.co.electriccollege.restaurant.tzur.sql.dao.enums.Category;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
 
@@ -16,11 +18,24 @@ import java.util.ArrayList;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        DbSessionManager sessionManager = new DbSessionManager();
+        SessionFactory sessionFactory = DbSessionManager.getSessionFactoryInstance();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-        MenuDal myMenu = new MenuDal(new DatabaseConnector());
+        Dish hiberTest = new Dish();
+        hiberTest.setDescription("hiberTest");
+        hiberTest.setName("hiberTest");
+        hiberTest.setPrice(100);
+
+        session.save(hiberTest);
+        session.close();
+        sessionManager.tearDownSession();
 
 
+
+//        MenuDal myMenu = new MenuDal(new DatabaseConnector());
 //        ***tests***
 
 //        ***clean Table***
@@ -47,7 +62,7 @@ public class Main {
 //        myMenu.removeDish(testDish);
 
 //        ***custom methods***
-        ArrayList<Dish> dishArrayList = new ArrayList<>();
+//        ArrayList<Dish> dishArrayList = new ArrayList<>();
 //        dishArrayList=myMenu.getAllDishes();
 
 //        dishArrayList=myMenu.getTenCheapestDishes();
