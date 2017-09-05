@@ -1,6 +1,6 @@
-package il.co.electriccollege.restaurant.irena.hibernate.dao;
+package il.co.electriccollege.restaurant.irena.hibernate.resturant_new.dao;
 
-import il.co.electriccollege.restaurant.irena.hibernate.dao.enums.CategoryEnum;
+import il.co.electriccollege.restaurant.irena.hibernate.resturant_new.dao.enums.CategoryEnum;
 
 import javax.persistence.*;
 
@@ -15,15 +15,25 @@ public class Dish {
     private float price;
     private String description;
     private CategoryEnum category;
+    private Menu menu;
+
     public Dish(){}
 
     public Dish(String name, float price){
         this.name = name;
         this.price = price;
     }
-
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "menu_id")
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    @Column
     public CategoryEnum getCategory() {
         return category;
     }

@@ -1,4 +1,4 @@
-package il.co.electriccollege.restaurant.irena.dao;
+package il.co.electriccollege.restaurant.irena.sql.dao;
 
 /**
  * Created by Comp8 on 30/08/17.

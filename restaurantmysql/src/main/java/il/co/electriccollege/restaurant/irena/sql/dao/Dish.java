@@ -1,4 +1,4 @@
-package il.co.electriccollege.restaurant.irena.dao;
+package il.co.electriccollege.restaurant.irena.sql.dao;
 
 import javax.persistence.*;
 

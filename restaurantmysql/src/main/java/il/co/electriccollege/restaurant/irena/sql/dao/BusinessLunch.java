@@ -1,4 +1,4 @@
-package il.co.electriccollege.restaurant.irena.dao;
+package il.co.electriccollege.restaurant.irena.sql.dao;
 
 import il.co.electriccollege.restaurant.irena.hibernate.dao.enums.Garnish;
 

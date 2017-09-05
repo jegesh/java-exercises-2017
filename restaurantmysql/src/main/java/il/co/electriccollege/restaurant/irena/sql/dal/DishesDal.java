@@ -1,8 +1,8 @@
-package il.co.electriccollege.restaurant.irena.dal;
+package il.co.electriccollege.restaurant.irena.sql.dal;
 
 
-import il.co.electriccollege.restaurant.irena.model.DatabaseConnector;
-import il.co.electriccollege.restaurant.irena.dao.*;
+import il.co.electriccollege.restaurant.irena.sql.model.DatabaseConnector;
+import il.co.electriccollege.restaurant.irena.sql.dao.*;
 import il.co.electriccollege.restaurant.irena.hibernate.dao.enums.*;
 
 import java.sql.Connection;

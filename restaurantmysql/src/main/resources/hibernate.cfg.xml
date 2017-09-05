@@ -16,9 +16,9 @@
         <!-- Database connection settings -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/resturant</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">root</property>
+        <property name="hibernate.connection.url">jdbc:mysql://electric-java-2017.ceavgnl7zcnr.eu-west-2.rds.amazonaws.com/restaurant</property>
+        <property name="connection.username">elecjava2017</property>
+        <property name="connection.password">elecjava2017</property>
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">10</property>
@@ -36,7 +36,8 @@
 
         <!--<mapping class="il.co.electriccollege.restaurantmysql.hibernate.entitities."/>-->
         <!--<mapping class="il.co.electriccollege.restaurant.irena.hibernate.dao.Grill"></mapping>-->
-        <mapping class="il.co.electriccollege.restaurant.irena.hibernate.dao.Dish"></mapping>
+        <mapping class="il.co.electriccollege.restaurant.irena.hibernate.resturant_new.dao.Dish"></mapping>
+        <mapping class="il.co.electriccollege.restaurant.irena.hibernate.resturant_new.dao.Menu"></mapping>
         <!--<mapping class="il.co.electriccollege.restaurant.irena.hibernate.dao.Dessert"></mapping>-->
         <!--<mapping class="il.co.electriccollege.restaurant.irena.hibernate.dao.BusinessLunch"></mapping>-->
         <!--<mapping class="il.co.electriccollege.restaurant.irena.hibernate.dao.enums.CategoryEnum"></mapping>-->
