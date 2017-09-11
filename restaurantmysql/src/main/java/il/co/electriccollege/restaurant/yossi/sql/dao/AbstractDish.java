@@ -1,11 +1,11 @@
 package il.co.electriccollege.restaurant.yossi.sql.dao;
 
 import javax.persistence.*;
-
+@Entity
+@Table(name="dishes")
 public class AbstractDish {
 
-    @Entity
-    @Table(name="dishes")
+
     int id;
     private String name;
     private String description;

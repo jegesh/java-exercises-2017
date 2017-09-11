@@ -9,10 +9,20 @@ public class Menu {
 
     private int id;
     private String name;
+    private String time;
 
-    public Menu(int id, String name) {
+    /*public Menu(int id, String name) {
         this.id = id;
         this.name = name;
+    }*/
+
+    public Menu() {
+    }
+
+    public Menu(String name, String time) {
+        this.id = id;
+        this.name = name;
+        this.time = time;
     }
 
     @Id
@@ -33,5 +43,14 @@ public class Menu {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Column(name="hours_available")
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

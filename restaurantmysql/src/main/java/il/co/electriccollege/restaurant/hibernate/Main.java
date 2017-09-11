@@ -50,7 +50,7 @@ public class Main {
                 session.saveOrUpdate(dish2);
                 session.getTransaction().commit();
                 session.beginTransaction();
-                dish.setDescription("aflkjsdfkl; sad;fj asl;kdfl sadjfkl;asdj fklsdj;fladslfkjsdf adsklfjas;dlfj l;aksdjf;lkasdjfkl;asdjf;lkajsd;fkl ajsdkf jasodipjfpoiwejfpqoiadvoksdiocajdiofjapoisdjf pasdjfiopsjd f");
+                //dish.setDescription("aflkjsdfkl; sad;fj asl;kdfl sadjfkl;asdj fklsdj;fladslfkjsdf adsklfjas;dlfj l;aksdjf;lkasdjfkl;asdjf;lkajsd;fkl ajsdkf jasodipjfpoiwejfpqoiadvoksdiocajdiofjapoisdjf pasdjfiopsjd f");
                 session.saveOrUpdate(dish);
 
                 session.getTransaction().commit();

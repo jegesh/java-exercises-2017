@@ -16,9 +16,9 @@
         <!-- Database connection settings -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/restaurant</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password"></property>
+        <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/restaurant</property>-->
+        <!--<property name="connection.username">root</property>-->
+        <!--<property name="connection.password"></property>-->
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">10</property>
@@ -34,8 +34,9 @@
         <!-- Drop and re-create the database schema on startup -->
         <!--<property name="hbm2ddl.auto">update</property>-->
 
-        <mapping class="il.co.electriccollege.restaurant.hibernate.entity.AbstractDish"/>
-        <mapping class="il.co.electriccollege.restaurant.hibernate.entity.Menu"/>
+        <mapping class="il.co.electriccollege.restaurant.yossi.hibernate.entity.AbstractDish"/>
+        <mapping class="il.co.electriccollege.restaurant.yossi.hibernate.entity.Menu"/>
+        <!--<mapping class="il.co.electriccollege.restaurant.hibernate.entity.Menu"/>-->
 
     </session-factory>
 

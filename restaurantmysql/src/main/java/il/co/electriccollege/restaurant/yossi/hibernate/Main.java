@@ -14,7 +14,7 @@ public class Main {
 
         public static void main (String[]args) throws Exception {
 
-            DbSessionManager sessionManager = new DbSessionManager();
+         /*   DbSessionManager sessionManager = new DbSessionManager();
             SessionFactory sessionFactory = DbSessionManager.getSessionFactoryInstance();
             Session session = sessionFactory.openSession();
             session.beginTransaction();
@@ -24,7 +24,7 @@ public class Main {
             dish.setPrice(55.30);
             session.save(dish);
             session.close();
-            sessionManager.tearDownSession();
+            sessionManager.tearDownSession();*/
         }
 
 
