@@ -1,4 +1,4 @@
-package dishes;
+package il.co.electriccollege.restaurant.dishes;
 
 public class StandardDish extends AbstractDish {
     private SideDish sideDish;

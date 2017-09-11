@@ -1,4 +1,4 @@
-package dishes;
+package il.co.electriccollege.restaurant.dishes;
 
 public  abstract  class AbstractDish {
     private String name;
@@ -82,7 +82,7 @@ public  abstract  class AbstractDish {
 
     @Override
     public String toString() {
-        return "dishes.AbstractDish{" +
+        return "il.co.electriccollege.restaurant.dishes.AbstractDish{" +
                 "name='" + name + '\'' +
                 ", id=" + id +
                 ", description='" + description + '\'' +
