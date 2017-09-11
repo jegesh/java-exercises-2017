@@ -13,10 +13,10 @@ import java.util.GregorianCalendar;
 /**
  * Created by yaakov on 8/22/17.
  */
-public class Main {
+public class HibernateMain {
 
     public static void main(String[] args) throws Exception {
-        DbSessionManager sessionManager = new DbSessionManager();
+        DbSessionManager sessionManager = new DbSessionManager(args[0]);
         SessionFactory sessionFactory = DbSessionManager.getSessionFactoryInstance();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -25,7 +25,7 @@ public class Main {
         book.setName("Lord of the Rings");
         book.setPublicationDate(new GregorianCalendar(1942, 5, 12).getTime());
         book.setStatus(MediaStatus.AVAILABLE.name());
-        Library library = session.get(Library.class, 2);
+        Library library = session.get(Library.class, 3);
         book.setLibrary(library);
         session.save(book);
 

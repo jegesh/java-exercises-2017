@@ -15,8 +15,8 @@ public class Media {
     private long id;
     private String name;
     private Date publicationDate;
-    private String status;
-    private String mediaType;
+    private MediaStatus status;
+    private MediaType mediaType;
 
     private Library library;
 
@@ -49,12 +49,12 @@ public class Media {
     }
 
     @Column(name="media_status")
-    public MediaStatus getStatus() {
-        return MediaStatus.valueOf(status);
+    public String getStatus() {
+        return status.name();
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.status = MediaStatus.valueOf(status);
     }
 
     @Id
@@ -65,16 +65,21 @@ public class Media {
     }
 
     @Column(name = "media_type")
-    public MediaType getMediaType(){
-        return MediaType.valueOf(mediaType);
+    public String getMediaType(){
+        return mediaType.name();
     }
 
     public void setMediaType(String mediaType){
-        this.mediaType = mediaType;
+        this.mediaType = MediaType.valueOf(mediaType);
     }
 
     public void setId(long id){
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        String desc = "Type: %s, Title: %s, published on: %s, id: %s, status: %s";
+        return String.format(desc, mediaType, name, publicationDate, id, status);
+    }
 }
