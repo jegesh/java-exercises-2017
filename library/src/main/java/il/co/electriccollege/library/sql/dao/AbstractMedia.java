@@ -11,6 +11,16 @@ public abstract class AbstractMedia {
     private MediaStatus status;
     private String publisher;
     private Date publicationDate;
+    private Library library;
+
+    public Library getLibrary() {
+        return library;
+    }
+
+    public void setLibrary(Library library) {
+        this.library = library;
+    }
+
 
     //abstract methods
     public abstract int getFine();

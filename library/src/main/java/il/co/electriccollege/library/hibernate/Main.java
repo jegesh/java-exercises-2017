@@ -1,5 +1,6 @@
 package il.co.electriccollege.library.hibernate;
 
+import il.co.electriccollege.library.hibernate.entitities.Library;
 import il.co.electriccollege.library.hibernate.entitities.Media;
 import il.co.electriccollege.library.hibernate.entitities.MediaStatus;
 import il.co.electriccollege.library.hibernate.entitities.MediaType;
@@ -24,7 +25,10 @@ public class Main {
         book.setName("Lord of the Rings");
         book.setPublicationDate(new GregorianCalendar(1942, 5, 12).getTime());
         book.setStatus(MediaStatus.AVAILABLE.name());
+        Library library = session.get(Library.class, 2);
+        book.setLibrary(library);
         session.save(book);
+
         session.close();
         sessionManager.tearDownSession();
     }

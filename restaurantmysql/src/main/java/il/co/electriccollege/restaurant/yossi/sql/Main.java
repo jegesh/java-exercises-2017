@@ -1,4 +1,4 @@
-package il.co.electriccollege.restaurant.yossi;
+package il.co.electriccollege.restaurant.yossi.sql;
 
 import il.co.electriccollege.restaurant.yossi.sql.DatabaseConnector;
 import il.co.electriccollege.restaurant.yossi.sql.dal.DishesDal;
