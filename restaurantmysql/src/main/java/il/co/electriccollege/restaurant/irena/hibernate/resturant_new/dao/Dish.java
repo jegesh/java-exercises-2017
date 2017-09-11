@@ -32,8 +32,11 @@ public class Dish {
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
-
-    @Column
+    
+    @Column (name = "category")
+    public String getCategoryName(){
+        return category.name();
+    }
     public CategoryEnum getCategory() {
         return category;
     }

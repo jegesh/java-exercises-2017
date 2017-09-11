@@ -28,7 +28,7 @@ public class Main {
         grill.setPrice(20);
         grill.setName("name");
         grill.setCategory(CategoryEnum.Grill);
-        session.save(menu2);
+        //session.save(menu2);
         grill.setMenu(menu2);
         session.save(grill);
         session.close();
