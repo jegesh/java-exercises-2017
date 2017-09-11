@@ -1,7 +1,9 @@
-package il.co.electriccollege.restaurant.yossi.sql.dao;
+package il.co.electriccollege.restaurant.hibernate.entity;
 
 
-public class Breakfast extends AbstractDish{
+import javax.persistence.Column;
+
+public class Breakfast extends AbstractDish {
 
     String eggs;
 
@@ -10,6 +12,7 @@ public class Breakfast extends AbstractDish{
         this.eggs = eggs;
     }
 
+    @Column
     public String getEggs() {
         return eggs;
     }

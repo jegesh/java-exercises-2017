@@ -1,11 +1,13 @@
-package il.co.electriccollege.restaurant.yossi.sql.dao;
+package il.co.electriccollege.restaurant.hibernate.entity;
+
 
 import javax.persistence.*;
 
+@Entity
+@Table(name="dishes")
 public class AbstractDish {
 
-    @Entity
-    @Table(name="dishes")
+
     int id;
     private String name;
     private String description;
@@ -31,9 +33,8 @@ public class AbstractDish {
         this.category = category;
         countId = countId+1;
     }
-
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column
     public int getId() {
         return id;
@@ -42,7 +43,6 @@ public class AbstractDish {
     public void setId(int id) {
         this.id = id;
     }
-
     @Column
     public String getName() {
         return name;
@@ -51,7 +51,6 @@ public class AbstractDish {
     public void setName(String name) {
         this.name = name;
     }
-
     @Column
     public String getDescription() {
         return description;
@@ -60,7 +59,6 @@ public class AbstractDish {
     public void setDescription(String description) {
         this.description = description;
     }
-
     @Column
     public double getPrice() {
         return price;
@@ -69,7 +67,6 @@ public class AbstractDish {
     public void setPrice(double price) {
         this.price = price;
     }
-
     @Column
     public Category getCategory() {
         return category;

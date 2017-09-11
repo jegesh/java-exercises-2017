@@ -1,6 +1,6 @@
-package il.co.electriccollege.restaurant.yossi.sql.dao;
+package il.co.electriccollege.restaurant.hibernate.entity;
 
-public class Pasta extends AbstractDish{
+public class Pasta extends AbstractDish {
 
 
     String typeOfPasta;
