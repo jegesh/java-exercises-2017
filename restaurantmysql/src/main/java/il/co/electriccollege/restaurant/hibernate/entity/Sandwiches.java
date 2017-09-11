@@ -5,7 +5,7 @@ public class Sandwiches extends AbstractDish {
     String breadType;
     String sizeOfSandwich;
 
-    public Sandwiches(String name, String description, double price, Category category, String breadType, String sizeOfSandwich) {
+    public Sandwiches(String name, String description, double price, String category, String breadType, String sizeOfSandwich) {
         super(name, description, price, category);
         this.breadType = breadType;
         this.sizeOfSandwich = sizeOfSandwich;

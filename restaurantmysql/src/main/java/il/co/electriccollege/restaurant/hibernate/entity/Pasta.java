@@ -6,7 +6,7 @@ public class Pasta extends AbstractDish {
     String typeOfPasta;
     public String sauce;
 
-    public Pasta(String name, String description, double price, Category category, String typeOfPasta, String sauce) {
+    public Pasta(String name, String description, double price, String category, String typeOfPasta, String sauce) {
         super(name, description, price, category);
         this.typeOfPasta = typeOfPasta;
         this.sauce = sauce;

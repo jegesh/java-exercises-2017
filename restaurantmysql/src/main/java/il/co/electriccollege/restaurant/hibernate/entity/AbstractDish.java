@@ -12,8 +12,20 @@ public class AbstractDish {
     private String name;
     private String description;
     private double price;
-    private Category category;
+    private String category;
     private int countId = 0;
+    private Menu menu;
+
+    @ManyToOne
+    @JoinColumn(name = "menu")
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
 
     public AbstractDish() {
     }
@@ -26,7 +38,7 @@ public class AbstractDish {
         this.category = category;
     }*/
 
-    public AbstractDish(String name, String description, double price, Category category) {
+    public AbstractDish(String name, String description, double price, String category) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -68,11 +80,11 @@ public class AbstractDish {
         this.price = price;
     }
     @Column
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

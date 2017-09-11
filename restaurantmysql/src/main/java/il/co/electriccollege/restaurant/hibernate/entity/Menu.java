@@ -2,7 +2,6 @@ package il.co.electriccollege.restaurant.hibernate.entity;
 
 
 import javax.persistence.*;
-
 @Entity
 @Table(name="menu")
 public class Menu {
@@ -14,6 +13,8 @@ public class Menu {
         this.id = id;
         this.name = name;
     }
+
+    public Menu(){}
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
