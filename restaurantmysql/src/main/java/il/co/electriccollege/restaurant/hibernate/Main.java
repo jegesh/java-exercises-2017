@@ -59,7 +59,10 @@ public class Main {
                 ex.printStackTrace();
                 dish.setDescription(formerDesc);
             }
+
+            // without transaction, delete does nothing
             session.delete(dish);
+
             System.out.println(dish2.getCategory());
             session.close();
             sessionManager.tearDownSession();

@@ -27,6 +27,7 @@ public class DbSessionManager {
 //        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
 //                .configure(configFile) // configures settings from hibernate.cfg.xml or other xml config
 //                .build();
+
         Properties dbConnectionProperties = new Properties();
         try {
             dbConnectionProperties.load(ClassLoader.getSystemClassLoader().getResourceAsStream(configFile));
