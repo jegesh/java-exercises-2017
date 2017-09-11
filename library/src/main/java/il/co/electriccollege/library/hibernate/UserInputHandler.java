@@ -193,7 +193,9 @@ public class UserInputHandler {
         Media media = session.get(Media.class, Long.parseLong(mediaId));
         if(media != null && media.getStatus().equals(MediaStatus.AVAILABLE)){
             media.setStatus(MediaStatus.LOANED.name());
-            session.save(media);
+            session.update(media);
+            session.getTransaction().commit();
+            session.beginTransaction();
             String output = "You returned a %s with the title %s, published on %s.  Enjoy!\n\n";
             System.out.println(String.format(output, media.getMediaType(), media.getName(), media.getPublicationDate()));
             return;
@@ -209,7 +211,9 @@ public class UserInputHandler {
         Media media = session.get(Media.class, Long.parseLong(mediaId));
         if(media != null && media.getStatus().equals(MediaStatus.AVAILABLE.name())){
             media.setStatus(MediaStatus.LOANED.name());
-            session.save(media);
+            session.update(media);
+            session.getTransaction().commit();
+            session.beginTransaction();
             String output = "You checked out a %s with the title %s, published on %s.  Enjoy!\n\n";
             System.out.println(String.format(output, media.getMediaType(), media.getName(), media.getPublicationDate()));
             return;
