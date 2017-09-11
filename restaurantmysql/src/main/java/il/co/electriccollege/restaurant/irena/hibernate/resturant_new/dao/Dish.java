@@ -32,7 +32,7 @@ public class Dish {
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
-    
+
     @Column (name = "category")
     public String getCategoryName(){
         return category.name();
