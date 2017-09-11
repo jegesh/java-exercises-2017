@@ -29,7 +29,7 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
-        <property name="hibernate.id.new_generator_mappings">false</property>
+        <property name="hibernate.id.new_generator_mappings">false</property> <!--who generate row ids automatic(fals=DB) -->
 
         <!-- Drop and re-create the database schema on startup -->
         <!--<property name="hbm2ddl.auto">update</property>-->
@@ -41,6 +41,7 @@
         <!--<mapping class="il.co.electriccollege.restaurant.irena.hibernate.dao.Dessert"></mapping>-->
         <!--<mapping class="il.co.electriccollege.restaurant.irena.hibernate.dao.BusinessLunch"></mapping>-->
         <!--<mapping class="il.co.electriccollege.restaurant.irena.hibernate.dao.enums.CategoryEnum"></mapping>-->
+
 
     </session-factory>
 
