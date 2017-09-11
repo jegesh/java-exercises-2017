@@ -16,9 +16,9 @@
         <!-- Database connection settings -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/library</property>-->
-        <!--<property name="connection.username">root</property>-->
-        <!--<property name="connection.password"/>-->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/restaurant</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password"></property>
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">10</property>
@@ -29,15 +29,13 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
-        <!-- Determine whether hibernate should generate automatic row ids -->
-        <property name="hibernate.id.new_generator_mappings">false</property>
+        <property name="hibernate.id.new_generator_mappings">false</property> <!--who generate row ids automatic(fals=DB) -->
 
         <!-- Drop and re-create the database schema on startup -->
         <!--<property name="hbm2ddl.auto">update</property>-->
 
-        <!-- entity classes (DAO) -->
-        <mapping class="il.co.electriccollege.library.hibernate.entitities.Library"/>
-        <mapping class="il.co.electriccollege.library.hibernate.entitities.Media"/>
+        <mapping class="il.co.electriccollege.restaurant.hibernate.entity.AbstractDish"/>
+        <mapping class="il.co.electriccollege.restaurant.hibernate.entity.Menu"/>
 
     </session-factory>
 

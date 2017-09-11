@@ -40,4 +40,9 @@ public class Library {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        String desc = "Name: %s, Address: %s, id: %s";
+        return String.format(desc, name, address, id);
+    }
 }
