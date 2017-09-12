@@ -17,9 +17,9 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/restaurant</property>-->
-        <property name="hibernate.connection.url">electric-java-2017.ceavgnl7zcnr.eu-west-2.rds.amazonaws.com</property>
-        <property name="connection.username">elecjava2017</property>
-        <property name="connection.password">elecjava2017</property>
+        <!--<property name="hibernate.connection.url">jdbc:mysql://electric-java-2017.ceavgnl7zcnr.eu-west-2.rds.amazonaws.com</property>-->
+        <!--<property name="connection.username">elecjava2017</property>-->
+        <!--<property name="connection.password">elecjava2017</property>-->
         <!--<property name="connection.username">root</property>-->
         <!--<property name="connection.password">root</property>-->
 

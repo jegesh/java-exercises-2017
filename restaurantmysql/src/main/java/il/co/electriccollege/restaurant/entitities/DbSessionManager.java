@@ -5,13 +5,31 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+
+import java.util.Properties;
 
 public class DbSessionManager {
     private static SessionFactory sessionFactory;
 
-    public DbSessionManager(){
-        setupSession();
+//    public DbSessionManager(){
+//        setupSession();
+//    }
+
+    public DbSessionManager(String configFile){//add in order to use Dynamic class
+        setupSession(configFile);
     }
+
+    public void setupSession(String configFile) {//add in order to use Dynamic class
+        Properties dbConnectionProperties = new Properties();
+        try {
+            dbConnectionProperties.load(ClassLoader.getSystemClassLoader().getResourceAsStream(configFile));
+            sessionFactory = new Configuration().mergeProperties(dbConnectionProperties).configure().buildSessionFactory();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void setupSession(){//הפונקציה פועלת בכניסה לאפליקציה
         // A SessionFactory is set up once for an application!

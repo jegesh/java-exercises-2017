@@ -48,12 +48,11 @@ public class Menu {
 //    }
 
 
-
         int id;
         String hours_available;
         String name;
 
-         @Column
+         @Column(name = "hours_available")
         public String getHoursAvailable() {
             return hours_available;
         }
@@ -65,7 +64,7 @@ public class Menu {
         @Id
          @GeneratedValue(strategy=GenerationType.AUTO)
         @Column
-        public  int    getId() {
+        public  int  getId() {
             return id;
 
         }
