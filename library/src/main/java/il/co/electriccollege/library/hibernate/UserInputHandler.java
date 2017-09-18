@@ -68,6 +68,7 @@ public class UserInputHandler {
                 ex.printStackTrace();
             }
         }
+        System.exit(0);
     }
 
     public void donate() throws ParseException {
