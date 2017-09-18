@@ -16,7 +16,7 @@ public class Dish {
     private String description;
     private CategoryEnum category;
     private Menu menu;
-
+    private String categoryName;
     public Dish(){}
 
     public Dish(String name, float price){
@@ -33,10 +33,14 @@ public class Dish {
         this.menu = menu;
     }
 
-    @Column (name = "category")
-    public String getCategoryName(){
+
+   /* public String getCategoryName(){
         return category.name();
     }
+    public void setCategoryName(){
+        this.categoryName = getCategoryName();
+    }*/
+    @Column (name = "category")
     public CategoryEnum getCategory() {
         return category;
     }

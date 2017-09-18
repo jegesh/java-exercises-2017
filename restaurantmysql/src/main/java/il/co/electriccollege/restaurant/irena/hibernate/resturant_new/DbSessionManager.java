@@ -4,6 +4,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+
+import java.util.Properties;
 
 /**
  * Created by yaakov on 8/22/17.
@@ -11,16 +14,23 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class DbSessionManager {
     private static SessionFactory sessionFactory;
 
-    public DbSessionManager(){
-        setupSession();
+    public DbSessionManager(String configFile){
+        setupSession(configFile);
     }
 
-    public void setupSession(){
+    public void setupSession(String configFile){
         // A SessionFactory is set up once for an application!
-        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+       /* final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure() // configures settings from hibernate.cfg.xml
-                .build();
+                .build();*/
+        Properties dbConnectionProperties = new Properties();
         try {
+            dbConnectionProperties.load(ClassLoader.getSystemClassLoader().getResourceAsStream(configFile));
+            sessionFactory = new Configuration().mergeProperties(dbConnectionProperties).configure().buildSessionFactory();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+       /* try {
             sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
         }
         catch (Exception e) {
@@ -29,7 +39,7 @@ public class DbSessionManager {
             e.printStackTrace();
             StandardServiceRegistryBuilder.destroy( registry );
             throw new ExceptionInInitializerError(e);
-        }
+        }*/
     }
 
     public void tearDownSession() throws Exception {

@@ -12,7 +12,7 @@ import org.hibernate.SessionFactory;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        DbSessionManager sessionManager = new DbSessionManager();
+        DbSessionManager sessionManager = new DbSessionManager(args[0]);
         SessionFactory sessionFactory = DbSessionManager.getSessionFactoryInstance();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -24,13 +24,13 @@ public class Main {
         menu2.setName("buiseness menu");
 
         Dish grill = new Dish();
-        grill.setDescription("grill tov");
+        grill.setDescription("grill bar");
         grill.setPrice(20);
-        grill.setName("name");
+        grill.setName("big burger from romania");
         grill.setCategory(CategoryEnum.Grill);
         //session.save(menu2);
         grill.setMenu(menu2);
-        session.save(grill);
+        session.saveOrUpdate(grill);
         session.close();
         sessionManager.tearDownSession();
     }
