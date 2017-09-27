@@ -60,7 +60,7 @@ public class Main {
         CriteriaQuery<Property> criteria = builder.createQuery(Property.class);
         Root<Property> root = criteria.from(Property.class);
         criteria.select( root );
-        
+
         Query query = session4.createQuery(criteria);
 //        query.setMaxResults(2);  // set limit
         List<Property> properties = query.getResultList();
