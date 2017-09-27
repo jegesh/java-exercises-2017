@@ -1,4 +1,4 @@
-package il.co.electriccollege.jersey;
+package il.co.electriccollege.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,6 +6,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.http.ContentType;
 
 /**
  * Servlet implementation class CalculatorServlet
@@ -18,6 +20,7 @@ public class CalculatorServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/plain");
 		
@@ -57,6 +60,18 @@ public class CalculatorServlet extends HttpServlet {
 		
 		
 		
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		resp.setStatus(400);
+//		String name = req.getParameter("name");
+//		try {
+//			name.length();
+//		}catch(Exception e) {
+//			
+//		}
+		doPost(req, resp);
 	}
 
 }
