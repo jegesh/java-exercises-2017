@@ -1,7 +1,10 @@
 package com.borka;
 
 
+import java.awt.Color;
 import java.io.IOException;
+import java.net.Authenticator.RequestorType;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,14 +39,13 @@ public class ShowRGB extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("application/json");
 		String requestColor = request.getParameter("color");
-		
+	
 		if(requestColor == null) {
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			response.getWriter().append("Empty color type");
 		}
-			
-	try {
-       
+	          
+	try {     
 	 JSONObject jsonPurple = new JSONObject();
 	 jsonPurple.put("color", "purple") ;
 	 jsonPurple.put("red", "123") ;
@@ -70,15 +72,13 @@ public class ShowRGB extends HttpServlet {
 		
 		if (json.get("color").equals(requestColor))
 		{
-			System.out.println("Bingo !!! RGB is " + colorArray.getJSONObject(i));
+			//System.out.println("Bingo !!! RGB is " + colorArray.getJSONObject(i));
+			response.getWriter().print(colorArray.getJSONObject(i));
 		}
 	}
 	
-	
-	//System.out.println(colorArray.toString());
-	//	System.out.println(jsonPurple.toString());
 	} catch (JSONException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 	}
 	}	

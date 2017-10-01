@@ -23,9 +23,7 @@ public class DbSessionManager {
 
     private void setupSession(){
 //         A SessionFactory is set up once for an application!
-        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure() // configures settings from hibernate.cfg.xml or other xml config
-                .build();
+        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build(); // configures settings from hibernate.cfg.xml or other xml config
 
         try {
             sessionFactory = new Configuration().configure().buildSessionFactory();
