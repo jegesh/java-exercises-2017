@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tomcat.util.http.ContentType;
+
 
 /**
  * Servlet implementation class CalculatorServlet
@@ -27,7 +27,7 @@ public class CalculatorServlet extends HttpServlet {
 		String operation = request.getParameter("operation");
 		String firstOperand = request.getParameter("first");
 		String secondOperand = request.getParameter("second");
-		
+		float result =0;
 		// check that all parameters are present
 		if(operation == null || firstOperand == null || secondOperand == null) {
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -49,6 +49,30 @@ public class CalculatorServlet extends HttpServlet {
 			float firstFloat = Float.parseFloat(firstOperand);
 			float secondFloat = Float.parseFloat(secondOperand);
 			
+			switch (operation) {
+			
+			case "+":
+				result = firstFloat + secondFloat;
+				break;
+				
+			case "-":
+				 result = firstFloat - secondFloat;
+				break;
+			case "*":
+				result = firstFloat*secondFloat;
+				break;
+			case "/":
+				result = firstFloat/secondFloat;
+				break;
+				
+			default:
+			break;
+			}
+			
+			
+			System.out.println(result);
+			response.getWriter().append("Result:  " + result);
+			
 			// everything is valid, now I can do the calculation
 			
 		}catch(NumberFormatException exc) {
@@ -57,9 +81,7 @@ public class CalculatorServlet extends HttpServlet {
 			response.getWriter().append("parameters first and second must be valid numbers");
 			return;
 		}
-		
-		
-		
+			
 	}
 	
 	@Override
