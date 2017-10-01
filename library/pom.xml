@@ -6,7 +6,7 @@
 
     <groupId>il.co.electriccollege</groupId>
     <artifactId>library</artifactId>
-    <version>1.0</version>
+    <version>1.1.4</version>
     <packaging>jar</packaging>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -39,12 +39,12 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.2.10.Final</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-annotations -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-            <version>3.5.6-Final</version>
-        </dependency>
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.hibernate/hibernate-annotations &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate</groupId>-->
+            <!--<artifactId>hibernate-annotations</artifactId>-->
+            <!--<version>3.5.6-Final</version>-->
+        <!--</dependency>-->
         <!-- https://mvnrepository.com/artifact/org.hibernate/ejb3-persistence -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -59,6 +59,21 @@
             <version>6.0.6</version>
         </dependency>
 
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun.jdmk</groupId>
+                    <artifactId>jmxtools</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.jmx</groupId>
+                    <artifactId>jmxri</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
     </dependencies>
 
