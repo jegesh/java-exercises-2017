@@ -14,6 +14,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 
 /**
@@ -26,6 +27,10 @@ public class UserInputHandler {
 
     public static void main(String[] args) {
         new UserInputHandler(args[0]).start();
+    }
+
+    public UserInputHandler(Properties configProps){
+        new DbSessionManager(configProps);
     }
 
     public UserInputHandler(String configFile){
@@ -221,5 +226,16 @@ public class UserInputHandler {
         }
         System.out.println("I'm sorry, that item is not available presently");
         session.close();
+    }
+
+    public static List<Media> getAllMedia(){
+
+        Session session = DbSessionManager.getSessionFactoryInstance().openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery criteria = builder.createQuery(Media.class);
+        Root root = criteria.from(Media.class);
+        criteria.select(root);
+        List<Media> mediaList = session.createQuery( criteria ).getResultList();
+        return mediaList;
     }
 }

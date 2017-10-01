@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>File upload example</title>
+<style>
+	form{
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		text-align: left;
+	}
+	body{
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		text-align: center;
+	}
+	button{
+		width: 150px;
+		text-align: center;
+		padding: 10px;
+	}
+</style>
+</head>
+<body style="width: 1000px; padding: 30px">
+<h1>File upload example</h1>
+<p></p>
+<form method="post" action="file-upload" enctype="multipart/form-data">
+	<label>User Name:  
+	<input type="text" name="username"/></label>
+	<br />
+	<br />
+	<label> File to upload: &nbsp;	  
+	<input type="file" name="user_file"></label>
+	<br />
+	<br />
+	<button type="submit">Send</button>
+</form>
+</body>
+</html>

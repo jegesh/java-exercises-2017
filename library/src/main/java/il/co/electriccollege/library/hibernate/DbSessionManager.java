@@ -6,6 +6,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -19,19 +20,29 @@ public class DbSessionManager {
      * @param configFile the path of the xml config file
      */
     public DbSessionManager(String configFile){
-        setupSession(configFile);
+        Properties dbConnectionProperties = new Properties();
+        try {
+            dbConnectionProperties.load(ClassLoader.getSystemClassLoader().getResourceAsStream(configFile));
+            setupSession(dbConnectionProperties);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    private void setupSession(String configFile){
+    public DbSessionManager(Properties configProps){
+        setupSession(configProps);
+    }
+
+    private void setupSession(Properties configProperties){
         // A SessionFactory is set up once for an application!
 //        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
 //                .configure(configFile) // configures settings from hibernate.cfg.xml or other xml config
 //                .build();
 
-        Properties dbConnectionProperties = new Properties();
         try {
-            dbConnectionProperties.load(ClassLoader.getSystemClassLoader().getResourceAsStream(configFile));
-            sessionFactory = new Configuration().mergeProperties(dbConnectionProperties).configure().buildSessionFactory();
+
+            sessionFactory = new Configuration().mergeProperties(configProperties).configure().buildSessionFactory();
         } catch(Exception e) {
             e.printStackTrace();
         }

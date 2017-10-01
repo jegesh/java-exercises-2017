@@ -77,4 +77,19 @@ public class Main {
         session5.close();
 
     }
+
+    public static List<Property> getAllProperties(){
+        DbSessionManager sessionManager = new DbSessionManager();
+        Session session = sessionManager.getSessionFactoryInstance().openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Property> criteria = builder.createQuery(Property.class);
+        Root<Property> root = criteria.from(Property.class);
+        criteria.select( root );
+
+        Query query = session.createQuery(criteria);
+//        query.setMaxResults(2);  // set limit
+        List<Property> properties = query.getResultList();
+        return properties;
+    }
+
 }
