@@ -16,11 +16,11 @@ import javax.servlet.http.Part;
 /**
  * Servlet implementation class FileUploadServlet
  */
-@MultipartConfig
+@MultipartConfig()
 @WebServlet("/file-upload")
 public class FileUploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -30,6 +30,7 @@ public class FileUploadServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		
 		Part part = request.getPart("user_file");
+		
 		String filename = null;
 		String pathPrefix = "/Users/yaakov/Development/teaching/uploads/";
 		

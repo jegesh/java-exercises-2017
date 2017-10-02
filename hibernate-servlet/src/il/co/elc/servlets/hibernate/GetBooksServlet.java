@@ -23,7 +23,6 @@ import il.co.electriccollege.library.Main;
 import il.co.electriccollege.library.hibernate.DbSessionManager;
 import il.co.electriccollege.library.hibernate.UserInputHandler;
 import il.co.electriccollege.library.hibernate.entitities.Media;
-import il.co.electriccollege.realestate.entity.Property;
 
 /**
  * Servlet implementation class GetBooksServlet
@@ -56,14 +55,4 @@ public class GetBooksServlet extends HttpServlet {
 		response.getWriter().append(booksGson.toJson(allMedia));
 	}
 	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("application/json");
-		
-		// get a list of properties
-		List<Property> allProperties = il.co.electriccollege.realestate.Main.getAllProperties();
-		Gson booksGson = new Gson();
-		resp.getWriter().append(booksGson.toJson(allProperties));
-	}
-
 }
