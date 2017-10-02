@@ -30,6 +30,7 @@ import il.co.electriccollege.library.hibernate.entitities.Media;
 @WebServlet("/books")
 public class GetBooksServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	UserInputHandler inputHandler;
 	
 	@Override
 	public void init() throws ServletException {
@@ -41,7 +42,7 @@ public class GetBooksServlet extends HttpServlet {
 		configProps.put("hibernate.connection.url", context.getInitParameter("hibernate.connection.url"));
 		configProps.put("hibernate.connection.username", context.getInitParameter("hibernate.connection.username"));
 //		configProps.put("hibernate.connection.password", context.getInitParameter("hibernate.connection.password"));
-		new UserInputHandler(configProps);
+		inputHandler = new UserInputHandler(configProps);
 	}
 
 	/**
