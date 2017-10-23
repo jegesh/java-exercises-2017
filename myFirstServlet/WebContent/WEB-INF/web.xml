@@ -3,19 +3,17 @@
   <display-name>myFirstServlet</display-name>
   <servlet>
     <servlet-name>ServletAdaptor</servlet-name>
-    <servlet-class>com.sun.jersey.server.impl.container.servlet.ServletAdaptor</servlet-class>
-    <load-on-startup>1</load-on-startup>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+  	<init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>il.co.electriccollege.jersey</param-value>
+    </init-param>
+  	
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletAdaptor</servlet-name>
     <url-pattern>/rs/*</url-pattern>
   </servlet-mapping>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+  
+  
 </web-app>
