@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<style>
+body{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	background-color: grey;
+	text-align: center;
+}
+.listItem{
+	background-color: white;
+	padding: 15px;
+	margin: 10px;
+	width: 250px;
+}
+button{padding: 5px}
+#addForm{display:none}
+</style>
+</head>
+<body >
+
+<h1>Car Sales</h1>
+
+<div>
+	<button id="addButton">
+		Add Car
+	</button>
+	<div id="addForm">
+		<label>Car description: 
+			<input type="text" id="description"/>
+		</label>
+		<br/>
+		<label>Phone: 
+			<input type="tel" id="phone" />
+		</label>
+		<br/>
+		<button id="saveCar">Save</button>
+	</div>
+</div>
+<div id="carList">
+
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	// retrieve cars from server
+	$.get("http://localhost:8080/car-sales/cars", function(response){
+		for(var i in response){
+			var car = response[i];
+			var elem = "<div class='listItem'><p><b>" + car.id + ": </b> " + car.description 
+			+ "</p></div>";
+			$("#carList").append(elem);
+		}
+	}, "json");
+	
+	// open/close add car form
+	$("#addButton").click(function(){
+		$("#addForm").slideToggle();
+	});
+	
+	// get data from form and send to server
+	$("#saveCar").click(function(){
+		var descVal = $("#description").val();
+		var phoneVal = $("#phone").val();
+		
+		$.post("http://localhost:8080/car-sales/cars/add",
+				{phone:phoneVal,description:descVal},
+				function(response, status){
+					// show user response status
+					alert(status);
+					
+					// clear form
+					$("#description").val(null);
+					$("#phone").val(null);
+					$("#addForm").hide();
+				});
+	});
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

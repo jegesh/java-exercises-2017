@@ -40,7 +40,8 @@ public class CarDal {
 			return cars;
 			
 		}finally {
-			conn.close();
+			if(conn != null)
+				conn.close();
 		}
 		
 		
