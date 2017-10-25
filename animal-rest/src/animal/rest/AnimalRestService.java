@@ -4,147 +4,63 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+
+import java.sql.SQLException;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.Produces;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.core.MediaType;
-import org.apache.log4j.Logger;
 
-@Path("/<add your restful service class name here>")
+import com.google.gson.Gson;
+
+import animal.dal.Animal;
+import animal.dal.AnimalDal;
+import animal.dal.DbConnector;
+
+@Path("animal")
 public class AnimalRestService {
 
-	private static final Logger logger = Logger.getLogger(AnimalRestService.class);
 
 	@GET
-	@Path("/<add method name here>")
-    @Produces(MediaType.TEXT_PLAIN)
-	public String getSomething(@QueryParam("request") String request ,
-			 @DefaultValue("1") @QueryParam("version") int version) {
-
-		if (logger.isDebugEnabled()) {
-			logger.debug("Start getSomething");
-			logger.debug("data: '" + request + "'");
-			logger.debug("version: '" + version + "'");
-		}
-
-		String response = null;
-
-        try{			
-            switch(version){
-	            case 1:
-	                if(logger.isDebugEnabled()) logger.debug("in version 1");
-
-	                response = "Response from Jersey Restful Webservice : " + request;
-                    break;
-                default: throw new Exception("Unsupported version: " + version);
-            }
-        }
-        catch(Exception e){
-        	response = e.getMessage().toString();
-        }
-        
-        if(logger.isDebugEnabled()){
-            logger.debug("result: '"+response+"'");
-            logger.debug("End getSomething");
-        }
-        return response;	
+    @Produces(MediaType.APPLICATION_JSON)
+	public String getAllAnimals() throws SQLException {
+		
+        return new Gson().toJson(new AnimalDal(DbConnector.DB_PRODUCTION).getAnimals()).toString();	
 	}
 
 	@POST
-	@Path("/<add method name here>")
     @Produces(MediaType.TEXT_PLAIN)
-	public String postSomething(@FormParam("request") String request ,  @DefaultValue("1") @FormParam("version") int version) {
-
-		if (logger.isDebugEnabled()) {
-			logger.debug("Start postSomething");
-			logger.debug("data: '" + request + "'");
-			logger.debug("version: '" + version + "'");
-		}
-
-		String response = null;
-
-        try{			
-            switch(version){
-	            case 1:
-	                if(logger.isDebugEnabled()) logger.debug("in version 1");
-
-	                response = "Response from Jersey Restful Webservice : " + request;
-                    break;
-                default: throw new Exception("Unsupported version: " + version);
-            }
-        }
-        catch(Exception e){
-        	response = e.getMessage().toString();
-        }
-        
-        if(logger.isDebugEnabled()){
-            logger.debug("result: '"+response+"'");
-            logger.debug("End postSomething");
-        }
-        return response;	
+	public String add(
+				@QueryParam("species") String species,
+				@QueryParam("name") String name,
+				@QueryParam("age") int age
+			) throws SQLException {
+		Animal anim = new Animal();
+		anim.setAge(age);
+		anim.setName(name);
+		anim.setSpecies(species);
+        return new AnimalDal(DbConnector.DB_PRODUCTION).addAnimal(anim) ? "success" : "failed";
 	}
-
-	@PUT
-	@Path("/<add method name here>")
-    @Produces(MediaType.TEXT_PLAIN)
-	public String putSomething(@FormParam("request") String request ,  @DefaultValue("1") @FormParam("version") int version) {
-		if (logger.isDebugEnabled()) {
-			logger.debug("Start putSomething");
-			logger.debug("data: '" + request + "'");
-			logger.debug("version: '" + version + "'");
-		}
-
-		String response = null;
-
-        try{			
-            switch(version){
-	            case 1:
-	                if(logger.isDebugEnabled()) logger.debug("in version 1");
-
-	                response = "Response from Jersey Restful Webservice : " + request;
-                    break;
-                default: throw new Exception("Unsupported version: " + version);
-            }
-        }
-        catch(Exception e){
-        	response = e.getMessage().toString();
-        }
-        
-        if(logger.isDebugEnabled()){
-            logger.debug("result: '"+response+"'");
-            logger.debug("End putSomething");
-        }
-        return response;	
-	}
-
+	
 	@DELETE
-	@Path("/<add method name here>")
-	public void deleteSomething(@FormParam("request") String request ,  @DefaultValue("1") @FormParam("version") int version) {
+	@Path("{id}")
+	public String deleteSomething(@PathParam("id") long id) {
+		return new AnimalDal(DbConnector.DB_PRODUCTION).delete(id) ? "success" : "failed";
+	}
+	
+	@PUT
+	@Path("{id}/update/{key}/{value}")
+	public String update(
+			@PathParam("id") long id,
+			@PathParam("key") String key,
+			@PathParam("value") String value
+			) {
 		
-		if (logger.isDebugEnabled()) {
-			logger.debug("Start deleteSomething");
-			logger.debug("data: '" + request + "'");
-			logger.debug("version: '" + version + "'");
-		}
-
-
-        try{			
-            switch(version){
-	            case 1:
-	                if(logger.isDebugEnabled()) logger.debug("in version 1");
-
-                    break;
-                default: throw new Exception("Unsupported version: " + version);
-            }
-        }
-        catch(Exception e){
-        	e.printStackTrace();
-        }
-        
-        if(logger.isDebugEnabled()){
-            logger.debug("End deleteSomething");
-        }
+		
+		return new AnimalDal(DbConnector.DB_PRODUCTION).delete(id) ? "success" : "failed";
 	}
 }
