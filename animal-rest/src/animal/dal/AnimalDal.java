@@ -45,7 +45,25 @@ private String dbName;
 				conn.close();
 		}
 		
+	}
+	
+	public boolean delete(long id) {
+		String query = "DELETE FROM animal WHERE id = %s";
+		query = String.format(query, id);
 		
+		Connection conn = null;
+		
+		try {
+			conn = new DbConnector(dbName).getDbConnection();
+			
+			// statement allows execution of queries
+			Statement dbStatement = conn.createStatement();
+			dbStatement.execute(query);
+			return true;
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 	
 	/**
@@ -75,8 +93,8 @@ private String dbName;
 			Statement dbStatement = conn.createStatement();
 			
 			// execute query
-			return dbStatement.execute(query);
-			
+			dbStatement.execute(query);
+			return true;
 		}finally {
 			if(conn != null)
 				conn.close();
