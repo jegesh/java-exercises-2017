@@ -8,19 +8,15 @@
       <param-name>com.sun.jersey.config.property.packages</param-name>
       <param-value>il.co.electriccollege.jersey</param-value>
     </init-param>
-  	
+  	<init-param>
+		<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+		<param-value>true</param-value>
+	</init-param>
   </servlet>
-  <servlet>
-  	<servlet-name>ServletAdaptor</servlet-name>
-  	<servlet-class>com.sun.jersey.server.impl.container.servlet.ServletAdaptor</servlet-class>
-  	<load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ServletAdaptor</servlet-name>
-    <url-pattern>/rs/*</url-pattern>
-  </servlet-mapping>
+  
   <servlet-mapping>
   	<servlet-name>ServletAdaptor</servlet-name>
   	<url-pattern>/rs/*</url-pattern>
   </servlet-mapping>
+  
 </web-app>

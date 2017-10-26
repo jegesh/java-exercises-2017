@@ -18,6 +18,7 @@ public class Main {
     public static void main(String[] args) {
         DbSessionManager sessionManager = new DbSessionManager();
 
+
         // example of inserting new object to database from code
         Property property = new Property();
         property.setAddress("5 HaShalom, Hadera");
