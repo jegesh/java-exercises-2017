@@ -53,7 +53,7 @@ public class AnimalRestService {
 	}
 	
 	@PUT
-	@Path("{id}/update/{key}/{value}")
+	@Path("{id}/{key}/{value}")
 	public String update(
 			@PathParam("id") long id,
 			@PathParam("key") String key,

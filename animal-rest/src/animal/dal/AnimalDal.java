@@ -47,6 +47,11 @@ private String dbName;
 		
 	}
 	
+	public boolean updateSingleValue() {
+		// TODO
+		return false;
+	}
+	
 	public boolean delete(long id) {
 		String query = "DELETE FROM animal WHERE id = %s";
 		query = String.format(query, id);
