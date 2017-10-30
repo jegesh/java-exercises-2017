@@ -1,5 +1,7 @@
 package jersey.explore.services;
 
+import com.sun.jersey.core.header.FormDataContentDisposition;
+import com.sun.jersey.multipart.FormDataParam;
 import jersey.explore.dal.Car;
 
 import javax.servlet.ServletConfig;
@@ -9,6 +11,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.InputStream;
 
 @Path("car")
 public class CarRestService {
@@ -44,5 +47,31 @@ public class CarRestService {
         c.setDescription(desc);
         c.setPhone(phone);
         return c;
+    }
+
+    @POST
+    @Path("json")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String carFromJson(Car car){
+        return "Car description: " + car.getDescription();
+    }
+
+    @POST
+    @Path("pic")
+    @Consumes({"image/jpeg", "image/png"})
+    public String uploadPicture(byte[] picData){
+        return "Pic size: " + picData.length;
+    }
+
+    @POST
+    @Path("upload")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public String uploadFile(
+            @FormDataParam("file1") InputStream uploadedInputStream,
+            @FormDataParam("file1") FormDataContentDisposition fileDetail,
+            @FormDataParam("file2") InputStream uploadedInputStream1,
+            @FormDataParam("file2") FormDataContentDisposition fileDetail1) {
+        String fileType = fileDetail.getType();
+        return "File name is " + fileDetail.getName();
     }
 }

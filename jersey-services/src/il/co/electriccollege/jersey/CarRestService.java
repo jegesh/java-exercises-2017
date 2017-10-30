@@ -33,7 +33,8 @@ public class CarRestService {
 			) throws JSONException {
 		
 		if(model == null) {
-			return Response.status(Status.BAD_REQUEST).entity(new JSONObject("{\"error\":\"Car model is required\"}")).build();
+			return Response.status(Status.BAD_REQUEST)
+					.entity(new JSONObject("{\"error\":\"Car model is required\"}")).build();
 		}
 
 		Car c = new Car();
