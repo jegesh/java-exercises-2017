@@ -6,7 +6,7 @@
 
     <groupId>il.co.electriccollege</groupId>
     <artifactId>jersey-explore</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.6</version>
 
     <build>
         <plugins>
@@ -48,6 +48,12 @@
             <artifactId>jersey-json</artifactId>
             <version>1.19.4</version>
         </dependency>
+        <dependency>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-multipart</artifactId>
+            <version>1.19.4</version>
+        </dependency>
+
     </dependencies>
 
 </project>
