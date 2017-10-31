@@ -5,6 +5,16 @@ public class Car {
     private String description;
     private String phone;
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    private  String picture;
+
     public long getId() {
         return id;
     }

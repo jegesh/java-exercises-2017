@@ -11,10 +11,12 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.InputStream;
+import javax.ws.rs.core.SecurityContext;
+import java.io.*;
 
 @Path("car")
 public class CarRestService {
+    private final static String UPLOAD_DIR = "/uploads/";
 
     @POST
     public String insertCar(
@@ -59,8 +61,38 @@ public class CarRestService {
     @POST
     @Path("pic")
     @Consumes({"image/jpeg", "image/png"})
-    public String uploadPicture(byte[] picData){
-        return "Pic size: " + picData.length;
+    public String uploadPicture(byte[] picData,
+                                @Context ServletContext context) throws IOException {
+        String appPath = context.getRealPath("");
+        String appName = context.getContextPath();
+        int files = new File(appPath + UPLOAD_DIR).listFiles().length;
+        String filename = "uploaded" + files;
+        File upload = new File(appPath + UPLOAD_DIR + filename);
+        new FileOutputStream(upload).write(picData);
+        // save to database
+        return "File saved to " + UPLOAD_DIR + filename;
+    }
+
+    @POST
+    @Consumes({"image/jpeg", "image/png"})
+    public String uploadPicture(
+            @QueryParam("description") String desc,
+            @QueryParam("phone") String phone,
+            byte[] picData,
+            @Context ServletContext context
+    ) throws IOException {
+        String appPath = context.getRealPath("");
+        String appName = context.getContextPath();
+        Car car = new Car();
+        int files = new File(appPath + UPLOAD_DIR).listFiles().length;
+        String filename = "uploaded" + files;
+        File upload = new File(appPath + UPLOAD_DIR + filename);
+        new FileOutputStream(upload).write(picData);
+        car.setPhone(phone);
+        car.setDescription(desc);
+        car.setPicture(appName + UPLOAD_DIR + filename);
+        // TODO save to database
+        return "File saved to " + UPLOAD_DIR + filename;
     }
 
     @POST
@@ -71,7 +103,19 @@ public class CarRestService {
             @FormDataParam("file1") FormDataContentDisposition fileDetail,
             @FormDataParam("file2") InputStream uploadedInputStream1,
             @FormDataParam("file2") FormDataContentDisposition fileDetail1) {
-        String fileType = fileDetail.getType();
-        return "File name is " + fileDetail.getName();
+        return "File name is " + fileDetail.getFileName();
+    }
+
+    @DELETE
+    @Path("{id}")
+    public String removeCar(
+            @PathParam("id") long carId,
+            @Context SecurityContext securityContext
+            ){
+        if(!securityContext.isUserInRole("admin")){
+            throw new WebApplicationException(403);
+        }
+
+        return "Car " + carId + " has been removed";
     }
 }
