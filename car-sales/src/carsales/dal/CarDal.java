@@ -62,7 +62,7 @@ public class CarDal {
 	}
 	
 	public boolean addCar(Car car) throws SQLException {
-		String query = "INSERT INTO car (description, phone) VALUES ('%s', '%s')";
+		String query = "INSERT INTO car (description, phone, picture) VALUES ('%s', '%s', '')";
 		query = String.format(query, car.getDescription(), car.getPhone());
 		Connection conn = null;
 		try {

@@ -23,7 +23,7 @@ public class DbConnector {
         try {
             // Open a connection
             System.out.println("Connecting to database");
-            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             return DriverManager.getConnection(DB_URL + dbName, USER, PASS); // add password if necessary
 
         } catch (SQLException e) {
