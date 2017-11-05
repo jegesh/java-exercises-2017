@@ -2,12 +2,11 @@ package il.co.electriccollege.realestate;
 
 
 import il.co.electriccollege.realestate.entity.Property;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 /**
@@ -16,50 +15,57 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        DbSessionManager sessionManager = new DbSessionManager();
-
 
         // example of inserting new object to database from code
+        DbSessionManager sessionManager = new DbSessionManager();
+
         Property property = new Property();
         property.setAddress("5 HaShalom, Hadera");
-        property.setFloor(2);
-        property.setName("Electric College");
+        property.setFloor(11);
+        property.setName("Electric College ");
         property.setNumOfRooms(15);
-        property.setYard(0);
+        property.setYard(100);
 
         Session session = sessionManager.getSessionFactoryInstance().openSession();
         session.save(property);
         session.close();
 
         // example of object retrieval
+
+
         Session session1 = sessionManager.getSessionFactoryInstance().openSession();
         Property property1 = session1.get(Property.class, property.getId());
-        System.out.println("property and property1 are the same object? " + property.equals(property1));
         session1.close();
 
         // example of object update
+
         Session session2 = sessionManager.getSessionFactoryInstance().openSession();
         session2.beginTransaction();
         property1.setYard(1);
         session2.update(property1);
         session2.getTransaction().commit();
         session2.close();
+
         System.out.println("Property has yard: " + property.getYard());
         System.out.println("Property1 has yard: " + property1.getYard());
         System.out.println("=====================");
 
         // example of refreshing object from database
+
         Session session3 = sessionManager.getSessionFactoryInstance().openSession();
         session3.refresh(property);
-        System.out.println("Property has yard: " + property.getYard());
-        System.out.println("Property1 has yard: " + property1.getYard());
         session3.close();
 
+        System.out.println("Property1 has yard: " + property1.getYard());
+        System.out.println("Property1 has yard: " + property1.getYard());
+
         // example of retrieving a list of objects
+
         Session session4 = sessionManager.getSessionFactoryInstance().openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Property> criteria = builder.createQuery(Property.class);
         Root<Property> root = criteria.from(Property.class);
+        criteria.where(builder.ge(root.get("floor").as(Integer.class), 2));
         criteria.select( root );
 
         Query query = session4.createQuery(criteria);

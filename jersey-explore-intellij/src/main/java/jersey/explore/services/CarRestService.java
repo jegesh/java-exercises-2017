@@ -14,10 +14,20 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import java.io.*;
 
+/**
+ * general service for querying car objects
+ */
 @Path("car")
 public class CarRestService {
     private final static String UPLOAD_DIR = "/uploads/";
 
+    /**
+     *
+     * @param name car description
+     * @param phone phone number or owner
+     * @param price asking price
+     * @return succes or failure
+     */
     @POST
     public String insertCar(
             @QueryParam("name") String name,
@@ -27,6 +37,11 @@ public class CarRestService {
         return "price is " + price;
     }
 
+    /**
+     * test method
+     * @param context
+     * @return fake response
+     */
     @GET
     public Response getCar(
             @Context ServletContext context
@@ -38,6 +53,12 @@ public class CarRestService {
         return builder.build();
     }
 
+    /**
+     * turn raw data into JSON. for insert see {@link  #insertCar(String, String, int)}
+     * @param desc car description
+     * @param phone
+     * @return
+     */
     @POST
     @Path("entity")
     @Produces(MediaType.APPLICATION_JSON)

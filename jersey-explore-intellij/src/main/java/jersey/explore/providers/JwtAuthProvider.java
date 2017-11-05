@@ -20,6 +20,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Date;
 
+
 @Provider
 public class JwtAuthProvider implements ContainerRequestFilter {
     private static final String SECRET = "thequickbr0vvnfoxjumped overthe l azydog";
@@ -43,6 +44,11 @@ public class JwtAuthProvider implements ContainerRequestFilter {
         }
     }
 
+    /**
+     *
+     * @param token
+     * @return
+     */
     private DecodedJWT verifyToken(String token){
         try {
             Algorithm algorithm = Algorithm.HMAC256(SECRET);
@@ -57,6 +63,9 @@ public class JwtAuthProvider implements ContainerRequestFilter {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public ContainerRequest filter(ContainerRequest request) {
             MultivaluedMap<String, String> cookieMap = request.getCookieNameValueMap();
             String token = cookieMap.getFirst("jwt");

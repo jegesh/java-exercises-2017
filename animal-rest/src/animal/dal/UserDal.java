@@ -11,12 +11,14 @@ public class UserDal {
 				.getDbConnection()
 				.createStatement()
 				.executeQuery(String.format(query, name));
+		
 		return buildUserFromResultSet(rs);
 	}
 	
 	private User buildUserFromResultSet(ResultSet rs) throws SQLException {
 		User user = new User();
-		rs.next();
+		if(!rs.next())
+			return null;
 		user.setPassword(rs.getString("password"));
 		user.setRole(rs.getString("role"));
 		user.setUsername(rs.getString("username"));

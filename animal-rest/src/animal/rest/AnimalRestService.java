@@ -12,8 +12,11 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.Produces;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.DefaultValue;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.SecurityContext;
 
 import com.google.gson.Gson;
 
@@ -48,7 +51,12 @@ public class AnimalRestService {
 	
 	@DELETE
 	@Path("{id}")
-	public String deleteSomething(@PathParam("id") long id) {
+	public String deleteSomething(
+			@PathParam("id") long id,
+			@Context SecurityContext context
+			) {
+		if(!context.isUserInRole("admin"))
+			throw new WebApplicationException(403);
 		return new AnimalDal(DbConnector.DB_PRODUCTION).delete(id) ? "success" : "failed";
 	}
 	

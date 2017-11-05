@@ -2,14 +2,16 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>animal-rest</display-name>
   <servlet>
-  	<servlet-name>ServletAdaptor</servlet-name>
-  	<servlet-class>com.sun.jersey.server.impl.container.servlet.ServletAdaptor</servlet-class>
-  	<load-on-startup>1</load-on-startup>
-  	
+    <servlet-name>ServletAdaptor</servlet-name>
+    <servlet-class>com.sun.jersey.server.impl.container.servlet.ServletAdaptor</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
+      <param-value>animal.rest.security.JwtTokenFilter</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>ServletAdaptor</servlet-name>
-  	<url-pattern>/rs/*</url-pattern>
+    <servlet-name>ServletAdaptor</servlet-name>
+    <url-pattern>/rs/*</url-pattern>
   </servlet-mapping>
-  
 </web-app>

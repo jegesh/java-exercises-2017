@@ -36,6 +36,14 @@
 		<artifactId>jersey-servlet</artifactId>
 		<version>1.19.4</version>
 	</dependency>
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.0.8</version>
+</dependency>
+
+	
   </dependencies>
 </project>
 
