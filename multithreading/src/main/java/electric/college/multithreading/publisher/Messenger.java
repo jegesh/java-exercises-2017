@@ -13,8 +13,6 @@ public class Messenger {
     private boolean empty = true;
 
     public synchronized String take() {
-        // Wait until message is
-        // available.
         while (empty) {
             try {
                 wait();
@@ -22,15 +20,11 @@ public class Messenger {
         }
         // Toggle status.
         empty = true;
-        // Notify producer that
-        // status has changed.
         notifyAll();
         return message;
     }
 
     public synchronized void put(String message) {
-        // Wait until message has
-        // been retrieved.
         while (!empty) {
             try {
                 wait();
@@ -40,8 +34,6 @@ public class Messenger {
         empty = false;
         // Store message.
         this.message = message;
-        // Notify consumer that status
-        // has changed.
         notifyAll();
     }
 }

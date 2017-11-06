@@ -10,7 +10,7 @@ public class MemoryConsistencyErrorExample {
                 while(!Thread.interrupted()){
                     counter.increment();
                     cycles++;
-//                    System.out.println("first thread: " + counter.value());
+                    System.out.println("first thread: " + counter.value());
                 }
                 System.out.println("first thread: " + counter.value());
                 System.out.println("first thread cycles: " + cycles);
@@ -22,7 +22,7 @@ public class MemoryConsistencyErrorExample {
                 while(!Thread.interrupted()){
                     counter.decrement();
                     cycles++;
-//                    System.out.println("second thread: " + counter.value());
+                    System.out.println("second thread: " + counter.value());
                 }
                 System.out.println("second thread: " + counter.value());
                 System.out.println("first thread cycles: " + cycles);

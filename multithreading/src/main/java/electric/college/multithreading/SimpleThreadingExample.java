@@ -7,9 +7,8 @@ public class SimpleThreadingExample {
         countingThread.setDaemon(true);
         countingThread.start();
 
-        Thread.sleep(4000);
-        while (!countingThread.isInterrupted())
-            countingThread.interrupt();
+        Thread.sleep(6000);
+        countingThread.interrupt();
         Thread.sleep(1500);
         System.out.println("end");
 
