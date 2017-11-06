@@ -62,14 +62,7 @@ public class Main {
         // example of retrieving a list of objects
 
         Session session4 = sessionManager.getSessionFactoryInstance().openSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<Property> criteria = builder.createQuery(Property.class);
-        Root<Property> root = criteria.from(Property.class);
-        criteria.where(builder.ge(root.get("floor").as(Integer.class), 2));
-        criteria.select( root );
-
-        Query query = session4.createQuery(criteria);
-//        query.setMaxResults(2);  // set limit
+        `
         List<Property> properties = query.getResultList();
         session4.close();
         System.out.println();

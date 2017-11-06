@@ -12,6 +12,7 @@ public class ParallelWorkerThread extends Thread {
 
     @Override
     public void run() {
+        System.out.println("Thread for file started: " + file.getName());
         try {
             InputStream stream = new FileInputStream(file);
             int currentByte = 0;

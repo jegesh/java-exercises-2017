@@ -2,6 +2,7 @@ package jersey.explore.services;
 
 import com.sun.jersey.core.header.FormDataContentDisposition;
 import com.sun.jersey.multipart.FormDataParam;
+import jersey.explore.S3Uploader;
 import jersey.explore.dal.Car;
 
 import javax.servlet.ServletConfig;
@@ -87,11 +88,12 @@ public class CarRestService {
         String appPath = context.getRealPath("");
         String appName = context.getContextPath();
         int files = new File(appPath + UPLOAD_DIR).listFiles().length;
-        String filename = "uploaded" + files;
-        File upload = new File(appPath + UPLOAD_DIR + filename);
-        new FileOutputStream(upload).write(picData);
+        String filename = "uploaded_" + System.currentTimeMillis();
+//        File upload = new File(appPath + UPLOAD_DIR + filename);
+//        new FileOutputStream(upload).write(picData);
+        String url = new S3Uploader().uploadFile(picData, filename, "image/jpeg");
         // save to database
-        return "File saved to " + UPLOAD_DIR + filename;
+        return url == null ? "File not saved" : url;
     }
 
     @POST

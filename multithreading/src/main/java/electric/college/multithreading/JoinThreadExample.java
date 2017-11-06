@@ -7,7 +7,10 @@ public class JoinThreadExample {
         countingThread.setDaemon(true);
         countingThread.start();
 
-        countingThread.join();
+        Thread.sleep(4000);
+        countingThread.interrupt();
+
+//        countingThread.join();
         System.out.println("end");
 
     }
