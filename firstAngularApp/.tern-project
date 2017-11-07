@@ -1,0 +1,39 @@
+{
+  "ecmaVersion": 5,
+  "plugins": {
+    "guess-types": {
+      
+    },
+    "outline": {
+      
+    },
+    "complete_strings": {
+      
+    },
+    "lint": {
+      "rules": {
+        "UnknownProperty": {
+          "severity": "warning"
+        },
+        "UnknownIdentifier": {
+          "severity": "warning"
+        },
+        "NotAFunction": {
+          "severity": "error"
+        },
+        "InvalidArgument": {
+          "severity": "error"
+        },
+        "UnusedVariable": {
+          "severity": "warning"
+        }
+      }
+    },
+    "angular1": {
+      
+    }
+  },
+  "libs": [
+    "browser"
+  ]
+}
