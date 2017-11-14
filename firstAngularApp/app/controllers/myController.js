@@ -1,3 +1,4 @@
-angular.module("firstAngular").controller("myCtrl", function($scope) {
-	$scope.text = "Hello world";
+app.controller("myCtrl", function($scope) {
+	$scope.text1 = "Hello world";
 });
+
