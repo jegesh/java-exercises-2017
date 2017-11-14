@@ -1,0 +1,16 @@
+/* css */
+
+/* workaround for issue in angular-ui: see https://angular-ui.github.io/bootstrap/ */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+form .row{
+    margin: 10px;
+}
+
+.newRideForm span.input-group-addon{
+    width: 120px;
+}
+
+.newRideForm span{
+    width: 250px;
+}
