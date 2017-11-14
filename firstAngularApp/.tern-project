@@ -10,25 +10,6 @@
     "complete_strings": {
       
     },
-    "lint": {
-      "rules": {
-        "UnknownProperty": {
-          "severity": "warning"
-        },
-        "UnknownIdentifier": {
-          "severity": "warning"
-        },
-        "NotAFunction": {
-          "severity": "error"
-        },
-        "InvalidArgument": {
-          "severity": "error"
-        },
-        "UnusedVariable": {
-          "severity": "warning"
-        }
-      }
-    },
     "angular1": {
       
     }
