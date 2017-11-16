@@ -116,12 +116,11 @@ public class MainActivity extends AppCompatActivity {
             try {
                 InputStream in = MainActivity.this.getContentResolver().openInputStream(data.getData());
 
-
-
+                // make a temporary file from the input stream
                 File outputDir = this.getCacheDir();
                 File outputFile = File.createTempFile("temp", "png", outputDir);
                 FileOutputStream fos = new FileOutputStream(outputFile);
-                final byte[] b = new byte[8192];
+                final byte[] b = new byte[1024];
                 for (int r; (r = in.read(b)) != -1;) {
                     fos.write(b, 0, r);
                 }
